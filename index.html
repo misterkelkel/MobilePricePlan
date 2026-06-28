@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MobilePricePlan.com — Singapore Mobile Plans</title>
+  <title>MobilePricePlan.com — Local Mobile Plans</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
@@ -272,6 +272,10 @@
       line-height: 1.6;
     }
 
+    .info-card {
+      border-left: 3px solid var(--accent);
+    }
+
     /* FAQ */
     .faq-section {
       background: var(--surface);
@@ -451,7 +455,7 @@
       <div class="logo-mark">MPP</div>
       <h1>Mobile<span class="accent">Price</span>Plan.com</h1>
     </div>
-    <p>Mobile plan comparison — simple, clear, and updated weekly.</p>
+    <p>Mobile plan comparison for travellers — simple, clear, and updated weekly.</p>
   </header>
 
   <main>
@@ -471,6 +475,13 @@
       <div class="updated">Last updated: <span id="last-updated">June 2026</span></div>
       <div class="disclaimer">Prices and terms can change weekly. Please double-check with each telco before signing up.</div>
       <div class="disclaimer">Data drawn from public telco and comparison feeds; not an official telco source.</div>
+    </div>
+
+    <div class="card info-card">
+      <h2>Who this is for</h2>
+      <p>This comparison is built mainly for local travellers, expats, and anyone who wants a straightforward view of what’s available in each country — not just tourist SIMs. The table mixes local prepaid, postpaid, and common no-contract options because those are the plans residents actually use.</p>
+      <h2>How we gather this data</h2>
+      <p>We pull prices and plan details from public comparison sources, telco sites, and traveller/local guides. Plans are checked against recent sources every week and marked with eSIM confidence levels so you can see at a glance what’s reliable, likely supported, or unconfirmed.</p>
     </div>
 
     <nav class="domain-links" aria-label="Plan sections">
@@ -1005,35 +1016,31 @@
           <td class="price">From HK$48 / mo<span class="detail">Local prepaid data</span></td>
           <td>Prepaid</td>
           <td><span class="badge badge-likely">Likely</span></td>
-          <td>Premium local option</td>
-          <td>Good quality 5G</td>
-          <td><a href="https://www.smartone.com" target="_blank" rel="noopener">SmarTone</a></td>
-        </tr>
-      </tbody>
-    </table>
+          <nav class="domain-links" aria-label="Plan sections">
+            <a href="#data">Data Price Plan</a>
+            <a href="#esim">eSIM Price Plan</a>
+            <a href="#roaming">Roaming Plan</a>
+            <a href="#sim">SIM Price Plan</a>
+          </nav>
 
-    <div class="sections-grid">
-      <article class="card" id="data">
-        <h2>Data Price Plan</h2>
-        <p>High-data SIM and no-contract data options. Check the table above for current pricing.</p>
-      </article>
-      <article class="card" id="esim">
-        <h2>eSIM Price Plan</h2>
-        <p>eSIM-friendly mobile plans. For confirmed eSIM support, look for <span class="badge badge-yes">Yes</span> in the eSIM column above.</p>
-      </article>
-      <article class="card" id="roaming">
-        <h2>Roaming Plan</h2>
-        <p>Plans with stronger roaming data, IDD minutes, or regional roaming bundles.</p>
-      </article>
-      <article class="card" id="sim">
-        <h2>SIM Price Plan</h2>
-        <p>Best simple SIM-only plans for basic Singapore mobile use.</p>
-      </article>
-      <article class="card">
-        <h2>How to read this table</h2>
-        <p><strong>eSIM:</strong> <span class="badge badge-yes">Yes</span> = confirmed eSIM. <span class="badge badge-likely">Likely</span> = commonly supported. <span class="badge badge-unknown">Unknown</span> = not confirmed.</p>
-      </article>
-    </div>
+          <div class="sections-grid">
+            <article class="card" id="data">
+              <h2>Data Price Plan</h2>
+              <p>Big-data local plans for residents and long-stay travellers. These are often better value than tourist SIMs if you’re staying more than a few days.</p>
+            </article>
+            <article class="card" id="esim">
+              <h2>eSIM Price Plan</h2>
+              <p>eSIM-friendly plans that can usually be activated digitally. Good for people who don’t want a physical SIM, but check confirmation in the eSIM column.</p>
+            </article>
+            <article class="card" id="roaming">
+              <h2>Roaming Plan</h2>
+              <p>Plans with stronger roaming data, regional bundles, or IDD minutes — useful for cross-border travellers or expats calling home.</p>
+            </article>
+            <article class="card" id="sim">
+              <h2>Local SIM / Prepaid</h2>
+              <p>Good starting points for short stays or light users. We show local prepaid options that residents also top up regularly.</p>
+            </article>
+          </div>
 
     <!-- FAQ Chatbot -->
     <section class="faq-section" aria-label="Frequently asked questions">

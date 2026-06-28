@@ -460,6 +460,7 @@
       <select id="country">
         <option value="sg">Singapore</option>
         <option value="my">Malaysia</option>
+        <option value="id">Indonesia</option>
       </select>
     </div>
     <div class="toast">
@@ -716,6 +717,80 @@
           <td><a href="https://www.u.com.my" target="_blank" rel="noopener">U Mobile</a></td>
         </tr>
       </tbody>
+      <tbody id="plans-id" style="display:none;">
+        <tr>
+          <td>Telkomsel Starter</td>
+          <td class="price">From Rp 35,000 / mo<span class="detail">Starter SIM</span></td>
+          <td>Prepaid</td>
+          <td><span class="badge badge-likely">Likely</span></td>
+          <td>Best overall coverage · islands wide</td>
+          <td>Tourist-friendly entry SIM</td>
+          <td><a href="https://www.telkomsel.com" target="_blank" rel="noopener">Telkomsel</a></td>
+        </tr>
+        <tr>
+          <td>Telkomsel 3.5GB</td>
+          <td class="price">Rp 35,000 / mo<span class="detail">3.5GB 4G/5G</span></td>
+          <td>Prepaid</td>
+          <td><span class="badge badge-likely">Likely</span></td>
+          <td>Short trip / backup data</td>
+          <td>30 days</td>
+          <td><a href="https://www.telkomsel.com" target="_blank" rel="noopener">Telkomsel</a></td>
+        </tr>
+        <tr>
+          <td>Telkomsel 8GB</td>
+          <td class="price">Rp 70,000 / mo<span class="detail">8GB 4G/5G</span></td>
+          <td>Prepaid</td>
+          <td><span class="badge badge-likely">Likely</span></td>
+          <td>Light usage / messaging</td>
+          <td>30 days</td>
+          <td><a href="https://www.telkomsel.com" target="_blank" rel="noopener">Telkomsel</a></td>
+        </tr>
+        <tr>
+          <td>Telkomsel 13GB</td>
+          <td class="price">Rp 100,000 / mo<span class="detail">13GB 4G/5G</span></td>
+          <td>Prepaid</td>
+          <td><span class="badge badge-likely">Likely</span></td>
+          <td>General traveler plan</td>
+          <td>30 days</td>
+          <td><a href="https://www.telkomsel.com" target="_blank" rel="noopener">Telkomsel</a></td>
+        </tr>
+        <tr>
+          <td>IM3 (Indosat) 16GB</td>
+          <td class="price">Rp 199,000 / mo<span class="detail">16GB 4G/5G</span></td>
+          <td>Prepaid</td>
+          <td><span class="badge badge-likely">Likely</span></td>
+          <td>Good budget option in cities</td>
+          <td>60 min · 60 SMS</td>
+          <td><a href="https://www.indosatooredoo.com" target="_blank" rel="noopener">IM3</a></td>
+        </tr>
+        <tr>
+          <td>IM3 (Indosat) 30GB</td>
+          <td class="price">Rp 299,000 / mo<span class="detail">30GB 4G/5G</span></td>
+          <td>Prepaid</td>
+          <td><span class="badge badge-likely">Likely</span></td>
+          <td>Higher usage traveler</td>
+          <td>120 min · 120 SMS</td>
+          <td><a href="https://www.indosatooredoo.com" target="_blank" rel="noopener">IM3</a></td>
+        </tr>
+        <tr>
+          <td>XL Axiata 150GB</td>
+          <td class="price">Rp 150,000 / mo<span class="detail">150GB 4G/5G</span></td>
+          <td>Prepaid</td>
+          <td><span class="badge badge-likely">Likely</span></td>
+          <td>Large prepaid data bundle</td>
+          <td>Best in Bali/Java</td>
+          <td><a href="https://www.xl.co.id" target="_blank" rel="noopener">XL</a></td>
+        </tr>
+        <tr>
+          <td>XL Axiata 500GB</td>
+          <td class="price">Rp 300,000 / mo<span class="detail">500GB 4G/5G</span></td>
+          <td>Prepaid</td>
+          <td><span class="badge badge-likely">Likely</span></td>
+          <td>Very high data bundle</td>
+          <td>Best in Bali/Java</td>
+          <td><a href="https://www.xl.co.id" target="_blank" rel="noopener">XL</a></td>
+        </tr>
+      </tbody>
     </table>
 
     <div class="sections-grid">
@@ -747,7 +822,7 @@
       <p class="faq-intro">Tap a question below.</p>
       <div class="faq-buttons">
         <button type="button" data-answer="eSIM lets you activate your plan digitally — no physical SIM needed. Look for <span class=\"badge badge-yes\">Yes</span> in the eSIM column.">What is eSIM?</button>
-        <button type="button" data-answer="Right now, GOMO 5G+ CORE and MyRepublic 700GB are among the highest-data options on this list.">Which plan has the most data?</button>
+        <button type="button" data-answer="Use the table above — the plan with the highest GB value has the most data. This changes by country.">Which plan has the most data?</button>
         <button type="button" data-answer="Yes — look for strong roaming notes like in the CMLINK SG 200GB and VIVIFI VIBE 4G rows.">Do any plans include roaming?</button>
         <button type="button" data-answer="We update this table weekly. For the latest prices, click the telco <em>Visit</em> link.">Are the prices up to date?</button>
         <button type="button" data-answer="Use the contact form below and I’ll get back to you.">Still need help?</button>
@@ -834,23 +909,18 @@
       }, 6000);
     });
 
-    // Country selector - show SG or MY plans
+    // Country selector - show SG, MY or ID plans
     const countrySelect = document.getElementById('country');
     const sgTable = document.getElementById('plans-sg');
     const myTable = document.getElementById('plans-my');
+    const idTable = document.getElementById('plans-id');
 
-    if (countrySelect && sgTable && myTable) {
+    if (countrySelect && sgTable && myTable && idTable) {
       const switchCountry = () => {
         const value = countrySelect.value;
-        if (value === 'my') {
-          sgTable.style.display = 'none';
-          myTable.style.display = '';
-          countrySelect.style.display = '';
-        } else {
-          sgTable.style.display = '';
-          myTable.style.display = 'none';
-          countrySelect.style.display = '';
-        }
+        sgTable.style.display = value === 'sg' ? '' : 'none';
+        myTable.style.display = value === 'my' ? '' : 'none';
+        idTable.style.display = value === 'id' ? '' : 'none';
       };
 
       countrySelect.addEventListener('change', switchCountry);

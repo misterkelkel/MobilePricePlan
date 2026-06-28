@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MobilePricePlan.com — Singapore Mobile Plans</title>
+  <style>
+    :root {
+      --bg: #f7f7f5;
+      --text: #1a1a1a;
+      --muted: #666;
+      --accent: #0f172a;
+      --card: #ffffff;
+      --border: #e5e5e5;
+      --whatsapp: #25D366;
+      --chat-bg: #ffffff;
+      --chat-border: #e5e7eb;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 1.75rem 1.25rem;
+      max-width: 960px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    header p {
+      color: var(--muted);
+      margin-top: 0.25rem;
+    }
+
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 1.25rem 3rem;
+    }
+
+    .intro {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.5rem;
+      display: grid;
+      gap: 0.25rem;
+    }
+
+    .intro .updated {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .domain-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .domain-links a {
+      text-decoration: none;
+      font-size: 0.9rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      background: #eef2ff;
+      color: #1e3a8a;
+      border: 1px solid #dbeafe;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      overflow: hidden;
+    }
+
+    thead th {
+      background: #f3f4f6;
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-align: left;
+      padding: 0.75rem 0.9rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    tbody td {
+      padding: 0.75rem 0.9rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.95rem;
+    }
+
+    tbody tr:last-child td { border-bottom: none; }
+
+    td.price { white-space: nowrap; font-weight: 600; }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    /* WhatsApp button */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--whatsapp);
+      color: #fff;
+      border-radius: 999px;
+      padding: 12px 20px;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.95rem;
+      z-index: 999;
+    }
+
+    /* Simple FAQ chatbot */
+    .chatbot-toggle {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      padding: 12px 20px;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+      cursor: pointer;
+      font-size: 0.95rem;
+      z-index: 999;
+    }
+
+    .chatbot-box {
+      position: fixed;
+      bottom: 72px;
+      left: 24px;
+      width: 290px;
+      max-width: calc(100% - 48px);
+      background: var(--chat-bg);
+      border: 1px solid var(--chat-border);
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      padding: 1rem;
+      display: none;
+      z-index: 999;
+    }
+
+    .chatbot-box.open { display: block; }
+
+    .chatbot-box h3 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .chatbot-box p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .chatbot-box button {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 8px 10px;
+      margin-bottom: 6px;
+      border: 1px solid var(--chat-border);
+      background: #f9fafb;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .chatbot-box button:hover { background: #f3f4f6; }
+
+    .chatbot-answer {
+      margin-top: 8px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      background: #f5f5f4;
+      font-size: 0.9rem;
+      display: none;
+    }
+
+    @media (max-width: 640px) {
+      thead { display: none; }
+      tbody tr { display: grid; gap: 0.2rem; padding: 0.9rem; border-bottom: 1px solid var(--border); }
+      tbody td { display: block; padding: 0.15rem 0; border-bottom: none; }
+      td.price { white-space: normal; }
+      .chatbot-box { left: 12px; right: 12px; width: auto; bottom: 68px; }
+      .chatbot-toggle { left: 12px; }
+      .whatsapp-float { right: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>MobilePricePlan.com</h1>
+    <p>Singapore mobile plans — simple, clear, and updated weekly.</p>
+  </header>
+
+  <main>
+    <div class="intro">
+      <div><strong>Last updated:</strong> <span id="last-updated">July 2026</span></div>
+      <div class="updated">Prices and terms can change weekly. Please double-check with each telco before signing up.</div>
+      <div class="updated">Data drawn from public telco and comparison feeds; not an official telco source.</div>
+    </div>
+
+    <nav class="domain-links" aria-label="Plan sections">
+      <a href="#data">Data Price Plan</a>
+      <a href="#esim">eSIM Price Plan</a>
+      <a href="#roaming">Roaming Plan</a>
+      <a href="#sim">SIM Price Plan</a>
+    </nav>
+
+    <table id="plans-table">
+      <thead>
+        <tr>
+          <th>Plan</th>
+          <th>Price / Data</th>
+          <th>Type</th>
+          <th>eSIM</th>
+          <th>Roaming highlights</th>
+          <th>Quick notes</th>
+          <th>Visit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="row-esim">
+          <td>giga! 500GB</td>
+          <td class="price">S$ 0.90 / mo<br><span style="color:#666;font-weight:400">500GB 5G</span></td>
+          <td>Sim-only</td>
+          <td>Yes</td>
+          <td>Unlimited SG calls · 1000 SMS · data rollover</td>
+          <td>No contract · promo</td>
+          <td><a href="https://giga.com.sg" target="_blank" rel="noopener">giga!</a></td>
+        </tr>
+        <tr id="row-esim">
+          <td>SIMBA 500GB</td>
+          <td class="price">S$ 5.00 / mo<br><span style="color:#666;font-weight:400">500GB 5G</span></td>
+          <td>Sim-only</td>
+          <td>Yes</td>
+          <td>400 min talktime · unlimited SMS · 8GB roaming · free voice roaming</td>
+          <td>No contract · 5G</td>
+          <td><a href="https://simba.sg" target="_blank" rel="noopener">SIMBA</a></td>
+        </tr>
+        <tr id="row-data">
+          <td>Hi! by Singtel</td>
+          <td class="price">S$ 5.00 / mo<br><span style="color:#666;font-weight:400">400GB 4G</span></td>
+          <td>Sim-only</td>
+          <td>Yes</td>
+          <td>406GB roaming · 100 Myanmar mins · data rollover · unlimited SMS</td>
+          <td>Singtel MVNO</td>
+          <td><a href="https://www.singtel.com" target="_blank" rel="noopener">Singtel</a></td>
+        </tr>
+        <tr id="row-data">
+          <td>GOMO 5G VALUE</td>
+          <td class="price">S$ 5.50 / mo<br><span style="color:#666;font-weight:400">300GB 5G</span></td>
+          <td>Sim-only</td>
+          <td>Yes</td>
+          <td>418GB roaming · 800 min · 800 SMS</td>
+          <td>No contract</td>
+          <td><a href="https://www.gomo.sg" target="_blank" rel="noopener">GOMO</a></td>
+        </tr>
+        <tr id="row-sim">
+          <td>StarHub 5G Data</td>
+          <td class="price">S$ 5.00 / mo<br><span style="color:#666;font-weight:400">20GB 5G</span></td>
+          <td>Data</td>
+          <td>Unknown</td>
+          <td>Add voice plan separately</td>
+          <td>No contract · unlimited SMS</td>
+          <td><a href="https://www.starhub.com" target="_blank" rel="noopener">StarHub</a></td>
+        </tr>
+        <tr id="row-data">
+          <td>GOMO 5G+ CORE</td>
+          <td class="price">S$ 6.30 / mo<br><span style="color:#666;font-weight:400">700GB 5G</span></td>
+          <td>Sim-only</td>
+          <td>Yes</td>
+          <td>722GB roaming · 1000 min · 1000 SMS</td>
+          <td>No contract</td>
+          <td><a href="https://www.gomo.sg" target="_blank" rel="noopener">GOMO</a></td>
+        </tr>
+        <tr id="row-sim">
+          <td>Singtel Seniors</td>
+          <td class="price">S$ 6.00 / mo<br><span style="color:#666;font-weight:400">340GB 5G</span></td>
+          <td>Sim-only</td>
+          <td>Likely</td>
+          <td>6GB roaming · 500 SMS</td>
+          <td>Seniors plan · no contract</td>
+          <td><a href="https://www.singtel.com" target="_blank" rel="noopener">Singtel</a></td>
+        </tr>
+        <tr id="row-esim">
+          <td>GOMO 5G+ SENIOR</td>
+          <td class="price">S$ 6.00 / mo<br><span style="color:#666;font-weight:400">400GB 5G</span></td>
+          <td>Sim-only</td>
+          <td>Yes</td>
+          <td>409GB roaming · 800 min · 800 SMS</td>
+          <td>Senior plan · no contract</td>
+          <td><a href="https://www.gomo.sg" target="_blank" rel="noopener">GOMO</a></td>
+        </tr>
+        <tr id="row-esim">
+          <td>Eight Senior Plan</td>
+          <td class="price">S$ 5.00 / mo<br><span style="color:#666;font-weight:400">528GB 4G</span></td>
+          <td>Sim-only</td>
+          <td>Yes</td>
+          <td>528GB roaming · 128 IDD mins</td>
+          <td>No contract</td>
+          <td><a href="https://eight.com.sg" target="_blank" rel="noopener">Eight</a></td>
+        </tr>
+        <tr id="row-data">
+          <td>ZYM Flexi DUO</td>
+          <td class="price">S$ 7.00 / mo<br><span style="color:#666;font-weight:400">77GB 5G</span></td>
+          <td>Sim-only</td>
+          <td>Likely</td>
+          <td>100GB roaming · unlimited SMS · data rollover</td>
+          <td>No contract · promo vouchers</td>
+          <td><a href="https://zym.sg" target="_blank" rel="noopener">ZYM</a></td>
+        </tr>
+        <tr id="row-esim">
+          <td>Zero1 Starter Prime</td>
+          <td class="price">S$ 7.06 / mo<br><span style="color:#666;font-weight:400">200GB 4G</span></td>
+          <td>Sim-only</td>
+          <td>Likely</td>
+          <td>105GB roaming · 100 IDD mins · 300 min · 100 SMS</td>
+          <td>Promo 3rd month free sometimes</td>
+          <td><a href="https://zero1.com.sg" target="_blank" rel="noopener">Zero1</a></td>
+        </tr>
+        <tr id="row-data">
+          <td>VIVIFI Roam Value</td>
+          <td class="price">S$ 7.70 / mo<br><span style="color:#666;font-weight:400">200GB 4G</span></td>
+          <td>Sim-only</td>
+          <td>Likely</td>
+          <td>105GB roaming · 300 min · 100 SMS</td>
+          <td>Promo free month sometimes</td>
+          <td><a href="https://vivifi.com.sg" target="_blank" rel="noopener">VIVIFI</a></td>
+        </tr>
+        <tr id="row-roaming">
+          <td>CMLINK SG 200GB</td>
+          <td class="price">S$ 7.70 / mo<br><span style="color:#666;font-weight:400">200GB 4G/5G</span></td>
+          <td>Sim-only</td>
+          <td>Likely</td>
+          <td>630GB total roaming (MY/ID shared 365 days for new sign-ups)</td>
+          <td>No contract · 300 min · 100 SMS</td>
+          <td><a href="https://cmhk.com/sg" target="_blank" rel="noopener">CMLINK</a></td>
+        </tr>
+        <tr id="row-data">
+          <td>ZYM ROAM SAVER</td>
+          <td class="price">S$ 7.77 / mo<br><span style="color:#666;font-weight:400">200GB 5G</span></td>
+          <td>Sim-only</td>
+          <td>Likely</td>
+          <td>105GB roaming · 300 min · 100 SMS</td>
+          <td>Free month for port-in · vouchers</td>
+          <td><a href="https://zym.sg" target="_blank" rel="noopener">ZYM</a></td>
+        </tr>
+        <tr id="row-sim">
+          <td>MyRepublic 300GB</td>
+          <td class="price">S$ 7.90 / mo<br><span style="color:#666;font-weight:400">300GB 4G</span></td>
+          <td>Sim-only</td>
+          <td>Yes</td>
+          <td>112GB roaming · 150 min · 50 SMS</td>
+          <td>Promo pricing · no contract</td>
+          <td><a href="https://myrepublic.net/sg" target="_blank" rel="noopener">MyRepublic</a></td>
+        </tr>
+        <tr id="row-sim">
+          <td>Maxx 290GB</td>
+          <td class="price">S$ 7.90 / mo<br><span style="color:#666;font-weight:400">290GB 4G</span></td>
+          <td>Sim-only</td>
+          <td>Likely</td>
+          <td>12GB roaming · 500 min · 99 SMS · SG-MY shared</td>
+          <td>Promo pricing · free SIM</td>
+          <td><a href="https://maxx.com.sg" target="_blank" rel="noopener">Maxx</a></td>
+        </tr>
+        <tr id="row-sim">
+          <td>Maxx 400GB</td>
+          <td class="price">S$ 10.00 / mo<br><span style="color:#666;font-weight:400">400GB 5G</span></td>
+          <td>Sim-only</td>
+          <td>Likely</td>
+          <td>16GB roaming · 500 min · 50 SMS · IDD minutes included</td>
+          <td>Free 5G for 6 months · 1-month contract</td>
+          <td><a href="https://maxx.com.sg" target="_blank" rel="noopener">Maxx</a></td>
+        </tr>
+        <tr id="row-sim">
+          <td>Zero1 Jumbo Value</td>
+          <td class="price">S$ 7.70 / mo<br><span style="color:#666;font-weight:400">201GB 5G</span></td>
+          <td>Sim-only</td>
+          <td>Likely</td>
+          <td>101 IDD mins · 301 min · 101 SMS</td>
+          <td>Promo 3rd month free sometimes</td>
+          <td><a href="https://zero1.com.sg" target="_blank" rel="noopener">Zero1</a></td>
+        </tr>
+        <tr id="row-roaming">
+          <td>Circles.Life 4G</td>
+          <td class="price">S$ 9.90 / mo<br><span style="color:#666;font-weight:400">200GB 4G</span></td>
+          <td>Sim-only</td>
+          <td>Yes</td>
+          <td>Unlimited calls · no contract</td>
+          <td>Roaming add-on available</td>
+          <td><a href="https://www.circles.life" target="_blank" rel="noopener">Circles.Life</a></td>
+        </tr>
+        <tr id="row-data">
+          <td>M1 5G Starter</td>
+          <td class="price">S$ 11.95 / mo<br><span style="color:#666;font-weight:400">300GB 5G</span></td>
+          <td>Sim-only</td>
+          <td>Yes</td>
+          <td>1GB APAC roaming · $0.99/day roaming promo</td>
+          <td>Promo price first months</td>
+          <td><a href="https://www.m1.com.sg" target="_blank" rel="noopener">M1</a></td>
+        </tr>
+        <tr id="row-data">
+          <td>MyRepublic 700GB</td>
+          <td class="price">S$ 10.00 / mo<br><span style="color:#666;font-weight:400">700GB 4G</span></td>
+          <td>Sim-only</td>
+          <td>Yes</td>
+          <td>112GB roaming · 400 min · 100 SMS</td>
+          <td>Promo pricing · no contract</td>
+          <td><a href="https://myrepublic.net/sg" target="_blank" rel="noopener">MyRepublic</a></td>
+        </tr>
+        <tr id="row-roaming">
+          <td>VIVIFI VIBE 4G</td>
+          <td class="price">S$ 10.00 / mo<br><span style="color:#666;font-weight:400">500GB 4G</span></td>
+          <td>Sim-only</td>
+          <td>Likely</td>
+          <td>612GB roaming · 3 months free sometimes · 15GB global roaming</td>
+          <td>588 min · 100 SMS</td>
+          <td><a href="https://vivifi.com.sg" target="_blank" rel="noopener">VIVIFI</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 id="data" style="margin:1.5rem 0 .5rem;font-size:1.2rem;">Data Price Plan</h2>
+    <p style="color:#666;font-size:.95rem;margin-bottom:0.5rem;">High-data SIM and no-contract data options. Click any plan row for the mobile price table above.</p>
+
+    <h2 id="esim" style="margin:1.5rem 0 .5rem;font-size:1.2rem;">eSIM Price Plan</h2>
+    <p style="color:#666;font-size:.95rem;margin-bottom:0.5rem;">eSIM-friendly mobile plans. For confirmed eSIM support, look for <strong>Yes</strong> in the eSIM column above.</p>
+
+    <h2 id="roaming" style="margin:1.5rem 0 .5rem;font-size:1.2rem;">Roaming Plan</h2>
+    <p style="color:#666;font-size:.95rem;margin-bottom:0.5rem;">Plans with stronger roaming data, IDD minutes, or regional roaming bundles.</p>
+
+    <h2 id="sim" style="margin:1.5rem 0 .5rem;font-size:1.2rem;">SIM Price Plan</h2>
+    <p style="color:#666;font-size:.95rem;margin-bottom:0.5rem;">Best simple SIM-only plans for basic Singapore mobile use.</p>
+
+    <h2 style="margin:1.5rem 0 .5rem;font-size:1.2rem;">How to read this table</h2>
+    <p style="color:#666;font-size:.95rem;">
+      <strong>eSIM</strong>: Yes means the provider supports eSIM activation. Likely means it is commonly supported but not 100 percent confirmed from source. Unknown means I could not confirm it from the current sources.
+    </p>
+    <p style="color:#666;font-size:.95rem;margin-top:.25rem;">
+      <strong>Roaming highlights</strong>: Short summary of roaming data, IDD minutes, or regions included. Full terms can vary by plan and promo. Always check the provider’s official page before signing up.
+    </p>
+  </main>
+
+  <footer>
+    © MobilePricePlan.com · Data sources updated as of July 2026 · Built with Hermes AI
+  </footer>
+
+  <!-- WhatsApp button -->
+  <a class="whatsapp-float" href="https://wa.me/65YOURNUMBER?text=Hi%20MobilePricePlan.com%20team%2C%20I%20have%20a%20question%20about%20plan%20prices." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    WhatsApp
+  </a>
+
+  <!-- Simple FAQ chatbot -->
+  <button class="chatbot-toggle" id="chatbotToggle" type="button">FAQ</button>
+  <div class="chatbot-box" id="chatbotBox" role="dialog" aria-label="FAQ chatbot">
+    <h3>Quick questions</h3>
+    <p>Tap a question below.</p>
+    <button type="button" data-answer="eSIM means your plan is activated digitally, no physical SIM needed. Look for Yes in the eSIM column above.">What is eSIM?</button>
+    <button type="button" data-answer="The best plan depends on your usage. Heavy data users often pick plans from 300GB upwards. Check the table above.">Which plan has the most data?</button>
+    <button type="button" data-answer="Roaming plans include overseas data or minutes. Look for roaming notes in the plan table above.">Do these plans include roaming?</button>
+    <button type="button" data-answer="We update this table weekly. Click the telco Visit link for the latest official prices.">Are the prices up to date?</button>
+    <button type="button" data-answer="If your question is not answered here, please use the WhatsApp button on the right to chat with us.">Still need help?</button>
+    <div class="chatbot-answer" id="chatbotAnswer" aria-live="polite"></div>
+  </div>
+
+  <script>
+    document.getElementById('last-updated').textContent = new Date().toLocaleString('en-SG', { month: 'long', year: 'numeric' });
+
+    const chatbotToggle = document.getElementById('chatbotToggle');
+    const chatbotBox = document.getElementById('chatbotBox');
+    const chatbotAnswer = document.getElementById('chatbotAnswer');
+
+    chatbotToggle.addEventListener('click', () => {
+      chatbotBox.classList.toggle('open');
+      chatbotAnswer.style.display = 'none';
+    });
+
+    chatbotBox.querySelectorAll('button[data-answer]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        chatbotAnswer.textContent = btn.getAttribute('data-answer');
+        chatbotAnswer.style.display = 'block';
+      });
+    });
+  </script>
+</body>
+</html>

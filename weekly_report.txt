@@ -1,0 +1,7 @@
+MobilePricePlan weekly report — 2026-06-28
+
+CHANGES:
+MobilePlans.sg: source text changed
+
+NOTES:
+Failed to fetch MoneySmart Cheapest SIM-Only

@@ -135,6 +135,30 @@
       background: var(--accent-soft);
     }
 
+    .country-selector {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      gap: 0.6rem;
+      align-items: center;
+    }
+
+    .country-selector label {
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: #4a453f;
+    }
+
+    .country-selector select {
+      padding: 0.35rem 0.6rem;
+      border-radius: 10px;
+      border: 1.5px solid var(--border);
+      background: #fff;
+      font-size: 0.95rem;
+      font-family: inherit;
+      color: var(--text);
+    }
+
     table {
       width: 100%;
       border-collapse: separate;
@@ -427,10 +451,17 @@
       <div class="logo-mark">MPP</div>
       <h1>Mobile<span class="accent">Price</span>Plan.com</h1>
     </div>
-    <p>Singapore mobile plans — simple, clear, and updated weekly.</p>
+    <p>Singapore &amp; Malaysia mobile plans — simple, clear, and updated weekly.</p>
   </header>
 
   <main>
+    <div class="country-selector">
+      <label for="country">Country / Region</label>
+      <select id="country">
+        <option value="sg">Singapore</option>
+        <option value="my">Malaysia</option>
+      </select>
+    </div>
     <div class="toast">
       <div class="updated">Last updated: <span id="last-updated">June 2026</span></div>
       <div class="disclaimer">Prices and terms can change weekly. Please double-check with each telco before signing up.</div>
@@ -456,7 +487,7 @@
           <th>Visit</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id="plans-sg">
         <tr>
           <td>ZYM Flexi Duo</td>
           <td class="price">S$ 7.00 / mo<span class="detail">77GB 4G</span></td>
@@ -584,6 +615,107 @@
           <td><a href="https://www.circles.life" target="_blank" rel="noopener">Circles.Life</a></td>
         </tr>
       </tbody>
+      <tbody id="plans-my" style="display:none;">
+        <tr>
+          <td>CelcomDigi Postpaid 45 SE</td>
+          <td class="price">RM 45 / mo<span class="detail">100GB 5G/4G</span></td>
+          <td>Postpaid</td>
+          <td><span class="badge badge-likely">Likely</span></td>
+          <td>Budget-friendly entry plan</td>
+          <td>No contract</td>
+          <td><a href="https://www.celcomdigi.com" target="_blank" rel="noopener">CelcomDigi</a></td>
+        </tr>
+        <tr>
+          <td>CelcomDigi Postpaid 65 SE</td>
+          <td class="price">RM 65 / mo<span class="detail">250GB 5G/4G</span></td>
+          <td>Postpaid</td>
+          <td><span class="badge badge-likely">Likely</span></td>
+          <td>Mid-tier value plan</td>
+          <td>No contract</td>
+          <td><a href="https://www.celcomdigi.com" target="_blank" rel="noopener">CelcomDigi</a></td>
+        </tr>
+        <tr>
+          <td>CelcomDigi Postpaid 80</td>
+          <td class="price">RM 80 / mo<span class="detail">400GB 5G/4G</span></td>
+          <td>Postpaid</td>
+          <td><span class="badge badge-yes">Yes</span></td>
+          <td>Moderate data needs</td>
+          <td>Up to 3 supplementary lines</td>
+          <td><a href="https://www.celcomdigi.com" target="_blank" rel="noopener">CelcomDigi</a></td>
+        </tr>
+        <tr>
+          <td>CelcomDigi Postpaid 100</td>
+          <td class="price">RM 100 / mo<span class="detail">1000GB 5G/4G</span></td>
+          <td>Postpaid</td>
+          <td><span class="badge badge-yes">Yes</span></td>
+          <td>Social-first heavy usage</td>
+          <td>Up to 5 supplementary lines</td>
+          <td><a href="https://www.celcomdigi.com" target="_blank" rel="noopener">CelcomDigi</a></td>
+        </tr>
+        <tr>
+          <td>CelcomDigi Postpaid 120</td>
+          <td class="price">RM 120 / mo<span class="detail">Unlimited 5G/4G</span></td>
+          <td>Postpaid</td>
+          <td><span class="badge badge-yes">Yes</span></td>
+          <td>Always-on users</td>
+          <td>Up to 5 supplementary lines</td>
+          <td><a href="https://www.celcomdigi.com" target="_blank" rel="noopener">CelcomDigi</a></td>
+        </tr>
+        <tr>
+          <td>CelcomDigi Postpaid 140</td>
+          <td class="price">RM 140 / mo<span class="detail">Unlimited 5G/4G</span></td>
+          <td>Postpaid</td>
+          <td><span class="badge badge-yes">Yes</span></td>
+          <td>High-usage power users</td>
+          <td>Up to 6 supplementary lines</td>
+          <td><a href="https://www.celcomdigi.com" target="_blank" rel="noopener">CelcomDigi</a></td>
+        </tr>
+        <tr>
+          <td>CelcomDigi Postpaid 160</td>
+          <td class="price">RM 160 / mo<span class="detail">Unlimited 5G/4G</span></td>
+          <td>Postpaid</td>
+          <td><span class="badge badge-yes">Yes</span></td>
+          <td>Entertainment-heavy streamers</td>
+          <td>Up to 6 supplementary lines</td>
+          <td><a href="https://www.celcomdigi.com" target="_blank" rel="noopener">CelcomDigi</a></td>
+        </tr>
+        <tr>
+          <td>CelcomDigi Postpaid 190</td>
+          <td class="price">RM 190 / mo<span class="detail">Unlimited 5G/4G</span></td>
+          <td>Postpaid</td>
+          <td><span class="badge badge-yes">Yes</span></td>
+          <td>No limits, top tier</td>
+          <td>Up to 6 supplementary lines</td>
+          <td><a href="https://www.celcomdigi.com" target="_blank" rel="noopener">CelcomDigi</a></td>
+        </tr>
+        <tr>
+          <td>Hotlink Postpaid 50</td>
+          <td class="price">RM 50 / mo<span class="detail">500GB 4G/5G</span></td>
+          <td>Postpaid</td>
+          <td><span class="badge badge-likely">Likely</span></td>
+          <td>Unlimited calls &amp; SMS</td>
+          <td>No contract</td>
+          <td><a href="https://www.hotlink.com.my" target="_blank" rel="noopener">Hotlink</a></td>
+        </tr>
+        <tr>
+          <td>Hotlink Postpaid 75</td>
+          <td class="price">RM 75 / mo<span class="detail">600GB 4G/5G</span></td>
+          <td>Postpaid</td>
+          <td><span class="badge badge-likely">Likely</span></td>
+          <td>Free roaming SG/TH/ID · unlimited calls &amp; SMS</td>
+          <td>No contract / device bundle</td>
+          <td><a href="https://www.hotlink.com.my" target="_blank" rel="noopener">Hotlink</a></td>
+        </tr>
+        <tr>
+          <td>U Mobile ULTRA Family 128</td>
+          <td class="price">RM 128 / mo<span class="detail">1000GB shared 5G</span></td>
+          <td>Postpaid/Family</td>
+          <td><span class="badge badge-likely">Likely</span></td>
+          <td>4 lines · 60+ country roaming · 15GB/mo roaming allowance</td>
+          <td>Family plan</td>
+          <td><a href="https://www.u.com.my" target="_blank" rel="noopener">U Mobile</a></td>
+        </tr>
+      </tbody>
     </table>
 
     <div class="sections-grid">
@@ -701,6 +833,29 @@
         contactStatus.textContent = '';
       }, 6000);
     });
+
+    // Country selector - show SG or MY plans
+    const countrySelect = document.getElementById('country');
+    const sgTable = document.getElementById('plans-sg');
+    const myTable = document.getElementById('plans-my');
+
+    if (countrySelect && sgTable && myTable) {
+      const switchCountry = () => {
+        const value = countrySelect.value;
+        if (value === 'my') {
+          sgTable.style.display = 'none';
+          myTable.style.display = '';
+          countrySelect.style.display = '';
+        } else {
+          sgTable.style.display = '';
+          myTable.style.display = 'none';
+          countrySelect.style.display = '';
+        }
+      };
+
+      countrySelect.addEventListener('change', switchCountry);
+      switchCountry();
+    }
   </script>
 </body>
 </html>

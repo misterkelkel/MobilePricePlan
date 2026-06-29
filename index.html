@@ -80,6 +80,7 @@
       color: var(--muted);
       margin-top: 0.5rem;
       font-size: 1.05rem;
+      white-space: pre-line;
     }
 
     main {
@@ -497,8 +498,8 @@
     </div>
 
     <div class="country-selector">
-      <label for="country">Country / Region</label>
       <select id="country">
+        <option value="" disabled selected>Select the country you want to travel to</option>
         <option value="sg">Singapore</option>
         <option value="my">Malaysia</option>
         <option value="id">Indonesia</option>
@@ -1161,19 +1162,47 @@
     };
 
     const languageByCountry = {
-      sg: 'Singapore local and international price plan',
-      my: 'Malaysia local and international price plan',
-      id: 'Indonesia local and international price plan',
-      th: 'Thailand local and international price plan',
-      vn: 'Vietnam local and international price plan',
-      ph: 'Philippines local and international price plan',
-      hk: 'Hong Kong local and international price plan',
-      cn: 'China local and international price plan'
+      sg: [
+        'Singapore local and international price plan',
+        '新加坡本地和国际价格计划',
+        'Rancang harga tempatan dan antarabangsa Singapura'
+      ],
+      my: [
+        'Malaysia local and international price plan',
+        'Plan lokal dan antarabangsa Malaysia',
+        '马来西亚本地和国际价格计划'
+      ],
+      id: [
+        'Indonesia local and international price plan',
+        'Rencana harga lokal dan internasional Indonesia'
+      ],
+      th: [
+        'Thailand local and international price plan',
+        'แผนค่ารายเดือนในประเทศไทย'
+      ],
+      vn: [
+        'Vietnam local and international price plan',
+        'Gói cước Việt Nam trong nước và quốc tế'
+      ],
+      ph: [
+        'Philippines local and international price plan',
+        'Mga plano sa telepono sa Pilipinas'
+      ],
+      hk: [
+        'Hong Kong local and international price plan',
+        '香港本地及國際電話計劃'
+      ],
+      cn: [
+        'China local and international price plan',
+        '中国本地及国际电话套餐'
+      ]
     };
 
     const subtitleEl = document.getElementById('subtitle');
     const updateSubtitle = (value) => {
-      if (subtitleEl) subtitleEl.textContent = languageByCountry[value] || 'Local mobile plans — simple, clear, and updated weekly.';
+      if (!subtitleEl) return;
+      const lines = languageByCountry[value] || ['Local mobile plans — simple, clear, and updated weekly.'];
+      subtitleEl.textContent = lines.join('\n');
     };
 
     countrySelect.addEventListener('change', () => {

@@ -131,6 +131,23 @@
       color: var(--text);
     }
 
+    .language-toggle {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .language-toggle button {
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #fff;
+      font-size: 0.85rem;
+      cursor: pointer;
+      font-family: inherit;
+      color: var(--text);
+    }
+
     table {
       width: 100%;
       border-collapse: collapse;
@@ -493,6 +510,10 @@
       </select>
     </div>
 
+    <div class="language-toggle">
+      <button type="button" id="langToggle">🌐 EN</button>
+    </div>
+
     <table id="plans-table">
       <thead>
         <tr>
@@ -534,6 +555,96 @@
           <td>2-month promo</td>
           <td><a href="https://www.gomo.sg" target="_blank" rel="noopener">GOMO</a></td>
         </tr>
+        <tr>
+          <td>Singtel Prepaid</td>
+          <td class="price">S$ 15.00 / mo<span class="detail">50GB 4G/5G</span></td>
+          <td>Prepaid</td>
+          <td><span class="badge badge-likely">Likely</span></td>
+          <td>Widest coverage · roaming bundles available</td>
+          <td>Top-up anytime</td>
+          <td><a href="https://www.singtel.com" target="_blank" rel="noopener">Singtel</a></td>
+        </tr>
+        <tr>
+          <td>StarHub Prepaid</td>
+          <td class="price">S$ 14.00 / mo<span class="detail">45GB 4G/5G</span></td>
+          <td>Prepaid</td>
+          <td><span class="badge badge-likely">Likely</span></td>
+          <td>Good 5G coverage in central areas</td>
+          <td>No contract</td>
+          <td><a href="https://www.starhub.com" target="_blank" rel="noopener">StarHub</a></td>
+        </tr>
+        <tr>
+          <td>M1 Prepaid</td>
+          <td class="price">S$ 12.00 / mo<span class="detail">40GB 4G/5G</span></td>
+          <td>Prepaid</td>
+          <td><span class="badge badge-likely">Likely</span></td>
+          <td>Budget-friendly mid-tier option</td>
+          <td>No contract</td>
+          <td><a href="https://www.m1.com.sg" target="_blank" rel="noopener">M1</a></td>
+        </tr>
+        <tr>
+          <td>Circles Life</td>
+          <td class="price">S$ 10.00 / mo<span class="detail">60GB 5G</span></td>
+          <td>Sim-only</td>
+          <td><span class="badge badge-likely">Likely</span></td>
+          <td>Digital-first · eSIM friendly</td>
+          <td>Online only</td>
+          <td><a href="https://www.circles.life" target="_blank" rel="noopener">Circles Life</a></td>
+        </tr>
+        <tr>
+          <td>Simba</td>
+          <td class="price">S$ 10.00 / mo<span class="detail">50GB 5G</span></td>
+          <td>Sim-only</td>
+          <td><span class="badge badge-likely">Likely</span></td>
+          <td>Budget-friendly stackable plan</td>
+          <td>Online only</td>
+          <td><a href="https://www.simba.sg" target="_blank" rel="noopener">Simba</a></td>
+        </tr>
+        <tr>
+          <td>Republic</td>
+          <td class="price">S$ 15.00 / mo<span class="detail">60GB 5G</span></td>
+          <td>Sim-only</td>
+          <td><span class="badge badge-likely">Likely</span></td>
+          <td>100GB MY roaming · roaming add-ons</td>
+          <td>Online only</td>
+          <td><a href="https://www.republic.sg" target="_blank" rel="noopener">Republic</a></td>
+        </tr>
+        <tr>
+          <td>Eight</td>
+          <td class="price">S$ 18.00 / mo<span class="detail">80GB 5G</span></td>
+          <td>Sim-only</td>
+          <td><span class="badge badge-likely">Likely</span></td>
+          <td>Simple flat-rate data</td>
+          <td>No contract</td>
+          <td><a href="https://www.eight.com.sg" target="_blank" rel="noopener">Eight</a></td>
+        </tr>
+        <tr>
+          <td>Zero1</td>
+          <td class="price">S$ 9.90 / mo<span class="detail">50GB 5G</span></td>
+          <td>Sim-only</td>
+          <td><span class="badge badge-likely">Likely</span></td>
+          <td>Affordable dark horse option</td>
+          <td>Online only</td>
+          <td><a href="https://www.zero1.com.sg" target="_blank" rel="noopener">Zero1</a></td>
+        </tr>
+        <tr>
+          <td>Maxx</td>
+          <td class="price">S$ 16.00 / mo<span class="detail">70GB 5G</span></td>
+          <td>Sim-only</td>
+          <td><span class="badge badge-likely">Likely</span></td>
+          <td>Mid-tier value under M1</td>
+          <td>No contract</td>
+          <td><a href="https://www.maxx.com.sg" target="_blank" rel="noopener">Maxx</a></td>
+        </tr>
+        <tr>
+          <td>VIVIFI</td>
+          <td class="price">S$ 12.00 / mo<span class="detail">55GB 5G</span></td>
+          <td>Sim-only</td>
+          <td><span class="badge badge-likely">Likely</span></td>
+          <td>Digital-first · rewards-focused</td>
+          <td>Online onboarding</td>
+          <td><a href="https://vivifi.com" target="_blank" rel="noopener">VIVIFI</a></td>
+        </tr>
       </tbody>
 
       <tbody id="plans-my" style="display:none;">
@@ -555,6 +666,42 @@
           <td>No contract</td>
           <td><a href="https://www.celcomdigi.com" target="_blank" rel="noopener">CelcomDigi</a></td>
         </tr>
+        <tr>
+          <td>Maxis Postpaid 38</td>
+          <td class="price">RM 38 / mo<span class="detail">30GB 4G</span></td>
+          <td>Postpaid</td>
+          <td><span class="badge badge-likely">Likely</span></td>
+          <td>Cheap starter postpaid</td>
+          <td>No contract</td>
+          <td><a href="https://www.maxis.com.my" target="_blank" rel="noopener">Maxis</a></td>
+        </tr>
+        <tr>
+          <td>U Mobile Postpaid 38</td>
+          <td class="price">RM 38 / mo<span class="detail">25GB 4G</span></td>
+          <td>Postpaid</td>
+          <td><span class="badge badge-likely">Likely</span></td>
+          <td>Social-media-heavy plans</td>
+          <td>No contract</td>
+          <td><a href="https://www.u.com.my" target="_blank" rel="noopener">U Mobile</a></td>
+        </tr>
+        <tr>
+          <td>Yes 4G/5G Starter</td>
+          <td class="price">From RM 29 / mo<span class="detail">20GB 4G/5G</span></td>
+          <td>Prepaid</td>
+          <td><span class="badge badge-likely">Likely</span></td>
+          <td>Budget prepaid entry</td>
+          <td>30-day validity</td>
+          <td><a href="https://www.yes.my" target="_blank" rel="noopener">Yes</a></td>
+        </tr>
+        <tr>
+          <td>RedONE Postpaid 38</td>
+          <td class="price">RM 38 / mo<span class="detail">50GB 4G</span></td>
+          <td>Postpaid</td>
+          <td><span class="badge badge-likely">Likely</span></td>
+          <td>Flat-rate data focused</td>
+          <td>No contract</td>
+          <td><a href="https://www.redone.com.my" target="_blank" rel="noopener">RedONE</a></td>
+        </tr>
       </tbody>
 
       <tbody id="plans-id" style="display:none;">
@@ -575,6 +722,42 @@
           <td>Light usage / messaging</td>
           <td>30 days</td>
           <td><a href="https://www.telkomsel.com" target="_blank" rel="noopener">Telkomsel</a></td>
+        </tr>
+        <tr>
+          <td>XL Axiata 16GB</td>
+          <td class="price">Rp 50,000 / mo<span class="detail">16GB 4G</span></td>
+          <td>Prepaid</td>
+          <td><span class="badge badge-likely">Likely</span></td>
+          <td>Mainstream user pack</td>
+          <td>30 days</td>
+          <td><a href="https://www.xl.co.id" target="_blank" rel="noopener">XL Axiata</a></td>
+        </tr>
+        <tr>
+          <td>XL Axiata 150GB</td>
+          <td class="price">Rp 200,000 / mo<span class="detail">150GB 4G</span></td>
+          <td>Prepaid</td>
+          <td><span class="badge badge-likely">Likely</span></td>
+          <td>Reload heavy-user pack</td>
+          <td>30 days</td>
+          <td><a href="https://www.xl.co.id" target="_blank" rel="noopener">XL Axiata</a></td>
+        </tr>
+        <tr>
+          <td>Indosat IM3 16GB</td>
+          <td class="price">From Rp 50,000 / mo<span class="detail">16GB 4G/5G</span></td>
+          <td>Prepaid</td>
+          <td><span class="badge badge-likely">Likely</span></td>
+          <td>Big-data reload value</td>
+          <td>30 days</td>
+          <td><a href="https://www.indosatooredoo.com" target="_blank" rel="noopener">Indosat Ooredoo</a></td>
+        </tr>
+        <tr>
+          <td>Indosat IM3 30GB</td>
+          <td class="price">Rp 90,000 / mo<span class="detail">30GB 4G/5G</span></td>
+          <td>Prepaid</td>
+          <td><span class="badge badge-likely">Likely</span></td>
+          <td>Mid-tier reload</td>
+          <td>30 days</td>
+          <td><a href="https://www.indosatooredoo.com" target="_blank" rel="noopener">Indosat Ooredoo</a></td>
         </tr>
       </tbody>
 
@@ -659,6 +842,24 @@
           <td>Strong 5G network</td>
           <td>Widely available in HK</td>
           <td><a href="https://www.hk.chinamobile.com" target="_blank" rel="noopener">CMHK</a></td>
+        </tr>
+        <tr>
+          <td>SmarTone Tourist SIM</td>
+          <td class="price">From HK$48<span class="detail">30-day tourist SIM</span></td>
+          <td>Prepaid</td>
+          <td><span class="badge badge-likely">Likely</span></td>
+          <td>Good city coverage</td>
+          <td>Airport pickup available</td>
+          <td><a href="https://www.smartone.com" target="_blank" rel="noopener">SmarTone</a></td>
+        </tr>
+        <tr>
+          <td>3 Hong Kong Tourist SIM</td>
+          <td class="price">From HK$58<span class="detail">30-day data pack</span></td>
+          <td>Prepaid</td>
+          <td><span class="badge badge-likely">Likely</span></td>
+          <td>Social-media-friendly packs</td>
+          <td>Online and in-store</td>
+          <td><a href="https://www.three.com.hk" target="_blank" rel="noopener">3 HK</a></td>
         </tr>
       </tbody>
 
@@ -818,6 +1019,7 @@
 
     // Country selector with geo-default
     const countrySelect = document.getElementById('country');
+    const langToggle = document.getElementById('langToggle');
     const tables = {
       sg: document.getElementById('plans-sg'),
       my: document.getElementById('plans-my'),
@@ -829,7 +1031,163 @@
       cn: document.getElementById('plans-cn')
     };
 
-    if (countrySelect && tables.sg && tables.my && tables.id && tables.th && tables.vn && tables.ph && tables.hk) {
+    const translations = {
+      en: {
+        'Country / Region': 'Country / Region',
+        'Plans': 'Plans',
+        'FAQ': 'FAQ',
+        'Contact': 'Contact',
+        'Last updated': 'Last updated',
+        'Prices and terms can change weekly. Please double-check with each telco before signing up.': 'Prices and terms can change weekly. Please double-check with each telco before signing up.',
+        'Data drawn from public telco and comparison feeds; not an official telco source.': 'Data drawn from public telco and comparison feeds; not an official telco source.',
+        'Data Price Plan': 'Data Price Plan',
+        'eSIM Price Plan': 'eSIM Price Plan',
+        'Roaming Plan': 'Roaming Plan',
+        'Local SIM / Prepaid': 'Local SIM / Prepaid',
+        'Quick questions': 'Quick questions',
+        'Tap a question below.': 'Tap a question below.',
+        'Contact me': 'Contact me',
+        'Send message': 'Send message',
+        'Sending…': 'Sending…',
+        'Sent — thank you.': 'Sent — thank you.',
+        'Something went wrong, please try again later.': 'Something went wrong, please try again later.',
+        'Your name': 'Your name',
+        'Your email': 'Your email',
+        'Your message…': 'Your message…',
+        'What is eSIM?': 'What is eSIM?',
+        'Which plan has the most data?': 'Which plan has the most data?',
+        'Do any plans include roaming?': 'Do any plans include roaming?',
+        'Are the prices up to date?': 'Are the prices up to date?',
+        'Still need help?': 'Still need help?',
+        '© MobilePricePlan.com · Updated as of': '© MobilePricePlan.com · Updated as of'
+      },
+      id: {
+        'Country / Region': 'Negara / Wilayah',
+        'Plans': 'Paket',
+        'FAQ': 'FAQ',
+        'Contact': 'Kontak',
+        'Last updated': 'Terakhir diperbarui',
+        'Prices and terms can change weekly. Please double-check with each telco before signing up.': 'Harga dan syarat dapat berubah setiap minggu. Periksa lagi ke operator sebelum mendaftar.',
+        'Data drawn from public telco and comparison feeds; not an official telco source.': 'Data diambil dari sumber publik operator dan perbandingan; ini bukan sumber resmi operator.',
+        'Data Price Plan': 'Paket Data',
+        'eSIM Price Plan': 'Paket eSIM',
+        'Roaming Plan': 'Paket Roaming',
+        'Local SIM / Prepaid': 'SIM Lokal / Prabayar',
+        'Quick questions': 'Pertanyaan umum',
+        'Tap a question below.': 'Ketuk pertanyaan di bawah.',
+        'Contact me': 'Hubungi saya',
+        'Send message': 'Kirim pesan',
+        'Sending…': 'Mengirim…',
+        'Sent — thank you.': 'Terikirim — terima kasih.',
+        'Something went wrong, please try again later.': 'Terjadi kesalahan, coba lagi nanti.',
+        'Your name': 'Nama kamu',
+        'Your email': 'Email kamu',
+        'Your message…': 'Pesan kamu…',
+        'What is eSIM?': 'Apa itu eSIM?',
+        'Which plan has the most data?': 'Paket mana yang punya data terbanyak?',
+        'Do any plans include roaming?': 'Apakah ada paket yang menyertakan roaming?',
+        'Are the prices up to date?': 'Apakah harga terbaru?',
+        'Still need help?': 'Butuh bantuan lain?',
+        '© MobilePricePlan.com · Updated as of': '© MobilePricePlan.com · Terakhir diperbarui'
+      },
+      th: {
+        'Country / Region': 'ประเทศ / พื้นที่',
+        'Plans': 'แพ็คเกจ',
+        'FAQ': 'คำถาม',
+        'Contact': 'ติดต่อ',
+        'Last updated': 'อัปเดตล่าสุด',
+        'Prices and terms can change weekly. Please double-check with each telco before signing up.': 'ราคาและเงื่อนไขอาจเปลี่ยนแปลงทุกสัปดาห์ กรุณาตรวจสอบค่ายโทรศัพท์อีกครั้งก่อนสมัคร',
+        'Data drawn from public telco and comparison feeds; not an official telco source.': 'ข้อมูล来自แหล่งสาธารณะและแหล่งเปรียบเทียบ ไม่ใช่แหล่งผู้ให้บริการอย่างเป็นทางการ',
+        'Data Price Plan': 'แพ็คเกจข้อมูล',
+        'eSIM Price Plan': 'แพ็คเกจ eSIM',
+        'Roaming Plan': 'แพ็คเกจโรมมิ้ง',
+        'Local SIM / Prepaid': 'ซิม prépaid / พร้อมเพย์',
+        'Quick questions': 'คำถามด่วน',
+        'Tap a question below.': 'แตะคำถามด้านล่าง',
+        'Contact me': 'ติดต่อฉัน',
+        'Send message': 'ส่งข้อความ',
+        'Sending…': 'กำลังส่ง…',
+        'Sent — thank you.': 'ส่งแล้ว — ขอบคุณ',
+        'Something went wrong, please try again later.': 'มีข้อผิดพลาด กรุณาลองอีกครั้ง',
+        'Your name': 'ชื่อของคุณ',
+        'Your email': 'อีเมลของคุณ',
+        'Your message…': 'ข้อความของคุณ…',
+        '© MobilePricePlan.com · Updated as of': '© MobilePricePlan.com · อัปเดตเมื่อ'
+      },
+      vn: {
+        'Country / Region': 'Quốc gia / Khu vực',
+        'Plans': 'Gói cước',
+        'FAQ': 'Câu hỏi thường gặp',
+        'Contact': 'Liên hệ',
+        'Last updated': 'Cập nhật lần cuối',
+        'Prices and terms can change weekly. Please double-check with each telco before signing up.': 'Giá và điều khoản có thể thay đổi hàng tuần. Vui lòng kiểm tra lại với nhà mạng trước khi đăng ký.',
+        'Data drawn from public telco and comparison feeds; not an official telco source.': 'Dữ liệu được thu thập từ các nguồn công khai và so sánh; không phải nguồn chính thức của nhà mạng.',
+        'Data Price Plan': 'Gói cước Data',
+        'eSIM Price Plan': 'Gói cước eSIM',
+        'Roaming Plan': 'Gói cước Roaming',
+        'Local SIM / Prepaid': 'SIM local / Trả trước',
+        'Quick questions': 'Câu hỏi nhanh',
+        'Tap a question below.': 'Bấm vào câu hỏi bên dưới.',
+        'Contact me': 'Liên hệ với tôi',
+        'Send message': 'Gửi tin nhắn',
+        'Sending…': 'Đang gửi…',
+        'Sent — thank you.': 'Đã gửi — cảm ơn.',
+        'Something went wrong, please try again later.': 'Có lỗi xảy ra, vui lòng thử lại sau.',
+        'Your name': 'Tên của bạn',
+        'Your email': 'Email của bạn',
+        'Your message…': 'Tin nhắn của bạn…',
+        '© MobilePricePlan.com · Updated as of': '© MobilePricePlan.com · Cập nhật lần cuối'
+      },
+      zh: {
+        'Country / Region': '国家 / 地区',
+        'Plans': '套餐',
+        'FAQ': '常见问题',
+        'Contact': '联系我们',
+        'Last updated': '最后更新',
+        'Prices and terms can change weekly. Please double-check with each telco before signing up.': '价格和条款可能每周变更。办理前请再次向运营商确认。',
+        'Data drawn from public telco and comparison feeds; not an official telco source.': '数据来自公开运营商和对比渠道，并非运营商官方来源。',
+        'Data Price Plan': '流量套餐',
+        'eSIM Price Plan': 'eSIM 套餐',
+        'Roaming Plan': '国际漫游套餐',
+        'Local SIM / Prepaid': '本地 SIM / 预付费',
+        'Quick questions': '常见问题',
+        'Tap a question below.': '点击查看下方问题。',
+        'Contact me': '联系我',
+        'Send message': '发送消息',
+        'Sending…': '发送中…',
+        'Sent — thank you.': '已发送 — 谢谢。',
+        'Something went wrong, please try again later.': '出错了，请稍后再试。',
+        'Your name': '您的姓名',
+        'Your email': '您的邮箱',
+        'Your message…': '您的留言…',
+        '© MobilePricePlan.com · Updated as of': '© MobilePricePlan.com · 更新于'
+      }
+    };
+
+    const languageByCountry = {
+      sg: 'en',
+      my: 'en',
+      id: 'id',
+      th: 'th',
+      vn: 'vn',
+      ph: 'en',
+      hk: 'en',
+      cn: 'zh'
+    };
+
+    const applyLanguage = (lang) => {
+      const dict = translations[lang] || translations.en;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) el.textContent = dict[key];
+      });
+      if (langToggle) {
+        const labels = { en: 'EN', id: 'ID', th: 'TH', vn: 'VN', zh: '中文' };
+        langToggle.textContent = '🌐 ' + (labels[lang] || 'EN');
+      }
+    };
+
+    if (countrySelect && tables.sg && tables.my && tables.id && tables.th && tables.vn && tables.ph && tables.hk && tables.cn) {
       const switchCountry = (value) => {
         Object.keys(tables).forEach(key => {
           tables[key].style.display = key === value ? '' : 'none';
@@ -839,10 +1197,13 @@
         }
       };
 
-      // Default to Singapore, then try geo-detection
-      switchCountry('sg');
+      countrySelect.addEventListener('change', () => {
+        switchCountry(countrySelect.value);
+        const lang = languageByCountry[countrySelect.value] || 'en';
+        applyLanguage(lang);
+      });
 
-      countrySelect.addEventListener('change', () => switchCountry(countrySelect.value));
+      switchCountry('sg');
 
       try {
         fetch('https://ipwho.is/', { signal: AbortSignal.timeout(800) })

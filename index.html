@@ -17,7 +17,6 @@
       --accent-hover: #a84b27;
       --accent-soft: #f8ece4;
       --border: #e8e4dd;
-      --highlight: #e6b89c;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -28,30 +27,18 @@
       color: var(--text);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
-      background-image:
-        radial-gradient(circle at 15% 5%, rgba(194,94,53,0.04), transparent 45%),
-        radial-gradient(circle at 85% 95%, rgba(194,94,53,0.04), transparent 45%);
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0.04;
-      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/></svg>");
-      z-index: 0;
     }
 
     header, main, footer {
-      position: relative;
-      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
     }
 
     header {
-      padding: 2.5rem 1.25rem 2rem;
-      max-width: 1100px;
-      margin: 0 auto;
+      padding-top: 2.5rem;
+      padding-bottom: 2rem;
       text-align: center;
     }
 
@@ -67,10 +54,8 @@
       height: 52px;
       border-radius: 14px;
       overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       box-shadow: 0 4px 14px rgba(194,94,53,0.22);
+      background: var(--accent);
     }
 
     .logo-mark img {
@@ -80,24 +65,11 @@
       display: block;
     }
 
-    @media (prefers-reduced-motion: no-preference) {
-      .logo-mark img {
-        animation: mascotFloat 2.6s ease-in-out infinite;
-      }
-    }
-
-    @keyframes mascotFloat {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-3px); }
-      100% { transform: translateY(0px); }
-    }
-
     header h1 {
       font-family: 'Fraunces', Georgia, serif;
       font-weight: 600;
       font-size: 2.1rem;
       letter-spacing: -0.5px;
-      color: var(--text);
     }
 
     header h1 .accent {
@@ -111,9 +83,7 @@
     }
 
     main {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 1.5rem 1.25rem 4rem;
+      padding-bottom: 4rem;
     }
 
     .toast {
@@ -122,8 +92,6 @@
       border-radius: 14px;
       padding: 1rem 1.25rem;
       margin-bottom: 2rem;
-      display: grid;
-      gap: 0.3rem;
       box-shadow: 0 1px 3px rgba(0,0,0,0.04);
     }
 
@@ -136,59 +104,25 @@
     .toast .disclaimer {
       color: var(--muted);
       font-size: 0.85rem;
-    }
-
-    .domain-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-bottom: 1.75rem;
-      justify-content: center;
-    }
-
-    .domain-links a {
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      padding: 0.45rem 1rem;
-      border-radius: 999px;
-      background: white;
-      color: #4a453f;
-      border: 1.5px solid var(--border);
-      transition: all 0.2s ease;
-    }
-
-    .domain-links a:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      background: var(--accent-soft);
+      margin-top: 0.25rem;
     }
 
     .country-selector {
-      position: sticky;
-      top: 0.75rem;
-      z-index: 20;
       display: flex;
       justify-content: center;
-      margin: 0.5rem 0 1.25rem;
-      gap: 0.6rem;
       align-items: center;
-      background: rgba(250, 247, 242, 0.85);
-      backdrop-filter: saturate(140%) blur(8px);
-      padding: 0.6rem 0.9rem;
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
     }
 
     .country-selector label {
       font-weight: 500;
       font-size: 0.95rem;
-      color: #4a453f;
     }
 
     .country-selector select {
-      padding: 0.35rem 0.6rem;
+      padding: 0.4rem 0.75rem;
       border-radius: 10px;
       border: 1.5px solid var(--border);
       background: #fff;
@@ -199,21 +133,21 @@
 
     table {
       width: 100%;
-      border-collapse: separate;
-      border-spacing: 0;
+      border-collapse: collapse;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 16px;
       overflow: hidden;
       box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+      margin-bottom: 2rem;
     }
 
     thead th {
       background: #faf7f2;
       font-weight: 600;
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
       text-align: left;
       padding: 0.9rem 1rem;
       border-bottom: 1px solid var(--border);
@@ -227,17 +161,25 @@
       font-size: 0.95rem;
     }
 
-    tbody tr:last-child td { border-bottom: none; }
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
 
-    tbody tr:hover { background: #fdf9f4; }
+    tbody tr:hover {
+      background: #fdf9f4;
+    }
 
-    tbody tr:nth-child(even) { background: #fdfaf6; }
-    tbody tr:nth-child(even):hover { background: #fdf9f4; }
+    tbody tr:nth-child(even) {
+      background: #fdfaf6;
+    }
+
+    tbody tr:nth-child(even):hover {
+      background: #fdf9f4;
+    }
 
     .price {
       white-space: nowrap;
       font-weight: 600;
-      color: var(--text);
     }
 
     .price .detail {
@@ -254,7 +196,7 @@
       border-radius: 999px;
       font-size: 0.75rem;
       font-weight: 600;
-      letter-spacing: 0.02em;
+      margin-right: 0.25rem;
     }
 
     .badge-yes {
@@ -278,19 +220,19 @@
       color: #6b7280;
     }
 
-    td a, .card a {
+    td a {
       color: var(--accent);
       text-decoration: none;
       font-weight: 500;
-      font-size: 0.88rem;
+      font-size: 0.9rem;
     }
 
-    td a:hover { text-decoration: underline; }
+    td a:hover {
+      text-decoration: underline;
+    }
 
-    .sections-grid {
-      display: grid;
-      gap: 1rem;
-      margin-top: 1.5rem;
+    .section {
+      margin-bottom: 2rem;
     }
 
     .card {
@@ -299,21 +241,18 @@
       border: 1px solid var(--border);
       border-radius: 14px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-      scroll-margin-top: 1rem;
     }
 
     .card h2 {
       font-family: 'Fraunces', Georgia, serif;
       font-weight: 500;
       font-size: 1.15rem;
-      margin-bottom: 0.35rem;
-      color: var(--text);
+      margin-bottom: 0.5rem;
     }
 
     .card p {
       color: var(--muted);
-      font-size: 0.92rem;
-      line-height: 1.6;
+      font-size: 0.95rem;
     }
 
     .info-card {
@@ -343,10 +282,10 @@
     .typewriter::after {
       content: '';
       display: inline-block;
-      width: 0.82rem;
-      height: 1.35em;
+      width: 0.75rem;
+      height: 1.25em;
       background: var(--accent);
-      margin-left: 5px;
+      margin-left: 4px;
       vertical-align: text-bottom;
       animation: blink 0.82s steps(2) infinite;
       border-radius: 1px;
@@ -399,24 +338,23 @@
       font-size: 0.95rem;
       font-family: inherit;
       color: var(--text);
-      transition: all 0.2s ease;
     }
 
     .faq-buttons button:hover {
+      border-color: var(--accent);
       background: var(--accent-soft);
-      border-color: var(--highlight);
     }
 
     .faq-answer {
-      margin-top: 0.75rem;
-      padding: 0.85rem 1rem;
-      border-radius: 12px;
-      background: var(--accent-soft);
-      font-size: 0.92rem;
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: 10px;
+      background: #fdfaf6;
+      border: 1px solid var(--border);
       color: var(--text);
+      font-size: 0.95rem;
       line-height: 1.6;
       display: none;
-      border-left: 3px solid var(--accent);
     }
 
     /* Contact */
@@ -425,7 +363,7 @@
       border: 1px solid var(--border);
       border-radius: 16px;
       padding: 1.5rem;
-      margin-top: 1.5rem;
+      margin-top: 2rem;
       box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     }
 
@@ -433,12 +371,11 @@
       font-family: 'Fraunces', Georgia, serif;
       font-weight: 500;
       font-size: 1.2rem;
-      margin-bottom: 0.75rem;
+      margin-bottom: 1rem;
     }
 
     .contact-form {
-      display: flex;
-      flex-direction: column;
+      display: grid;
       gap: 0.75rem;
     }
 
@@ -448,18 +385,10 @@
       padding: 0.75rem 1rem;
       border: 1.5px solid var(--border);
       border-radius: 10px;
+      background: #fff;
       font-size: 0.95rem;
       font-family: inherit;
       color: var(--text);
-      background: #fdfaf6;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .contact-form input:focus,
-    .contact-form textarea:focus {
-      outline: none;
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(194,94,53,0.12);
     }
 
     .contact-form textarea {
@@ -468,167 +397,87 @@
     }
 
     .contact-form button {
-      align-self: flex-start;
-      font-family: inherit;
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: white;
-      background: var(--accent);
+      justify-self: start;
+      padding: 0.7rem 1.25rem;
       border: none;
       border-radius: 10px;
-      padding: 0.75rem 1.75rem;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.95rem;
       cursor: pointer;
-      transition: background 0.2s ease, transform 0.15s ease;
-      box-shadow: 0 2px 6px rgba(194,94,53,0.2);
+      font-family: inherit;
     }
 
     .contact-form button:hover {
       background: var(--accent-hover);
-      transform: translateY(-1px);
     }
 
     .contact-status {
-      font-size: 0.88rem;
+      margin-top: 0.75rem;
+      font-size: 0.9rem;
       color: var(--muted);
-      margin-top: 0.25rem;
-      min-height: 1.2em;
     }
 
     footer {
       text-align: center;
-      padding: 2.5rem 1rem;
+      padding: 2rem 1.25rem;
       color: var(--muted);
-      font-size: 0.85rem;
+      font-size: 0.9rem;
     }
 
     @media (max-width: 768px) {
-      header { padding: 2rem 1rem 1.5rem; }
-      header h1 { font-size: 1.5rem; }
-      main { padding: 1rem 1rem 3rem; }
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
 
-      .domain-links { justify-content: flex-start; }
-
-      thead { display: none; }
+      thead {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+      }
 
       tbody tr {
-        display: grid;
-        gap: 0.4rem;
-        padding: 1rem 0.9rem;
+        margin: 0.75rem 0;
+        background: var(--surface);
+        border-radius: 14px;
+        border: 1px solid var(--border);
+        padding: 0.85rem 0.95rem;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.04);
       }
 
       tbody td {
-        display: block;
-        padding: 0.15rem 0;
-        border-bottom: none;
+        border: none;
+        padding: 0.25rem 0;
+        position: relative;
       }
 
       tbody td:first-child {
         font-weight: 600;
         color: var(--text);
         font-size: 1rem;
-        margin-bottom: 0.2rem;
+        margin-bottom: 0.15rem;
       }
 
-      @media (max-width: 768px) {
-        table, thead, tbody, th, td, tr {
-          display: block;
-        }
-
-        thead {
-          position: absolute;
-          top: -9999px;
-          left: -9999px;
-        }
-
-        tbody tr {
-          margin: 0.75rem 0;
-          background: var(--surface);
-          border-radius: 14px;
-          border: 1px solid var(--border);
-          padding: 0.85rem 0.95rem;
-          box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-        }
-
-        tbody td {
-          border: none;
-          padding: 0.25rem 0;
-          position: relative;
-        }
-
-        tbody td:first-child {
-          font-weight: 600;
-          color: var(--text);
-          font-size: 1rem;
-          margin-bottom: 0.15rem;
-        }
-
-        td.price { white-space: normal; }
-      }
-
-      .skip-links {
-        position: absolute;
-        top: -9999px;
-        left: 0;
-      }
-
-      .skip-links a {
-        position: absolute;
-        top: 0;
-        left: 0;
-        background: var(--text);
-        color: #fff;
-        padding: 0.6rem 1rem;
-        border-radius: 0 0 10px 0;
-        font-size: 0.85rem;
-        z-index: 9999;
-        text-decoration: none;
-        font-weight: 600;
-      }
-
-      .skip-links a:focus {
-        top: 0;
-      }
+      td.price { white-space: normal; }
+    }
+  </style>
 </head>
 <body>
-  <div class="skip-links" aria-label="Skip to">
-    <a href="#plans-table">Plans</a>
-    <a href="#faq">FAQ</a>
-    <a href="#contact">Contact</a>
-  </div>
-
   <header>
     <div class="logo">
       <div class="logo-mark"><img src="mascot.png" alt="MobilePricePlan mascot" /></div>
       <h1>Mobile<span class="accent">Price</span>Plan.com</h1>
     </div>
-    <p class="hero-line">Mobile plan comparison for travellers <span class="typewriter" id="heroTypewriter"></span><span class="typewriter cursor" aria-hidden="true"></span></p>
+    <p>Singapore &amp; Malaysia mobile plans — simple, clear, and updated weekly.</p>
   </header>
+
   <main>
-    <section class="section" aria-label="Purpose">
-      <div class="card">
-        <h2>Purpose</h2>
-        <p>I built this because traveller plan guides are usually noisy, ad-heavy, or miss the plans locals actually buy. This is a cleaner, calmer view that focuses on what matters: price, data, roaming, and eSIM fit.</p>
-      </div>
-    </section>
-
-    <section class="section" aria-label="Data collection">
-      <div class="card">
-        <h2>How I gather the data</h2>
-        <p>Prices are pulled from public comparison feeds, telco pages, and traveller/local sources. I review them weekly and keep a note of what looks confirmed versus what needs a quick telco check before you buy.</p>
-      </div>
-    </section>
-
-    <section class="section" aria-label="How it works">
-      <div class="card">
-        <h2>How it works</h2>
-        <ol class="process-list">
-          <li><span class="process-label">01 — Pick region</span> Choose your country from the selector.</li>
-          <li><span class="process-label">02 — Scan plans</span> Compare price, data, roaming, and eSIM fit.</li>
-          <li><span class="process-label">03 — Check source</span> Use the telco link to confirm current terms.</li>
-          <li><span class="process-label">04 — Ask if unsure</span> Use the contact form for anything unclear.</li>
-        </ol>
-      </div>
-    </section>
+    <div class="toast">
+      <div class="updated">Last updated: <span id="last-updated">June 2026</span></div>
+      <div class="disclaimer">Prices and terms can change weekly. Please double-check with each telco before signing up.</div>
+      <div class="disclaimer">Data drawn from public telco and comparison feeds; not an official telco source.</div>
+    </div>
 
     <div class="country-selector">
       <label for="country">Country / Region</label>
@@ -642,25 +491,6 @@
         <option value="hk">Hong Kong</option>
       </select>
     </div>
-    <div class="toast">
-      <div class="updated">Last updated: <span id="last-updated">June 2026</span></div>
-      <div class="disclaimer">Prices and terms can change weekly. Please double-check with each telco before signing up.</div>
-      <div class="disclaimer">Data drawn from public telco and comparison feeds; not an official telco source.</div>
-    </div>
-
-    <div class="card info-card">
-      <h2>Who this is for</h2>
-      <p>This comparison is built mainly for local travellers, expats, and anyone who wants a straightforward view of what’s available in each country — not just tourist SIMs. The table mixes local prepaid, postpaid, and common no-contract options because those are the plans residents actually use.</p>
-      <h2>How we gather this data</h2>
-      <p>We pull prices and plan details from public comparison sources, telco sites, and traveller/local guides. Plans are checked against recent sources every week and marked with eSIM confidence levels so you can see at a glance what’s reliable, likely supported, or unconfirmed.</p>
-    </div>
-
-    <nav class="domain-links" aria-label="Plan sections">
-      <a href="#data">Data Price Plan</a>
-      <a href="#esim">eSIM Price Plan</a>
-      <a href="#roaming">Roaming Plan</a>
-      <a href="#sim">SIM Price Plan</a>
-    </nav>
 
     <table id="plans-table">
       <thead>
@@ -674,42 +504,16 @@
           <th>Visit</th>
         </tr>
       </thead>
+
       <tbody id="plans-sg">
         <tr>
           <td>ZYM Flexi Duo</td>
           <td class="price">S$ 7.00 / mo<span class="detail">77GB 4G</span></td>
           <td>Sim-only</td>
-          <td><span class="badge badge-likely">Likely</span> <span class="badge badge-best">Best value</span></td>
+          <td><span class="badge badge-likely">Likely</span></td>
           <td>100GB Malaysia roaming (90 days) · SG/MY shared data · no excess charges</td>
           <td>No contract</td>
           <td><a href="https://zym.sg" target="_blank" rel="noopener">ZYM</a></td>
-        </tr>
-        <tr>
-          <td>Zero1 Starter Prime</td>
-          <td class="price">S$ 7.06 / mo<span class="detail">200GB 4G</span></td>
-          <td>Sim-only</td>
-          <td><span class="badge badge-unknown">Unknown</span></td>
-          <td>5GB APAC roaming · 100GB MY roaming (365 days, new users) · 300 min · 100 SMS</td>
-          <td>No contract</td>
-          <td><a href="https://www.zero1.com.sg" target="_blank" rel="noopener">Zero1</a></td>
-        </tr>
-        <tr>
-          <td>CMLINK SG 200GB</td>
-          <td class="price">S$ 7.70 / mo<span class="detail">200GB 4G/5G</span></td>
-          <td>Sim-only</td>
-          <td><span class="badge badge-likely">Likely</span></td>
-          <td>1GB CN/HK + 5GB regional roaming · 100GB MY roaming (new users) · 300 min · 100 SMS</td>
-          <td>No contract</td>
-          <td><a href="https://cmhk.com/sg" target="_blank" rel="noopener">CMLINK</a></td>
-        </tr>
-        <tr>
-          <td>VIVIFI Roam Value</td>
-          <td class="price">S$ 7.70 / mo<span class="detail">200GB 4G</span></td>
-          <td>Sim-only</td>
-          <td><span class="badge badge-likely">Likely</span></td>
-          <td>5GB regional roaming · 100GB MY roaming (1 year, new users) · 300 min · 100 SMS</td>
-          <td>No contract</td>
-          <td><a href="https://vivifi.com" target="_blank" rel="noopener">VIVIFI</a></td>
         </tr>
         <tr>
           <td>ZYM Roam Saver</td>
@@ -721,93 +525,22 @@
           <td><a href="https://zym.sg" target="_blank" rel="noopener">ZYM</a></td>
         </tr>
         <tr>
-          <td>Eight Double Eight</td>
-          <td class="price">S$ 8.00 / mo<span class="detail">388GB 4G</span></td>
-          <td>Sim-only</td>
-          <td><span class="badge badge-likely">Likely</span></td>
-          <td>588 min · 88 SMS · 2GB roaming in 50+ countries</td>
-          <td>No contract</td>
-          <td><a href="https://www.eight.com.sg" target="_blank" rel="noopener">Eight</a></td>
-        </tr>
-        <tr>
-          <td>MyRepublic 4G Promo</td>
-          <td class="price">From S$ 7.90 / mo<span class="detail">300GB 4G</span></td>
-          <td>Sim-only</td>
-          <td><span class="badge badge-yes">Yes</span></td>
-          <td>Free roaming in 17 SEA/APAC countries</td>
-          <td>Promo pricing · no contract</td>
-          <td><a href="https://myrepublic.net/sg" target="_blank" rel="noopener">MyRepublic</a></td>
-        </tr>
-        <tr>
-          <td>Maxx 290GB</td>
-          <td class="price">From S$ 7.90 / mo<span class="detail">290GB 4G</span></td>
-          <td>Sim-only</td>
-          <td><span class="badge badge-likely">Likely</span></td>
-          <td>10GB regional roaming · 2GB in 24 countries · SG/MY shared</td>
-          <td>Promo pricing · reverts to S$ 9.90</td>
-          <td><a href="https://www.maxx.com.sg" target="_blank" rel="noopener">Maxx</a></td>
-        </tr>
-        <tr>
-          <td>M1 Bespoke 5G Max</td>
-          <td class="price">From S$ 14.95 / mo<span class="detail">1024GB 5G</span></td>
-          <td>Sim-only</td>
-          <td><span class="badge badge-yes">Yes</span></td>
-          <td>Unlimited weekend data · 1000 min · 1000 SMS</td>
-          <td>No contract</td>
-          <td><a href="https://www.m1.com.sg" target="_blank" rel="noopener">M1</a></td>
-        </tr>
-        <tr>
-          <td>SIMBA SuperRoam 10</td>
-          <td class="price">S$ 10.00 / mo<span class="detail">500GB 5G</span></td>
-          <td>Sim-only</td>
-          <td><span class="badge badge-yes">Yes</span></td>
-          <td>10GB APAC roaming · unlimited SG calls · 100 SMS</td>
-          <td>No contract</td>
-          <td><a href="https://simba.sg" target="_blank" rel="noopener">SIMBA</a></td>
-        </tr>
-        <tr>
           <td>GOMO 5G+ Value</td>
           <td class="price">From S$ 12.33 / mo<span class="detail">300GB 5G</span></td>
           <td>Sim-only</td>
           <td><span class="badge badge-yes">Yes</span></td>
           <td>800 min · 800 SMS · roaming add-on available</td>
-          <td>2-month promo · reverts to S$ 18.33</td>
+          <td>2-month promo</td>
           <td><a href="https://www.gomo.sg" target="_blank" rel="noopener">GOMO</a></td>
         </tr>
-        <tr>
-          <td>Singtel hi! Monthly</td>
-          <td class="price">From S$ 12.00 / mo<span class="detail">500GB 4G</span></td>
-          <td>Sim-only</td>
-          <td><span class="badge badge-yes">Yes</span></td>
-          <td>Unlimited local calls · 100 SMS · roaming MY/ID/TH</td>
-          <td>Promo for port-ins</td>
-          <td><a href="https://singtel.com" target="_blank" rel="noopener">Singtel</a></td>
-        </tr>
-        <tr>
-          <td>MyRepublic 5G Best Value</td>
-          <td class="price">S$ 17.95 / mo<span class="detail">550GB 5G</span></td>
-          <td>Sim-only</td>
-          <td><span class="badge badge-yes">Yes</span></td>
-          <td>1200 min · 1200 SMS · 5G on StarHub</td>
-          <td>No contract</td>
-          <td><a href="https://myrepublic.net/sg" target="_blank" rel="noopener">MyRepublic</a></td>
-        </tr>
-        <tr>
-          <td>Circles.Life 4G Lite</td>
-          <td class="price">From S$ 9.90 / mo<span class="detail">200GB 4G</span></td>
-          <td>Sim-only</td>
-          <td><span class="badge badge-yes">Yes</span></td>
-          <td>Unlimited calls · no contract</td>
-          <td>Roaming add-on available</td>
-          <td><a href="https://www.circles.life" target="_blank" rel="noopener">Circles.Life</a></td>
-        </tr>
       </tbody>
+
       <tbody id="plans-my" style="display:none;">
         <tr>
           <td>CelcomDigi Postpaid 45 SE</td>
           <td class="price">RM 45 / mo<span class="detail">100GB 5G/4G</span></td>
           <td>Postpaid</td>
-          <td><span class="badge badge-likely">Likely</span> <span class="badge badge-best">Best value</span></td>
+          <td><span class="badge badge-likely">Likely</span></td>
           <td>Budget-friendly entry plan</td>
           <td>No contract</td>
           <td><a href="https://www.celcomdigi.com" target="_blank" rel="noopener">CelcomDigi</a></td>
@@ -821,98 +554,9 @@
           <td>No contract</td>
           <td><a href="https://www.celcomdigi.com" target="_blank" rel="noopener">CelcomDigi</a></td>
         </tr>
-        <tr>
-          <td>CelcomDigi Postpaid 80</td>
-          <td class="price">RM 80 / mo<span class="detail">400GB 5G/4G</span></td>
-          <td>Postpaid</td>
-          <td><span class="badge badge-yes">Yes</span></td>
-          <td>Moderate data needs</td>
-          <td>Up to 3 supplementary lines</td>
-          <td><a href="https://www.celcomdigi.com" target="_blank" rel="noopener">CelcomDigi</a></td>
-        </tr>
-        <tr>
-          <td>CelcomDigi Postpaid 100</td>
-          <td class="price">RM 100 / mo<span class="detail">1000GB 5G/4G</span></td>
-          <td>Postpaid</td>
-          <td><span class="badge badge-yes">Yes</span></td>
-          <td>Social-first heavy usage</td>
-          <td>Up to 5 supplementary lines</td>
-          <td><a href="https://www.celcomdigi.com" target="_blank" rel="noopener">CelcomDigi</a></td>
-        </tr>
-        <tr>
-          <td>CelcomDigi Postpaid 120</td>
-          <td class="price">RM 120 / mo<span class="detail">Unlimited 5G/4G</span></td>
-          <td>Postpaid</td>
-          <td><span class="badge badge-yes">Yes</span></td>
-          <td>Always-on users</td>
-          <td>Up to 5 supplementary lines</td>
-          <td><a href="https://www.celcomdigi.com" target="_blank" rel="noopener">CelcomDigi</a></td>
-        </tr>
-        <tr>
-          <td>CelcomDigi Postpaid 140</td>
-          <td class="price">RM 140 / mo<span class="detail">Unlimited 5G/4G</span></td>
-          <td>Postpaid</td>
-          <td><span class="badge badge-yes">Yes</span></td>
-          <td>High-usage power users</td>
-          <td>Up to 6 supplementary lines</td>
-          <td><a href="https://www.celcomdigi.com" target="_blank" rel="noopener">CelcomDigi</a></td>
-        </tr>
-        <tr>
-          <td>CelcomDigi Postpaid 160</td>
-          <td class="price">RM 160 / mo<span class="detail">Unlimited 5G/4G</span></td>
-          <td>Postpaid</td>
-          <td><span class="badge badge-yes">Yes</span></td>
-          <td>Entertainment-heavy streamers</td>
-          <td>Up to 6 supplementary lines</td>
-          <td><a href="https://www.celcomdigi.com" target="_blank" rel="noopener">CelcomDigi</a></td>
-        </tr>
-        <tr>
-          <td>CelcomDigi Postpaid 190</td>
-          <td class="price">RM 190 / mo<span class="detail">Unlimited 5G/4G</span></td>
-          <td>Postpaid</td>
-          <td><span class="badge badge-yes">Yes</span></td>
-          <td>No limits, top tier</td>
-          <td>Up to 6 supplementary lines</td>
-          <td><a href="https://www.celcomdigi.com" target="_blank" rel="noopener">CelcomDigi</a></td>
-        </tr>
-        <tr>
-          <td>Hotlink Postpaid 50</td>
-          <td class="price">RM 50 / mo<span class="detail">500GB 4G/5G</span></td>
-          <td>Postpaid</td>
-          <td><span class="badge badge-likely">Likely</span></td>
-          <td>Unlimited calls &amp; SMS</td>
-          <td>No contract</td>
-          <td><a href="https://www.hotlink.com.my" target="_blank" rel="noopener">Hotlink</a></td>
-        </tr>
-        <tr>
-          <td>Hotlink Postpaid 75</td>
-          <td class="price">RM 75 / mo<span class="detail">600GB 4G/5G</span></td>
-          <td>Postpaid</td>
-          <td><span class="badge badge-likely">Likely</span></td>
-          <td>Free roaming SG/TH/ID · unlimited calls &amp; SMS</td>
-          <td>No contract / device bundle</td>
-          <td><a href="https://www.hotlink.com.my" target="_blank" rel="noopener">Hotlink</a></td>
-        </tr>
-        <tr>
-          <td>U Mobile ULTRA Family 128</td>
-          <td class="price">RM 128 / mo<span class="detail">1000GB shared 5G</span></td>
-          <td>Postpaid/Family</td>
-          <td><span class="badge badge-likely">Likely</span></td>
-          <td>4 lines · 60+ country roaming · 15GB/mo roaming allowance</td>
-          <td>Family plan</td>
-          <td><a href="https://www.u.com.my" target="_blank" rel="noopener">U Mobile</a></td>
-        </tr>
       </tbody>
+
       <tbody id="plans-id" style="display:none;">
-        <tr>
-          <td>Telkomsel Starter</td>
-          <td class="price">From Rp 35,000 / mo<span class="detail">Starter SIM</span></td>
-          <td>Prepaid</td>
-          <td><span class="badge badge-likely">Likely</span></td>
-          <td>Best overall coverage · islands wide</td>
-          <td>Tourist-friendly entry SIM</td>
-          <td><a href="https://www.telkomsel.com" target="_blank" rel="noopener">Telkomsel</a></td>
-        </tr>
         <tr>
           <td>Telkomsel 3.5GB</td>
           <td class="price">Rp 35,000 / mo<span class="detail">3.5GB 4G/5G</span></td>
@@ -931,52 +575,8 @@
           <td>30 days</td>
           <td><a href="https://www.telkomsel.com" target="_blank" rel="noopener">Telkomsel</a></td>
         </tr>
-        <tr>
-          <td>Telkomsel 13GB</td>
-          <td class="price">Rp 100,000 / mo<span class="detail">13GB 4G/5G</span></td>
-          <td>Prepaid</td>
-          <td><span class="badge badge-likely">Likely</span></td>
-          <td>General traveler plan</td>
-          <td>30 days</td>
-          <td><a href="https://www.telkomsel.com" target="_blank" rel="noopener">Telkomsel</a></td>
-        </tr>
-        <tr>
-          <td>IM3 (Indosat) 16GB</td>
-          <td class="price">Rp 199,000 / mo<span class="detail">16GB 4G/5G</span></td>
-          <td>Prepaid</td>
-          <td><span class="badge badge-likely">Likely</span></td>
-          <td>Good budget option in cities</td>
-          <td>60 min · 60 SMS</td>
-          <td><a href="https://www.indosatooredoo.com" target="_blank" rel="noopener">IM3</a></td>
-        </tr>
-        <tr>
-          <td>IM3 (Indosat) 30GB</td>
-          <td class="price">Rp 299,000 / mo<span class="detail">30GB 4G/5G</span></td>
-          <td>Prepaid</td>
-          <td><span class="badge badge-likely">Likely</span></td>
-          <td>Higher usage traveler</td>
-          <td>120 min · 120 SMS</td>
-          <td><a href="https://www.indosatooredoo.com" target="_blank" rel="noopener">IM3</a></td>
-        </tr>
-        <tr>
-          <td>XL Axiata 150GB</td>
-          <td class="price">Rp 150,000 / mo<span class="detail">150GB 4G/5G</span></td>
-          <td>Prepaid</td>
-          <td><span class="badge badge-likely">Likely</span></td>
-          <td>Large prepaid data bundle</td>
-          <td>Best in Bali/Java</td>
-          <td><a href="https://www.xl.co.id" target="_blank" rel="noopener">XL</a></td>
-        </tr>
-        <tr>
-          <td>XL Axiata 500GB</td>
-          <td class="price">Rp 300,000 / mo<span class="detail">500GB 4G/5G</span></td>
-          <td>Prepaid</td>
-          <td><span class="badge badge-likely">Likely</span></td>
-          <td>Very high data bundle</td>
-          <td>Best in Bali/Java</td>
-          <td><a href="https://www.xl.co.id" target="_blank" rel="noopener">XL</a></td>
-        </tr>
       </tbody>
+
       <tbody id="plans-th" style="display:none;">
         <tr>
           <td>AIS Lucky SIM</td>
@@ -988,15 +588,6 @@
           <td><a href="https://www.ais.co.th" target="_blank" rel="noopener">AIS</a></td>
         </tr>
         <tr>
-          <td>AIS Unlimited 8-Day</td>
-          <td class="price">฿499 / mo<span class="detail">8 days · 5G/4G</span></td>
-          <td>Prepaid</td>
-          <td><span class="badge badge-likely">Likely</span></td>
-          <td>High-speed tourist data</td>
-          <td>Unlimited traffic cap may apply during congestion</td>
-          <td><a href="https://www.ais.co.th" target="_blank" rel="noopener">AIS</a></td>
-        </tr>
-        <tr>
           <td>True Tourist SIM</td>
           <td class="price">From ฿299 / mo<span class="detail">7–15 days · 4G/5G</span></td>
           <td>Prepaid</td>
@@ -1005,25 +596,8 @@
           <td>Merged with dtac</td>
           <td><a href="https://www.true.th" target="_blank" rel="noopener">True</a></td>
         </tr>
-        <tr>
-          <td>dtac Tourist SIM</td>
-          <td class="price">From ฿299 / mo<span class="detail">7–15 days · 4G/5G</span></td>
-          <td>Prepaid</td>
-          <td><span class="badge badge-likely">Likely</span></td>
-          <td>Combined True/dtac nationwide coverage</td>
-          <td>Former standalone dtac network</td>
-          <td><a href="https://www.dtac.co.th" target="_blank" rel="noopener">dtac</a></td>
-        </tr>
-        <tr>
-          <td>AIS Postpaid 599</td>
-          <td class="price">฿599 / mo<span class="detail">20–30GB 5G/4G</span></td>
-          <td>Postpaid</td>
-          <td><span class="badge badge-likely">Likely</span></td>
-          <td>Best for expats or longer stays</td>
-          <td>Requires Thai ID / address check</td>
-          <td><a href="https://www.ais.co.th" target="_blank" rel="noopener">AIS</a></td>
-        </tr>
       </tbody>
+
       <tbody id="plans-vn" style="display:none;">
         <tr>
           <td>Viettel Starter SIM</td>
@@ -1043,43 +617,8 @@
           <td>30-day validity</td>
           <td><a href="https://vietteltelecom.vn" target="_blank" rel="noopener">Viettel</a></td>
         </tr>
-        <tr>
-          <td>Viettel 3GB/day</td>
-          <td class="price">150,000 VND / mo<span class="detail">3GB/day · 4G/LTE</span></td>
-          <td>Prepaid</td>
-          <td><span class="badge badge-likely">Likely</span></td>
-          <td>Mid-range daily data</td>
-          <td>30-day validity</td>
-          <td><a href="https://vietteltelecom.vn" target="_blank" rel="noopener">Viettel</a></td>
-        </tr>
-        <tr>
-          <td>Viettel 8GB/day with voice</td>
-          <td class="price">200,000 VND / mo<span class="detail">8GB/day + calls</span></td>
-          <td>Prepaid</td>
-          <td><span class="badge badge-likely">Likely</span></td>
-          <td>High daily data + unlimited Viettel calls</td>
-          <td>100 min to other networks</td>
-          <td><a href="https://vietteltelecom.vn" target="_blank" rel="noopener">Viettel</a></td>
-        </tr>
-        <tr>
-          <td>Vinaphone Prepaid</td>
-          <td class="price">From 50,000 VND<span class="detail">Starter SIM</span></td>
-          <td>Prepaid</td>
-          <td><span class="badge badge-likely">Likely</span></td>
-          <td>Second-best coverage nationwide</td>
-          <td>Best for city travel</td>
-          <td><a href="https://www.vinaphone.com.vn" target="_blank" rel="noopener">Vinaphone</a></td>
-        </tr>
-        <tr>
-          <td>Mobifone Prepaid</td>
-          <td class="price">From 50,000 VND<span class="detail">Starter SIM</span></td>
-          <td>Prepaid</td>
-          <td><span class="badge badge-likely">Likely</span></td>
-          <td>Third-largest nationwide coverage</td>
-          <td>Good for popular tourist spots</td>
-          <td><a href="https://www.mobifone.vn" target="_blank" rel="noopener">Mobifone</a></td>
-        </tr>
       </tbody>
+
       <tbody id="plans-ph" style="display:none;">
         <tr>
           <td>Smart Prepaid</td>
@@ -1091,24 +630,6 @@
           <td><a href="https://www.smart.com.ph" target="_blank" rel="noopener">Smart</a></td>
         </tr>
         <tr>
-          <td>Smart Giga 30+</td>
-          <td class="price">From ₱599<span class="detail">30GB open access</span></td>
-          <td>Prepaid</td>
-          <td><span class="badge badge-likely">Likely</span></td>
-          <td>Large prepaid data pack</td>
-          <td>Unlimited calls &amp; SMS</td>
-          <td><a href="https://www.smart.com.ph" target="_blank" rel="noopener">Smart</a></td>
-        </tr>
-        <tr>
-          <td>Smart Postpaid 799</td>
-          <td class="price">₱799 / mo<span class="detail">15GB open + 100GB 5G</span></td>
-          <td>Postpaid</td>
-          <td><span class="badge badge-likely">Likely</span></td>
-          <td>Popular mid-tier postpaid</td>
-          <td>High-speed 5G data</td>
-          <td><a href="https://www.smart.com.ph" target="_blank" rel="noopener">Smart</a></td>
-        </tr>
-        <tr>
           <td>Globe Prepaid</td>
           <td class="price">From ₱40<span class="detail">Starter SIM</span></td>
           <td>Prepaid</td>
@@ -1117,34 +638,8 @@
           <td>Consistent 4G/5G</td>
           <td><a href="https://www.globe.com.ph" target="_blank" rel="noopener">Globe</a></td>
         </tr>
-        <tr>
-          <td>Globe Postpaid 599</td>
-          <td class="price">₱599 / mo<span class="detail">6GB data</span></td>
-          <td>Postpaid</td>
-          <td><span class="badge badge-likely">Likely</span></td>
-          <td>Entry postpaid</td>
-          <td>Unlimited calls &amp; SMS</td>
-          <td><a href="https://www.globe.com.ph" target="_blank" rel="noopener">Globe</a></td>
-        </tr>
-        <tr>
-          <td>Globe Postpaid 999</td>
-          <td class="price">₱999 / mo<span class="detail">20GB data</span></td>
-          <td>Postpaid</td>
-          <td><span class="badge badge-likely">Likely</span></td>
-          <td>Better value postpaid</td>
-          <td>Unlimited calls &amp; SMS</td>
-          <td><a href="https://www.globe.com.ph" target="_blank" rel="noopener">Globe</a></td>
-        </tr>
-        <tr>
-          <td>DITO Postpaid 888</td>
-          <td class="price">₱888 / mo<span class="detail">50GB data</span></td>
-          <td>Postpaid</td>
-          <td><span class="badge badge-likely">Likely</span></td>
-          <td>High data for price</td>
-          <td>5G-capable</td>
-          <td><a href="https://dito.ph" target="_blank" rel="noopener">DITO</a></td>
-        </tr>
       </tbody>
+
       <tbody id="plans-hk" style="display:none;">
         <tr>
           <td>csl. Discover HK</td>
@@ -1156,15 +651,6 @@
           <td><a href="https://www.hkcsl.com" target="_blank" rel="noopener">csl.</a></td>
         </tr>
         <tr>
-          <td>csl. Tourist SIM</td>
-          <td class="price">From HK$88<span class="detail">12GB / 10 days</span></td>
-          <td>Prepaid</td>
-          <td><span class="badge badge-likely">Likely</span></td>
-          <td>Good for short stays</td>
-          <td>Airport-friendly purchase</td>
-          <td><a href="https://www.hkcsl.com" target="_blank" rel="noopener">csl.</a></td>
-        </tr>
-        <tr>
           <td>CMHK Tourist SIM</td>
           <td class="price">From HK$48<span class="detail">30-day starter</span></td>
           <td>Prepaid</td>
@@ -1173,69 +659,59 @@
           <td>Widely available in HK</td>
           <td><a href="https://www.hk.chinamobile.com" target="_blank" rel="noopener">CMHK</a></td>
         </tr>
-        <tr>
-          <td>Three HK</td>
-          <td class="price">From HK$48 / mo<span class="detail">Local prepaid data</span></td>
-          <td>Prepaid</td>
-          <td><span class="badge badge-likely">Likely</span></td>
-          <td>CB-driven, tourist-friendly</td>
-          <td>Good city coverage</td>
-          <td><a href="https://www.three.com.hk" target="_blank" rel="noopener">Three</a></td>
-        </tr>
-        <tr>
-          <td>SmarTone 5G</td>
-          <td class="price">From HK$48 / mo<span class="detail">Local prepaid data</span></td>
-          <td>Prepaid</td>
-          <td><span class="badge badge-likely">Likely</span></td>
-          <td>Premium local option</td>
-          <td>Good quality 5G</td>
-          <td><a href="https://www.smartone.com" target="_blank" rel="noopener">SmarTone</a></td>
-        </tr>
       </tbody>
     </table>
 
-    <nav class="domain-links" aria-label="Plan sections">
-      <a href="#data">Data Price Plan</a>
-      <a href="#esim">eSIM Price Plan</a>
-      <a href="#roaming">Roaming Plan</a>
-      <a href="#sim">SIM Price Plan</a>
-    </nav>
-
-    <div class="sections-grid">
-      <article class="card" id="data">
-        <h2>Data Price Plan</h2>
-        <p>Big-data local plans for residents and long-stay travellers. These are often better value than tourist SIMs if you’re staying more than a few days.</p>
-      </article>
-      <article class="card" id="esim">
-        <h2>eSIM Price Plan</h2>
-        <p>eSIM-friendly plans that can usually be activated digitally. Good for people who don’t want a physical SIM, but check confirmation in the eSIM column.</p>
-      </article>
-      <article class="card" id="roaming">
-        <h2>Roaming Plan</h2>
-        <p>Plans with stronger roaming data, regional bundles, or IDD minutes — useful for cross-border travellers or expats calling home.</p>
-      </article>
-      <article class="card" id="sim">
-        <h2>Local SIM / Prepaid</h2>
-        <p>Good starting points for short stays or light users. We show local prepaid options that residents also top up regularly.</p>
-      </article>
+    <div class="country-selector">
+      <label for="country">Quick links</label>
+      <a href="#data">Data</a>
+      <a href="#esim">eSIM</a>
+      <a href="#roaming">Roaming</a>
+      <a href="#sim">SIM</a>
     </div>
 
-    <!-- FAQ Chatbot -->
-    <section class="faq-section" aria-label="Frequently asked questions">
+    <div class="section" id="data">
+      <div class="card">
+        <h2>Data Price Plan</h2>
+        <p>Big-data local plans for residents and long-stay travellers. These are often better value than tourist SIMs if you’re staying more than a few days.</p>
+      </div>
+    </div>
+
+    <div class="section" id="esim">
+      <div class="card">
+        <h2>eSIM Price Plan</h2>
+        <p>eSIM-friendly plans that can usually be activated digitally. Good for people who don’t want a physical SIM, but check confirmation in the eSIM column.</p>
+      </div>
+    </div>
+
+    <div class="section" id="roaming">
+      <div class="card">
+        <h2>Roaming Plan</h2>
+        <p>Plans with stronger roaming data, regional bundles, or IDD minutes — useful for cross-border travellers or expats calling home.</p>
+      </div>
+    </div>
+
+    <div class="section" id="sim">
+      <div class="card">
+        <h2>Local SIM / Prepaid</h2>
+        <p>Good starting points for short stays or light users. We show local prepaid options that residents also top up regularly.</p>
+      </div>
+    </div>
+
+    <div class="faq-section" id="faq">
       <h2>Quick questions</h2>
       <p class="faq-intro">Tap a question below.</p>
       <div class="faq-buttons">
-        <button type="button" data-answer="eSIM lets you activate your plan digitally — no physical SIM needed. Look for <span class=\"badge badge-yes\">Yes</span> in the eSIM column.">What is eSIM?</button>
+        <button type="button" data-answer="eSIM lets you activate your plan digitally — no physical SIM needed. Look for Yes or Likely in the eSIM column.">What is eSIM?</button>
         <button type="button" data-answer="Use the table above — the plan with the highest GB value has the most data. This changes by country.">Which plan has the most data?</button>
-        <button type="button" data-answer="Yes — look for strong roaming notes like in the CMLINK SG 200GB and VIVIFI VIBE 4G rows.">Do any plans include roaming?</button>
-        <button type="button" data-answer="We update this table weekly. For the latest prices, click the telco <em>Visit</em> link.">Are the prices up to date?</button>
+        <button type="button" data-answer="Yes — look for strong roaming notes in the Roaming highlights column.">Do any plans include roaming?</button>
+        <button type="button" data-answer="We update this table weekly. For the latest prices, click the telco Visit link.">Are the prices up to date?</button>
         <button type="button" data-answer="Use the contact form below and I’ll get back to you.">Still need help?</button>
       </div>
       <div class="faq-answer" id="faqAnswer" aria-live="polite"></div>
-    </section>
+    </div>
 
-    <!-- Contact Form -->
-    <section class="contact-section" aria-label="Contact form">
+    <div class="contact-section" id="contact">
       <h2>Contact me</h2>
       <form class="contact-form" id="contactForm">
         <input type="text" name="name" placeholder="Your name" required>
@@ -1244,8 +720,7 @@
         <button type="submit">Send message</button>
       </form>
       <p class="contact-status" id="contactStatus"></p>
-    </section>
-
+    </div>
   </main>
 
   <footer>
@@ -1255,9 +730,10 @@
   <script>
     const now = new Date();
     const monthYear = now.toLocaleString('en-SG', { month: 'long', year: 'numeric' });
-    document.getElementById('last-updated').textContent = monthYear;
-    document.getElementById('footer-month').textContent = monthYear;
-
+    const lastUpdated = document.getElementById('last-updated');
+    const footerMonth = document.getElementById('footer-month');
+    if (lastUpdated) lastUpdated.textContent = monthYear;
+    if (footerMonth) footerMonth.textContent = monthYear;
 
     const faqButtons = document.querySelectorAll('.faq-buttons button');
     const faqAnswer = document.getElementById('faqAnswer');
@@ -1268,12 +744,8 @@
         if (!answer) return;
         faqAnswer.innerHTML = answer;
         faqAnswer.style.display = 'block';
-        faqAnswer.style.animation = 'none';
-        void faqAnswer.offsetWidth;
-        faqAnswer.style.animation = 'fadeIn 0.25s ease';
       });
     });
-
 
     const contactForm = document.getElementById('contactForm');
     const contactStatus = document.getElementById('contactStatus');
@@ -1313,26 +785,24 @@
       }, 6000);
     });
 
-    // Country selector - show SG, MY, ID, TH, VN, PH or HK plans
+    // Country selector
     const countrySelect = document.getElementById('country');
-    const sgTable = document.getElementById('plans-sg');
-    const myTable = document.getElementById('plans-my');
-    const idTable = document.getElementById('plans-id');
-    const thTable = document.getElementById('plans-th');
-    const vnTable = document.getElementById('plans-vn');
-    const phTable = document.getElementById('plans-ph');
-    const hkTable = document.getElementById('plans-hk');
+    const tables = {
+      sg: document.getElementById('plans-sg'),
+      my: document.getElementById('plans-my'),
+      id: document.getElementById('plans-id'),
+      th: document.getElementById('plans-th'),
+      vn: document.getElementById('plans-vn'),
+      ph: document.getElementById('plans-ph'),
+      hk: document.getElementById('plans-hk')
+    };
 
-    if (countrySelect && sgTable && myTable && idTable && thTable && vnTable && phTable && hkTable) {
+    if (countrySelect && tables.sg && tables.my && tables.id && tables.th && tables.vn && tables.ph && tables.hk) {
       const switchCountry = () => {
         const value = countrySelect.value;
-        sgTable.style.display = value === 'sg' ? '' : 'none';
-        myTable.style.display = value === 'my' ? '' : 'none';
-        idTable.style.display = value === 'id' ? '' : 'none';
-        thTable.style.display = value === 'th' ? '' : 'none';
-        vnTable.style.display = value === 'vn' ? '' : 'none';
-        phTable.style.display = value === 'ph' ? '' : 'none';
-        hkTable.style.display = value === 'hk' ? '' : 'none';
+        Object.keys(tables).forEach(key => {
+          tables[key].style.display = key === value ? '' : 'none';
+        });
       };
 
       countrySelect.addEventListener('change', switchCountry);

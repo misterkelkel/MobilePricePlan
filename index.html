@@ -6,7 +6,7 @@
   <title>MobilePricePlan.com — Local Mobile Plans</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #faf7f2;
@@ -48,19 +48,33 @@
     }
 
     .logo-mark {
-      width: 44px;
-      height: 44px;
-      background: var(--accent);
-      border-radius: 12px;
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: white;
-      font-family: 'Fraunces', Georgia, serif;
-      font-weight: 600;
-      font-size: 1.1rem;
-      box-shadow: 0 4px 12px rgba(194,94,53,0.25);
-      letter-spacing: -0.02em;
+      box-shadow: 0 4px 14px rgba(194,94,53,0.22);
+    }
+
+    .logo-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .logo-mark img {
+        animation: mascotFloat 2.6s ease-in-out infinite;
+      }
+    }
+
+    @keyframes mascotFloat {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-3px); }
+      100% { transform: translateY(0px); }
     }
 
     header h1 {
@@ -274,7 +288,7 @@
 
     .info-card {
       border-left: 3px solid var(--accent);
-      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      font-family: 'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
     }
 
     .info-card h2 {
@@ -299,17 +313,20 @@
     .typewriter::after {
       content: '';
       display: inline-block;
-      width: 0.6rem;
-      height: 1.1em;
+      width: 0.82rem;
+      height: 1.35em;
       background: var(--accent);
-      margin-left: 2px;
+      margin-left: 5px;
       vertical-align: text-bottom;
-      animation: blink 0.9s steps(2) infinite;
+      animation: blink 0.82s steps(2) infinite;
+      border-radius: 1px;
     }
 
     @keyframes blink {
       0% { opacity: 1; }
-      50% { opacity: 0; }
+      41% { opacity: 0; }
+      59% { opacity: 0; }
+      82% { opacity: 1; }
       100% { opacity: 1; }
     }
 
@@ -487,15 +504,40 @@
   </style>
 </head>
 <body>
-  <header>
+  <header class="hero">
     <div class="logo">
-      <div class="logo-mark">MPP</div>
+      <div class="logo-mark"><img src="mascot.png" alt="MobilePricePlan mascot" /></div>
       <h1>Mobile<span class="accent">Price</span>Plan.com</h1>
     </div>
-    <p>Mobile plan comparison for travellers — simple, clear, and updated weekly.</p>
+    <p class="hero-line">Mobile plan comparison for travellers <span class="typewriter" id="heroTypewriter"></span><span class="typewriter cursor" aria-hidden="true"></span></p>
   </header>
-
   <main>
+    <section class="section" aria-label="Purpose">
+      <div class="card">
+        <h2>Purpose</h2>
+        <p>I built this because traveller plan guides are usually noisy, ad-heavy, or miss the plans locals actually buy. This is a cleaner, calmer view that focuses on what matters: price, data, roaming, and eSIM fit.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-label="Data collection">
+      <div class="card">
+        <h2>How I gather the data</h2>
+        <p>Prices are pulled from public comparison feeds, telco pages, and traveller/local sources. I review them weekly and keep a note of what looks confirmed versus what needs a quick telco check before you buy.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-label="How it works">
+      <div class="card">
+        <h2>How it works</h2>
+        <ol class="process-list">
+          <li><span class="process-label">01 — Pick region</span> Choose your country from the selector.</li>
+          <li><span class="process-label">02 — Scan plans</span> Compare price, data, roaming, and eSIM fit.</li>
+          <li><span class="process-label">03 — Check source</span> Use the telco link to confirm current terms.</li>
+          <li><span class="process-label">04 — Ask if unsure</span> Use the contact form for anything unclear.</li>
+        </ol>
+      </div>
+    </section>
+
     <div class="country-selector">
       <label for="country">Country / Region</label>
       <select id="country">
@@ -515,7 +557,7 @@
     </div>
 
     <div class="card info-card">
-      <h2><span class="typewriter">Who this is for</span></h2>
+      <h2>Who this is for</h2>
       <p>This comparison is built mainly for local travellers, expats, and anyone who wants a straightforward view of what’s available in each country — not just tourist SIMs. The table mixes local prepaid, postpaid, and common no-contract options because those are the plans residents actually use.</p>
       <h2>How we gather this data</h2>
       <p>We pull prices and plan details from public comparison sources, telco sites, and traveller/local guides. Plans are checked against recent sources every week and marked with eSIM confidence levels so you can see at a glance what’s reliable, likely supported, or unconfirmed.</p>

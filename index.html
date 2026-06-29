@@ -3,6 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Local and international mobile price plans — updated weekly, simple and clear. Compare local SIM, eSIM, and roaming plans for Singapore, Malaysia, Indonesia, Thailand, Vietnam, Philippines, Hong Kong, China, Japan and more.">
+  <meta name="keywords" content="mobile plan, SIM plan, eSIM, roaming, prepaid, postpaid, Singapore, Malaysia, Indonesia, Thailand, Vietnam, Philippines, Hong Kong, China, Japan, travel SIM">
+  <meta name="author" content="Kelvin Seow">
+  <meta property="og:title" content="MobilePricePlan.com — Local Mobile Plans">
+  <meta property="og:description" content="Simple, clear local and international mobile price plans — updated weekly.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mobilepriceplan.com">
+  <meta property="og:image" content="https://mobilepriceplan.com/mascot.png">
   <title>MobilePricePlan.com — Local Mobile Plans</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -439,9 +447,46 @@
 
     footer {
       text-align: center;
-      padding: 2rem 1.25rem;
+      padding: 1.5rem 1.25rem;
       color: var(--muted);
       font-size: 0.9rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .social-bar {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .social-bar a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .social-bar a:hover,
+    .social-bar a:focus-visible {
+      color: var(--accent-hover);
+    }
+
+    .footer-meta {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .built-by {
+      font-size: 0.8rem;
+      color: var(--muted);
     }
 
     @media (max-width: 768px) {
@@ -917,14 +962,6 @@
       </tbody>
     </table>
 
-    <div class="country-selector">
-      <label for="country">Quick links</label>
-      <a href="#data">Data</a>
-      <a href="#esim">eSIM</a>
-      <a href="#roaming">Roaming</a>
-      <a href="#sim">SIM</a>
-    </div>
-
     <div class="section" id="data">
       <div class="card">
         <h2>Data Price Plan</h2>
@@ -953,92 +990,30 @@
       </div>
     </div>
 
-    <div class="faq-section" id="faq">
-      <h2>Quick questions</h2>
-      <p class="faq-intro">Tap a question below.</p>
-      <div class="faq-buttons">
-        <button type="button" data-answer="eSIM lets you activate your plan digitally — no physical SIM needed. Look for Yes or Likely in the eSIM column.">What is eSIM?</button>
-        <button type="button" data-answer="Use the table above — the plan with the highest GB value has the most data. This changes by country.">Which plan has the most data?</button>
-        <button type="button" data-answer="Yes — look for strong roaming notes in the Roaming highlights column.">Do any plans include roaming?</button>
-        <button type="button" data-answer="We update this table weekly. For the latest prices, click the telco Visit link.">Are the prices up to date?</button>
-        <button type="button" data-answer="Use the contact form below and I’ll get back to you.">Still need help?</button>
-      </div>
-      <div class="faq-answer" id="faqAnswer" aria-live="polite"></div>
-    </div>
-
-    <div class="contact-section" id="contact">
-      <h2>Contact me</h2>
-      <form class="contact-form" id="contactForm">
-        <input type="text" name="name" placeholder="Your name" required>
-        <input type="email" name="email" placeholder="Your email" required>
-        <textarea name="message" placeholder="Your message…" rows="4" required></textarea>
-        <button type="submit">Send message</button>
-      </form>
-      <p class="contact-status" id="contactStatus"></p>
+    <div class="callout">
+      <p>Questions? Visit <a href="faq.html">FAQ</a> or <a href="about.html">About</a>.</p>
     </div>
   </main>
 
   <footer>
-    © MobilePricePlan.com · Updated as of <span id="footer-month">July 2026</span>
+    <div class="footer-inner">
+      <div class="social-bar">
+        <a href="about.html">About</a>
+        <a href="https://instagram.com/x.s.seow" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://www.linkedin.com/in/seow-xi-sun-kelvin-0950379" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+      <div class="footer-meta">
+        © MobilePricePlan.com · Updated as of <span id="footer-month">July 2026</span>
+        <span class="built-by">Built by Hermes AI</span>
+      </div>
+    </div>
   </footer>
 
   <script>
     const now = new Date();
     const monthYear = now.toLocaleString('en-SG', { month: 'long', year: 'numeric' });
-    const lastUpdated = document.getElementById('last-updated');
     const footerMonth = document.getElementById('footer-month');
-    if (lastUpdated) lastUpdated.textContent = monthYear;
     if (footerMonth) footerMonth.textContent = monthYear;
-
-    const faqButtons = document.querySelectorAll('.faq-buttons button');
-    const faqAnswer = document.getElementById('faqAnswer');
-
-    faqButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const answer = btn.getAttribute('data-answer');
-        if (!answer) return;
-        faqAnswer.innerHTML = answer;
-        faqAnswer.style.display = 'block';
-      });
-    });
-
-    const contactForm = document.getElementById('contactForm');
-    const contactStatus = document.getElementById('contactStatus');
-
-    contactForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      contactStatus.textContent = 'Sending…';
-      contactStatus.style.color = 'var(--muted)';
-
-      const data = {
-        name: contactForm.name.value.trim(),
-        email: contactForm.email.value.trim(),
-        message: contactForm.message.value.trim()
-      };
-
-      try {
-        const response = await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-          body: JSON.stringify({ ...data, access_key: 'b0d1582e-dae1-427d-afbb-69a0c18c1b1a', subject: 'New message from MobilePricePlan.com' })
-        });
-        const result = await response.json();
-        if (result.success) {
-          contactForm.reset();
-          contactStatus.textContent = 'Sent — thank you.';
-          contactStatus.style.color = '#2e7d32';
-        } else {
-          throw new Error(result.message || 'failed');
-        }
-      } catch (err) {
-        contactStatus.textContent = 'Something went wrong, please try again later.';
-        contactStatus.style.color = '#c62828';
-      }
-
-      setTimeout(() => {
-        contactStatus.textContent = '';
-      }, 6000);
-    });
 
     // Country selector with geo-default
     const countrySelect = document.getElementById('country');

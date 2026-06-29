@@ -274,6 +274,43 @@
 
     .info-card {
       border-left: 3px solid var(--accent);
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    }
+
+    .info-card h2 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 500;
+      font-size: 1.15rem;
+      margin-bottom: 0.35rem;
+      color: var(--text);
+    }
+
+    .info-card p {
+      color: var(--muted);
+      font-size: 0.96rem;
+      line-height: 1.7;
+    }
+
+    .typewriter {
+      display: inline;
+      position: relative;
+    }
+
+    .typewriter::after {
+      content: '';
+      display: inline-block;
+      width: 0.6rem;
+      height: 1.1em;
+      background: var(--accent);
+      margin-left: 2px;
+      vertical-align: text-bottom;
+      animation: blink 0.9s steps(2) infinite;
+    }
+
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0; }
+      100% { opacity: 1; }
     }
 
     /* FAQ */
@@ -478,7 +515,7 @@
     </div>
 
     <div class="card info-card">
-      <h2>Who this is for</h2>
+      <h2><span class="typewriter">Who this is for</span></h2>
       <p>This comparison is built mainly for local travellers, expats, and anyone who wants a straightforward view of what’s available in each country — not just tourist SIMs. The table mixes local prepaid, postpaid, and common no-contract options because those are the plans residents actually use.</p>
       <h2>How we gather this data</h2>
       <p>We pull prices and plan details from public comparison sources, telco sites, and traveller/local guides. Plans are checked against recent sources every week and marked with eSIM confidence levels so you can see at a glance what’s reliable, likely supported, or unconfirmed.</p>

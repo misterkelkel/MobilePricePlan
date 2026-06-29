@@ -486,7 +486,7 @@
       <div class="logo-mark"><img src="mascot.png" alt="MobilePricePlan mascot" /></div>
       <h1>Mobile<span class="accent">Price</span>Plan.com</h1>
     </div>
-    <p>Singapore &amp; Malaysia mobile plans — simple, clear, and updated weekly.</p>
+    <p id="subtitle">Local mobile plans — simple, clear, and updated weekly.</p>
   </header>
 
   <main>
@@ -508,10 +508,6 @@
         <option value="hk">Hong Kong</option>
         <option value="cn">China</option>
       </select>
-    </div>
-
-    <div class="language-toggle">
-      <button type="button" id="langToggle">🌐 EN</button>
     </div>
 
     <table id="plans-table">
@@ -1165,58 +1161,52 @@
     };
 
     const languageByCountry = {
-      sg: 'en',
-      my: 'en',
-      id: 'id',
-      th: 'th',
-      vn: 'vn',
-      ph: 'en',
-      hk: 'en',
-      cn: 'zh'
+      sg: 'Singapore local and international price plan',
+      my: 'Malaysia local and international price plan',
+      id: 'Indonesia local and international price plan',
+      th: 'Thailand local and international price plan',
+      vn: 'Vietnam local and international price plan',
+      ph: 'Philippines local and international price plan',
+      hk: 'Hong Kong local and international price plan',
+      cn: 'China local and international price plan'
     };
 
-    const applyLanguage = (lang) => {
-      const dict = translations[lang] || translations.en;
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (dict[key]) el.textContent = dict[key];
+    const subtitleEl = document.getElementById('subtitle');
+    const updateSubtitle = (value) => {
+      if (subtitleEl) subtitleEl.textContent = languageByCountry[value] || 'Local mobile plans — simple, clear, and updated weekly.';
+    };
+
+    countrySelect.addEventListener('change', () => {
+      switchCountry(countrySelect.value);
+      updateSubtitle(countrySelect.value);
+    });
+
+    const switchCountry = (value) => {
+      Object.keys(tables).forEach(key => {
+        tables[key].style.display = key === value ? '' : 'none';
       });
-      if (langToggle) {
-        const labels = { en: 'EN', id: 'ID', th: 'TH', vn: 'VN', zh: '中文' };
-        langToggle.textContent = '🌐 ' + (labels[lang] || 'EN');
+      if (countrySelect.value !== value) {
+        countrySelect.value = value;
       }
     };
 
-    if (countrySelect && tables.sg && tables.my && tables.id && tables.th && tables.vn && tables.ph && tables.hk && tables.cn) {
-      const switchCountry = (value) => {
-        Object.keys(tables).forEach(key => {
-          tables[key].style.display = key === value ? '' : 'none';
-        });
-        if (countrySelect.value !== value) {
-          countrySelect.value = value;
-        }
-      };
+    switchCountry('sg');
+    updateSubtitle('sg');
 
-      countrySelect.addEventListener('change', () => {
-        switchCountry(countrySelect.value);
-        const lang = languageByCountry[countrySelect.value] || 'en';
-        applyLanguage(lang);
-      });
-
-      switchCountry('sg');
-
-      try {
-        fetch('https://ipwho.is/', { signal: AbortSignal.timeout(800) })
-          .then(res => res.json())
-          .then(data => {
-            if (data && data.country_code) {
-              const code = String(data.country_code).toLowerCase();
-              if (tables[code]) switchCountry(code);
+    try {
+      fetch('https://ipwho.is/', { signal: AbortSignal.timeout(800) })
+        .then(res => res.json())
+        .then(data => {
+          if (data && data.country_code) {
+            const code = String(data.country_code).toLowerCase();
+            if (tables[code]) {
+              switchCountry(code);
+              updateSubtitle(code);
             }
-          })
-          .catch(() => {});
-      } catch (e) { /* noop */ }
-    }
+          }
+        })
+        .catch(() => {});
+    } catch (e) { /* noop */ }
   </script>
 </body>
 </html>

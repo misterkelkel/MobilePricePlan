@@ -489,6 +489,7 @@
         <option value="vn">Vietnam</option>
         <option value="ph">Philippines</option>
         <option value="hk">Hong Kong</option>
+        <option value="cn">China</option>
       </select>
     </div>
 
@@ -660,6 +661,36 @@
           <td><a href="https://www.hk.chinamobile.com" target="_blank" rel="noopener">CMHK</a></td>
         </tr>
       </tbody>
+
+      <tbody id="plans-cn" style="display:none;">
+        <tr>
+          <td>China Mobile 4G/5G Starter</td>
+          <td class="price">From ¥58 / mo<span class="detail">30GB 5G/4G</span></td>
+          <td>Prepaid</td>
+          <td><span class="badge badge-likely">Likely</span></td>
+          <td>Strong nationwide coverage</td>
+          <td>Requires real-name registration</td>
+          <td><a href="https://www.10086.cn" target="_blank" rel="noopener">China Mobile</a></td>
+        </tr>
+        <tr>
+          <td>China Unicom Everyday Card</td>
+          <td class="price">From ¥55 / mo<span class="detail">20GB 5G/4G</span></td>
+          <td>Prepaid</td>
+          <td><span class="badge badge-likely">Likely</span></td>
+          <td>Budget-friendly entry plan</td>
+          <td>Widely available in cities</td>
+          <td><a href="https://www.chinaunicom.com.cn" target="_blank" rel="noopener">China Unicom</a></td>
+        </tr>
+        <tr>
+          <td>China Telecom Fly Card</td>
+          <td class="price">From ¥59 / mo<span class="detail">25GB 5G/4G</span></td>
+          <td>Prepaid</td>
+          <td><span class="badge badge-likely">Likely</span></td>
+          <td>Good for short-term use</td>
+          <td>Available online and in-store</td>
+          <td><a href="https://www.chinatelecom.com.cn" target="_blank" rel="noopener">China Telecom</a></td>
+        </tr>
+      </tbody>
     </table>
 
     <div class="country-selector">
@@ -785,7 +816,7 @@
       }, 6000);
     });
 
-    // Country selector
+    // Country selector with geo-default
     const countrySelect = document.getElementById('country');
     const tables = {
       sg: document.getElementById('plans-sg'),
@@ -794,19 +825,36 @@
       th: document.getElementById('plans-th'),
       vn: document.getElementById('plans-vn'),
       ph: document.getElementById('plans-ph'),
-      hk: document.getElementById('plans-hk')
+      hk: document.getElementById('plans-hk'),
+      cn: document.getElementById('plans-cn')
     };
 
     if (countrySelect && tables.sg && tables.my && tables.id && tables.th && tables.vn && tables.ph && tables.hk) {
-      const switchCountry = () => {
-        const value = countrySelect.value;
+      const switchCountry = (value) => {
         Object.keys(tables).forEach(key => {
           tables[key].style.display = key === value ? '' : 'none';
         });
+        if (countrySelect.value !== value) {
+          countrySelect.value = value;
+        }
       };
 
-      countrySelect.addEventListener('change', switchCountry);
-      switchCountry();
+      // Default to Singapore, then try geo-detection
+      switchCountry('sg');
+
+      countrySelect.addEventListener('change', () => switchCountry(countrySelect.value));
+
+      try {
+        fetch('https://ipwho.is/', { signal: AbortSignal.timeout(800) })
+          .then(res => res.json())
+          .then(data => {
+            if (data && data.country_code) {
+              const code = String(data.country_code).toLowerCase();
+              if (tables[code]) switchCountry(code);
+            }
+          })
+          .catch(() => {});
+      } catch (e) { /* noop */ }
     }
   </script>
 </body>

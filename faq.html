@@ -26,6 +26,58 @@
       background: var(--bg);
       color: var(--text);
       line-height: 1.7;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .bg-ambient {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .bg-ambient::before,
+    .bg-ambient::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: .12;
+    }
+
+    .bg-ambient::before {
+      width: 45vw;
+      height: 45vw;
+      top: -10%;
+      right: -10%;
+      background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+    }
+
+    .bg-ambient::after {
+      width: 40vw;
+      height: 40vw;
+      bottom: -8%;
+      left: -10%;
+      background: radial-gradient(circle, #c29061 0%, transparent 70%);
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, .72);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255, .85);
+      box-shadow: 0 10px 30px rgba(0,0,0,.04);
+    }
+
+    .faq-item, .contact-card {
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .faq-item:hover, .contact-card:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(0,0,0,.06);
     }
 
     a { color: var(--accent); text-decoration: none; }

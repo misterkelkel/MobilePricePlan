@@ -35,6 +35,92 @@
       color: var(--text);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .bg-ambient {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .bg-ambient::before,
+    .bg-ambient::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: .12;
+    }
+
+    .bg-ambient::before {
+      width: 45vw;
+      height: 45vw;
+      top: -10%;
+      right: -10%;
+      background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+    }
+
+    .bg-ambient::after {
+      width: 40vw;
+      height: 40vw;
+      bottom: -8%;
+      left: -10%;
+      background: radial-gradient(circle, #c29061 0%, transparent 70%);
+    }
+
+    /* Anti-Gravity glass container system */
+    .glass {
+      background: rgba(255, 255, 255, .72);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255, .85);
+      box-shadow: 0 10px 30px rgba(0,0,0,.04);
+    }
+
+    /* Ambient card hover lift */
+    .toast,
+    .card,
+    .faq-section,
+    .contact-section,
+    table,
+    .callout {
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .toast:hover,
+    .faq-section:hover,
+    .contact-section:hover,
+    table:hover,
+    .callout:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(0,0,0,.06);
+    }
+
+    /* Table with subtle glass */
+    table {
+      background: rgba(255,255,255,.72);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border-color: rgba(255,255,255,.9);
+    }
+
+    thead th {
+      background: rgba(194,94,53,.04);
+      border-bottom: 1px solid rgba(194,94,53,.12);
+      color: #5a4a3d;
+      font-weight: 600;
+    }
+
+    tbody td {
+      border-bottom: 1px solid rgba(0,0,0,.03);
+    }
+
+    tbody tr {
+      transition: background .2s ease, transform .2s ease;
     }
 
     header, main, footer {
@@ -95,13 +181,61 @@
       padding-bottom: 4rem;
     }
 
+    .glass.card {
+      background: rgba(255, 255, 255, .72);
+      border-color: rgba(255,255,255, .85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,.04);
+    }
+
     .toast {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
+      background: rgba(255, 255, 255, .72);
+      border: 1px solid rgba(255,255,255, .85);
+      border-radius: 16px;
       padding: 1rem 1.25rem;
       margin-bottom: 2rem;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,.04);
+    }
+
+    .country-selector select {
+      padding: 0.45rem 0.9rem;
+      border-radius: 12px;
+      border: 1.5px solid var(--border);
+      background: rgba(255,255,255, .78);
+      font-size: 0.95rem;
+      font-family: inherit;
+      color: var(--text);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+
+    .faq-section,
+    .contact-section {
+      background: rgba(255, 255, 255, .72);
+      border: 1px solid rgba(255,255,255, .85);
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin-top: 1.5rem;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,.04);
+    }
+
+    .faq-buttons button {
+      background: rgba(255,255,255, .72);
+      border: 1px solid rgba(255,255,255, .85);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+
+    .faq-answer {
+      background: rgba(255,255,255, .72);
+      border: 1px solid rgba(255,255,255, .85);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
     }
 
     .toast .updated {
@@ -262,11 +396,13 @@
     }
 
     .card {
-      background: var(--surface);
+      background: rgba(255, 255, 255, .72);
       padding: 1.25rem 1.5rem;
-      border: 1px solid var(--border);
+      border: 1px solid rgba(255,255,255, .85);
       border-radius: 14px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,.04);
     }
 
     .card h2 {
@@ -284,6 +420,14 @@
     .info-card {
       border-left: 3px solid var(--accent);
       font-family: 'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      background: rgba(255, 255, 255, .72);
+      border-top: 1px solid rgba(255,255,255, .85);
+      border-right: 1px solid rgba(255,255,255, .85);
+      border-bottom: 1px solid rgba(255,255,255, .85);
+      border-radius: 14px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,.04);
     }
 
     .info-card h2 {
@@ -463,23 +607,6 @@
       display: flex;
       align-items: center;
       gap: 1.5rem;
-    }
-
-    .social-bar a {
-      color: var(--accent);
-      text-decoration: none;
-      font-size: 0.95rem;
-      font-weight: 500;
-    }
-
-    .social-bar a:hover,
-    .social-bar a:focus-visible {
-      color: var(--accent-hover);
-    }
-    .social-bar {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
       flex-wrap: wrap;
       justify-content: center;
     }
@@ -514,13 +641,20 @@
       transform: translateY(-1px);
       box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     }
-      transform: translateY(-1px);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    }
 
     .social-icon {
       width: 22px;
       height: 22px;
+    }
+
+    .footer-meta,
+    .built-by {
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .footer-meta.spacer {
+      height: 0.5rem;
     }
 
     @media (max-width: 768px) {
@@ -561,6 +695,7 @@
   </style>
 </head>
 <body>
+  <div class="bg-ambient" aria-hidden="true"></div>
   <header>
     <div class="logo">
       <div class="logo-mark"><img src="mascot.png" alt="MobilePricePlan mascot" /></div>
@@ -1017,13 +1152,6 @@
       </div>
     </div>
 
-    <div class="section" id="sim">
-      <div class="card">
-        <h2>Local SIM / Prepaid</h2>
-        <p>Good starting points for short stays or light users. We show local prepaid options that residents also top up regularly.</p>
-      </div>
-    </div>
-
     <div class="callout" style="text-align: center;">
       <p>Questions? Visit <a href="faq.html">FAQ</a></p>
     </div>
@@ -1044,10 +1172,9 @@
         <svg class="social-icon" viewBox="0 0 24 24" width="22" height="22" fill="#0a66c2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
       </a>
     </div>
-      <div class="footer-meta">
-        © MobilePricePlan.com · Updated as of <span id="footer-month">July 2026</span>
-        <span class="built-by">Built by Hermes AI</span>
-      </div>
+      <div class="footer-meta">© MobilePricePlan.com · Updated as of <span id="footer-month">July 2026</span></div>
+      <div class="footer-meta spacer"></div>
+      <div class="built-by">Built by Hermes AI</div>
     </div>
   </footer>
 

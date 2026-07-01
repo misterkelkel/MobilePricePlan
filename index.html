@@ -6,12 +6,12 @@
   <meta name="description" content="Local and international mobile price plans — updated weekly, simple and clear. Compare local SIM, eSIM, and roaming plans for Singapore, Malaysia, Indonesia, Thailand, Vietnam, Philippines, Hong Kong, China, Japan and more.">
   <meta name="keywords" content="mobile plan, SIM plan, eSIM, roaming, prepaid, postpaid, Singapore, Malaysia, Indonesia, Thailand, Vietnam, Philippines, Hong Kong, China, Japan, travel SIM">
   <meta name="author" content="Kelvin Seow">
-  <meta property="og:title" content="MobilePricePlan.com — Local Mobile Plans">
+  <meta property="og:title" content="MobilePricePlan.com — Local Mobile Price Plan">
   <meta property="og:description" content="Simple, clear local and international mobile price plans — updated weekly.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mobilepriceplan.com">
   <meta property="og:image" content="https://mobilepriceplan.com/mascot.png">
-  <title>MobilePricePlan.com — Local Mobile Plans</title>
+  <title>MobilePricePlan.com — Local Mobile Price Plan</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -190,14 +190,70 @@
     }
 
     .toast {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
       background: rgba(255, 255, 255, .72);
       border: 1px solid rgba(255,255,255, .85);
       border-radius: 16px;
-      padding: 1rem 1.25rem;
-      margin-bottom: 2rem;
+      padding: 0.8rem 1.2rem;
+      margin-bottom: 1rem;
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      box-shadow: 0 10px 30px rgba(0,0,0,.04);
+      box-shadow: 0 10px 30px rgba(0,0,0,.06);
+    }
+
+    .toast .brand {
+      font-weight: 600;
+      color: var(--mpp-blue);
+      font-size: 0.92rem;
+    }
+
+    .toast .ad-slot {
+      flex: 1 1 auto;
+      min-width: 180px;
+    }
+
+    .toast .ad-slot .ad-unit {
+      display: block;
+      width: 100%;
+      min-height: 38px;
+      background:
+        repeating-linear-gradient(45deg, rgba(199,123,63,.08) 0, rgba(199,123,63,.08) 6px, rgba(199,123,63,.18) 6px, rgba(199,123,63,.18) 12px);
+      border: 1px dashed rgba(60,45,20,.35);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      color: #4a3f36;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .toast .ad-slot .ad-unit{text-decoration:none}
+    .toast .ad-slot .ad-unit:hover {
+      border-color: var(--terra);
+      color: var(--terra);
+    }
+
+    @media (max-width: 768px) {
+      .toast {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+        padding: 1rem 1rem;
+      }
+
+      .toast .brand {
+        margin-bottom: 0.25rem;
+        font-size: 0.9rem;
+      }
+
+      .toast .ad-slot {
+        margin-top: 0.35rem;
+      }
     }
 
     .country-selector select {
@@ -702,14 +758,12 @@
       <div class="logo-mark"><img src="mascot.png" alt="MobilePricePlan mascot" /></div>
       <h1>Mobile<span class="accent">Price</span>Plan.com</h1>
     </div>
-    <p id="subtitle">Local mobile plans — simple, clear, and updated weekly.</p>
+    <p id="subtitle">Local Mobile Price Plan — simple, clear, and updated weekly.</p>
   </header>
 
   <main>
     <div class="toast">
-      <div class="updated">Last updated: <span id="last-updated">June 2026</span></div>
-      <div class="disclaimer">Prices and terms can change weekly. Please double-check with each telco before signing up.</div>
-      <div class="disclaimer">Data drawn from public telco and comparison feeds; not an official telco source.</div>
+      <div class="ad-slot"><a class="ad-unit" href="mailto:hello@mobilepriceplan.com?subject=Ad inquiry — MobilePricePlan.com">Sponsored placement — advertise here</a></div>
     </div>
 
     <div class="country-selector">
@@ -1485,48 +1539,48 @@
 
     const languageByCountry = {
       sg: [
-        'Singapore local and international price plan',
+        'Singapore Mobile Price Plan',
         '新加坡本地和国际价格计划',
         'Rancang harga tempatan dan antarabangsa Singapura'
       ],
       my: [
-        'Malaysia local and international price plan',
+        'Malaysia Mobile Price Plan',
         'Plan lokal dan antarabangsa Malaysia',
         '马来西亚本地和国际价格计划'
       ],
       id: [
-        'Indonesia local and international price plan',
+        'Indonesia Mobile Price Plan',
         'Rencana harga lokal dan internasional Indonesia'
       ],
       th: [
-        'Thailand local and international price plan',
+        'Thailand Mobile Price Plan',
         'แผนค่ารายเดือนในประเทศไทย'
       ],
       vn: [
-        'Vietnam local and international price plan',
+        'Vietnam Mobile Price Plan',
         'Gói cước Việt Nam trong nước và quốc tế'
       ],
       ph: [
-        'Philippines local and international price plan',
+        'Philippines Mobile Price Plan',
         'Mga plano sa telepono sa Pilipinas'
       ],
       hk: [
-        'Hong Kong local and international price plan',
+        'Hong Kong Mobile Price Plan',
         '香港本地及國際電話計劃'
       ],
       cn: [
-        'China local and international price plan',
+        'China Mobile Price Plan',
         '中国本地及国际电话套餐'
       ],
-      jp: ['Japan local and international price plan', '日本のローカル・国際電話プラン'],
-      us: ['United States local and international price plan'],
-      in: ['India local and international price plan', 'India राष्ट्रीय और अंतर्राष्ट्रीय योजनाएँ']
+      jp: ['Japan Mobile Price Plan', '日本のローカル・国際電話プラン'],
+      us: ['United States Mobile Price Plan'],
+      in: ['India Mobile Price Plan', 'India राष्ट्रीय और अंतर्राष्ट्रीय योजनाएँ']
     };
 
     const subtitleEl = document.getElementById('subtitle');
     const updateSubtitle = (value) => {
       if (!subtitleEl) return;
-      const lines = languageByCountry[value] || ['Local mobile plans — simple, clear, and updated weekly.'];
+      const lines = languageByCountry[value] || ['Local Mobile Price Plan — simple, clear, and updated weekly.'];
       subtitleEl.textContent = lines.join('\n');
     };
 
@@ -1553,7 +1607,9 @@
         .then(data => {
           if (data && data.country_code) {
             const code = String(data.country_code).toLowerCase();
-            if (tables[code]) {
+            if (/^(sg|my|id|th|vn|ph|hk|cn|jp|us|in)$/.test(code)) {
+              window.location.assign(`${code}.html`);
+            } else if (tables[code]) {
               switchCountry(code);
               updateSubtitle(code);
             }

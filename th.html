@@ -36,7 +36,7 @@
     .subtitle{margin:6px 0 0;color:var(--muted)}
     .subtitle .local-lang{display:block;margin-top:2px;opacity:.8}
     a{color:var(--terra);text-decoration:underline;text-underline-offset:2px}
-    main.container{position:relative;z-index:1;max-width:980px;margin:0 auto;padding:14px 22px 36px}
+    main.container{position:relative;z-index:1;max-width:980px;margin:0 auto;padding:14px 22px 120px}
     .table-wrap{overflow:auto;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:0 14px 40px var(--shadow),0 8px 18px rgba(255,255,255,.35) inset;backdrop-filter:blur(12px)}
     table#plans-table{width:100%;border-collapse:collapse;font-size:15px;min-width:720px}
     #plans-table thead th{background:#fff;color:#423827;font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:14px 12px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
@@ -51,23 +51,18 @@
     .seo-content{margin-top:24px}
     .seo-content h2{color:var(--mpp-blue);margin:0 0 10px;font-size:20px}
     .seo-content p{color:#4a3f36;margin:0 0 12px}
-    footer{position:relative;z-index:1;padding:28px 22px 36px;text-align:center}
-    .social-bar{display:inline-flex;align-items:center;justify-content:center;gap:14px;padding-bottom:18px}
-    .social-bar a.social-circle{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:50%;background:#ffffff;border:1px solid var(--line);box-shadow:0 8px 20px rgba(0,0,0,.08);color:#4a3f36;transition:all .35s ease}
-    .social-bar a.social-circle:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,0,.12);color:var(--terra)}
+    footer{position:fixed;bottom:0;left:0;right:0;z-index:100;background:rgba(245,240,230,.95);backdrop-filter:blur(8px);border-top:1px solid rgba(160,120,80,.18);box-shadow:0 -4px 24px rgba(60,45,20,.08);padding:18px 22px 24px;text-align:center}
+    .social-bar{display:inline-flex;align-items:center;justify-content:center;gap:14px;padding-bottom:8px}
+    .social-bar a.social-circle{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:50%;background:#ffffff;border:1px solid #e4ddd1;box-shadow:0 8px 20px rgba(0,0,0,.08);color:#4a3f36;transition:all .35s ease}
+    .social-bar a.social-circle:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,0,.12);color:#c77b3f}
     .social-bar a.social-circle svg{width:22px;height:22px;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none;stroke:currentColor}
-    .footer-meta,.built-by{color:#6a5d51;font-size:13px}
-    .footer-meta.spacer{height:6px}
+    .social-icon{width:1.15rem;height:1.15rem;display:block}
+    main.container{padding-bottom:120px}
     @media (max-width:768px){#plans-table tbody td,#plans-table thead th{font-size:13px;padding:12px 10px}#plans-table{min-width:640px}}
-      .country-selector {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 0.75rem;
-      margin: 0 auto 1.5rem;
-      padding: 0 22px;
-      flex-wrap: wrap;
-    }
+    .country-selector{display:flex;justify-content:center;align-items:center;gap:0.75rem;margin:0 auto 1.5rem;padding:0 22px;flex-wrap:wrap}
+    .country-selector label{font-weight:500;font-size:0.95rem;color:var(--text)}
+    .country-selector select{padding:0.5rem 0.75rem;border-radius:10px;border:1.5px solid #d8cbb8;background:#ffffff;font-size:0.95rem;font-family:inherit;color:var(--text);cursor:pointer;outline:none}
+    .country-selector select:focus{box-shadow:0 0 0 3px rgba(199,123,63,.15)}
 
     .country-selector label {
       font-weight: 500;
@@ -119,15 +114,14 @@
       <div class="ad-slot"><a class="ad-unit" href="mailto:hello@mobilepriceplan.com?subject=Ad inquiry — MobilePricePlan.com">Sponsored placement — advertise here</a></div>
     </div>
 
-    </div>
-        <div class="country-selector">
+    <div class="country-selector">
       <label for="country">Country</label>
       <select id="country">
         <option value="" disabled selected>Select a country</option>
         <option value="sg">Singapore</option>
         <option value="my">Malaysia</option>
         <option value="id">Indonesia</option>
-        <option value="th">Thailand</option>
+        <option value="th" selected>Thailand</option>
         <option value="vn">Vietnam</option>
         <option value="ph">Philippines</option>
         <option value="hk">Hong Kong</option>
@@ -136,8 +130,11 @@
         <option value="us">United States</option>
         <option value="in">India</option>
       </select>
-    </div>
-<div class="intro">
+      </div>
+
+
+    
+    <div class="intro">
       <p>Thailand Mobile Price Plan — prepaid, postpaid and tourist SIM from AIS, True and dtac. Updated weekly with local and visitor-friendly options for <strong>Thailand</strong>. Compare prices, data, validity and direct carrier links.</p>
     </div>
     <div class="table-wrap">
@@ -197,22 +194,19 @@
 
   <footer>
     <div class="social-bar">
-      <a href="https://mobilepriceplan.com" aria-label="About">
+      <a href="about.html" aria-label="About" class="social-circle">
         <svg class="social-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
       </a>
-      <a href="https://mobilepriceplan.com/faq.html" aria-label="FAQ">
+      <a href="faq.html" aria-label="FAQ" class="social-circle">
         <svg class="social-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
       </a>
-      <a href="https://instagram.com/x.s.seow" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <a href="https://instagram.com/x.s.seow" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-circle">
         <svg class="social-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
       </a>
-      <a href="https://www.linkedin.com/in/seow-xi-sun-kelvin-0950379" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+      <a href="https://www.linkedin.com/in/seow-xi-sun-kelvin-0950379" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social-circle">
         <svg class="social-icon" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
       </a>
     </div>
-    <div class="footer-meta">© MobilePricePlan.com · Updated as of July 2026</div>
-    <div class="footer-meta spacer"></div>
-    <div class="built-by">Built by Hermes AI</div>
   </footer>
 
     <script>

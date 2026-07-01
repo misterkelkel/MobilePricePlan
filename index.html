@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="MobilePricePlan compares prepaid, postpaid, tourist SIM and eSIM plans across Asia and beyond. Updated weekly with local and visitor-friendly options, direct carrier links and weekly refreshed pricing.">
+  <meta name="description" content="Local and international mobile price plans — updated weekly, simple and clear. Compare local SIM, eSIM, and roaming plans for Singapore, Malaysia, Indonesia, Thailand, Vietnam, Philippines, Hong Kong, China, Japan and more.">
   <meta name="keywords" content="mobile plan, SIM plan, eSIM, roaming, prepaid, postpaid, Singapore, Malaysia, Indonesia, Thailand, Vietnam, Philippines, Hong Kong, China, Japan, travel SIM">
   <meta name="author" content="Kelvin Seow">
   <meta property="og:title" content="MobilePricePlan.com — Local Mobile Price Plan">
@@ -11,41 +11,744 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mobilepriceplan.com">
   <meta property="og:image" content="https://mobilepriceplan.com/mascot.png">
-  <title>Mobile Price Plan — compare prepaid, postpaid and tourist SIM worldwide</title>
+  <title>MobilePricePlan.com — Local Mobile Price Plan</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
-:root{color-scheme:light}
-  *{box-sizing:border-box}
-  body{margin:0;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#FAFAF8;color:#2D2A26}
-  h1,h2,h3{font-family:fraunces,serif}
-  .app-header{position:fixed;top:0;left:0;right:0;z-index:110;background:#d0541d;color:#fff;padding:14px 18px;box-shadow:0 8px 24px rgba(0,0,0,.12)}
-  .header-row{max-width:980px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-  .header-title{margin:0;font-family:'Fraunces',serif;font-weight:600;font-size:18px;color:#fff}
-  .header-muted{opacity:.9;font-size:12px;color:#fff}
-  .header-row select{background:#fff;color:#2D2A26;border:0;border-radius:999px;padding:8px 10px;font-size:13px;font-weight:600;min-width:160px}
-  .app-content{padding:76px 16px 116px;max-width:980px;margin:0 auto}
-  .toast{margin-bottom:14px;background:linear-gradient(180deg,rgba(160,120,80,.08),rgba(160,120,80,.04));border:1px solid rgba(160,120,80,.14);border-radius:14px;padding:10px 12px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
-  .ad-unit{color:#5b4632;text-decoration:none;font-weight:600;font-size:13px}
-  .ad-unit .ad-tag{display:inline-flex;align-items:center;padding:2px 8px;border-radius:999px;background:#4a3f36;color:#fff;font-size:10px;font-weight:700;margin-right:8px;letter-spacing:.04em}
-  .updated-label{font-size:12px;color:#6b5e53;font-family:JetBrains Mono,monospace}
-  .plan-grid{display:grid;grid-template-columns:1fr;gap:14px}
-  @media (min-width:640px){.plan-grid{grid-template-columns:repeat(2,1fr)}}
-  .plan-card{background:#fff;border:1px solid rgba(194,94,53,.12);border-radius:16px;padding:16px;box-shadow:0 12px 30px rgba(0,0,0,.04);display:flex;flex-direction:column;gap:8px}
-  .plan-card .carrier{font-weight:700;font-size:15px;color:#2D2A26}
-  .plan-card .price{font-family:'Fraunces',serif;font-weight:600;color:#8C5212;font-size:17px}
-  .plan-card .detail{color:#5A4A3D;font-size:13px;margin-left:6px}
-  .plan-card .meta{margin-top:4px;display:flex;flex-wrap:wrap;gap:8px}
-  .badge{display:inline-flex;align-items:center;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:600;background:#F8ECE4;color:#4A3F36;text-decoration:none}
-  .badge-yes{background:#E7F4EA;color:#2D6A3F}
-  .visit-link{display:inline-flex;align-items:center;justify-content:center;padding:10px 12px;border-radius:999px;background:#2D2A26;color:#fff;font-size:12px;font-weight:700;text-decoration:none;margin-top:8px}
-  .visit-link:hover{background:#3e352d}
-  .bottom-nav{position:fixed;bottom:0;left:0;right:0;z-index:110;background:rgba(255,255,255,.92);border-top:1px solid rgba(160,120,80,.18);box-shadow:0 -4px 24px rgba(60,45,20,.08);backdrop-filter:blur(10px)}
-  .nav-inner{max-width:980px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
-  .nav-item{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:10px 4px;text-decoration:none;color:#5A4A3D;font-size:11px;font-weight:600}
-  .nav-item svg{width:22px;height:22px}
-  .nav-item.active{color:#d0541d}
+    :root {
+      --bg: #faf7f2;
+      --surface: #ffffff;
+      --text: #2d2a26;
+      --muted: #7a756d;
+      --accent: #c25e35;
+      --accent-hover: #a84b27;
+      --accent-soft: #f8ece4;
+      --border: #e8e4dd;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .bg-ambient {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .bg-ambient::before,
+    .bg-ambient::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(140px);
+      opacity: .18;
+    }
+
+    .bg-ambient::before {
+      width: 55vw;
+      height: 55vw;
+      top: -12%;
+      right: -12%;
+      background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+    }
+
+    .bg-ambient::after {
+      width: 48vw;
+      height: 48vw;
+      bottom: -10%;
+      left: -12%;
+      background: radial-gradient(circle, #c29061 0%, transparent 70%);
+    }
+
+    /* Anti-Gravity glass container system */
+    .glass {
+      background: rgba(255, 255, 255, .72);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255, .85);
+      box-shadow: 0 10px 30px rgba(0,0,0,.04);
+    }
+
+    /* Ambient card hover lift */
+    .toast,
+    .card,
+    .faq-section,
+    .contact-section,
+    table,
+    .callout {
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .toast:hover,
+    .faq-section:hover,
+    .contact-section:hover,
+    table:hover,
+    .callout:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(0,0,0,.06);
+    }
+
+    /* Table with subtle glass */
+    table {
+      background: rgba(255,255,255,.72);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border-color: rgba(255,255,255,.9);
+    }
+
+    thead th {
+      background: rgba(194,94,53,.04);
+      border-bottom: 1px solid rgba(194,94,53,.12);
+      color: #5a4a3d;
+      font-weight: 600;
+    }
+
+    tbody td {
+      border-bottom: 1px solid rgba(0,0,0,.03);
+    }
+
+    tbody tr {
+      transition: background .2s ease, transform .2s ease;
+    }
+
+    header, main, footer {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+    }
+
+    header {
+      padding-top: 2.5rem;
+      padding-bottom: 2rem;
+      text-align: center;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .logo-mark {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 4px 14px rgba(194,94,53,0.22);
+      background: var(--accent);
+    }
+
+    .logo-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    header h1 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 600;
+      font-size: 2.1rem;
+      letter-spacing: -0.5px;
+    }
+
+    header h1 .accent {
+      color: var(--accent);
+    }
+
+    header p {
+      color: var(--muted);
+      margin-top: 0.5rem;
+      font-size: 1.05rem;
+      white-space: pre-line;
+    }
+
+    main {
+      padding-bottom: 4rem;
+    }
+
+    .glass.card {
+      background: rgba(255, 255, 255, .72);
+      border-color: rgba(255,255,255, .85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,.04);
+    }
+
+    .toast {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, .72);
+      border: 1px solid rgba(255,255,255, .85);
+      border-radius: 16px;
+      padding: 0.8rem 1.2rem;
+      margin-bottom: 1rem;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,.06);
+    }
+
+    .toast .brand {
+      font-weight: 600;
+      color: var(--mpp-blue);
+      font-size: 0.92rem;
+    }
+
+    .toast .ad-slot {
+      flex: 1 1 auto;
+      min-width: 180px;
+    }
+
+    .toast .ad-slot .ad-unit {
+      display: block;
+      width: 100%;
+      min-height: 38px;
+      background:
+        repeating-linear-gradient(45deg, rgba(199,123,63,.08) 0, rgba(199,123,63,.08) 6px, rgba(199,123,63,.18) 6px, rgba(199,123,63,.18) 12px);
+      border: 1px dashed rgba(60,45,20,.35);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      color: #4a3f36;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .toast .ad-slot .ad-unit{text-decoration:none}
+    .toast .ad-slot .ad-unit:hover {
+      border-color: var(--terra);
+      color: var(--terra);
+    }
+
+    @media (max-width: 768px) {
+      .toast {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+        padding: 1rem 1rem;
+      }
+
+      .toast .brand {
+        margin-bottom: 0.25rem;
+        font-size: 0.9rem;
+      }
+
+      .toast .ad-slot {
+        margin-top: 0.35rem;
+      }
+    }
+
+    .country-selector select {
+      padding: 0.45rem 0.9rem;
+      border-radius: 12px;
+      border: 1.5px solid var(--border);
+      background: rgba(255,255,255, .78);
+      font-size: 0.95rem;
+      font-family: inherit;
+      color: var(--text);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+
+    .faq-section,
+    .contact-section {
+      background: rgba(255, 255, 255, .72);
+      border: 1px solid rgba(255,255,255, .85);
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin-top: 1.5rem;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,.04);
+    }
+
+    .faq-buttons button {
+      background: rgba(255,255,255, .72);
+      border: 1px solid rgba(255,255,255, .85);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+
+    .faq-answer {
+      background: rgba(255,255,255, .72);
+      border: 1px solid rgba(255,255,255, .85);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+
+    .toast .updated {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .toast .disclaimer {
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-top: 0.25rem;
+    }
+
+    .country-selector {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .country-selector label {
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .country-selector select {
+      padding: 0.4rem 0.75rem;
+      border-radius: 10px;
+      border: 1.5px solid var(--border);
+      background: #fff;
+      font-size: 0.95rem;
+      font-family: inherit;
+      color: var(--text);
+    }
+
+    .language-toggle {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .language-toggle button {
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #fff;
+      font-size: 0.85rem;
+      cursor: pointer;
+      font-family: inherit;
+      color: var(--text);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+      margin-bottom: 2rem;
+    }
+
+    thead th {
+      background: #faf7f2;
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      text-align: left;
+      padding: 0.9rem 1rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    tbody td {
+      padding: 0.9rem 1rem;
+      border-bottom: 1px solid #f0ece5;
+      vertical-align: top;
+      font-size: 0.95rem;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    tbody tr:hover {
+      background: #fdf9f4;
+    }
+
+    tbody tr:nth-child(even) {
+      background: #fdfaf6;
+    }
+
+    tbody tr:nth-child(even):hover {
+      background: #fdf9f4;
+    }
+
+    .price {
+      white-space: nowrap;
+      font-weight: 600;
+    }
+
+    .price .detail {
+      display: block;
+      font-weight: 400;
+      color: var(--muted);
+      font-size: 0.82rem;
+      margin-top: 0.15rem;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-right: 0.25rem;
+    }
+
+    .badge-yes {
+      background: #e8f5e9;
+      color: #2e7d32;
+    }
+
+    .badge-likely {
+      background: #fff3e0;
+      color: #e65100;
+    }
+
+    .badge-best {
+      background: #fff8e1;
+      color: #b25d00;
+      border: 1px solid #ffe0b2;
+    }
+
+    .badge-unknown {
+      background: #f3f4f6;
+      color: #6b7280;
+    }
+
+    td a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    td a:hover {
+      text-decoration: underline;
+    }
+
+    .section {
+      margin-bottom: 2rem;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, .72);
+      padding: 1.25rem 1.5rem;
+      border: 1px solid rgba(255,255,255, .85);
+      border-radius: 14px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,.04);
+    }
+
+    .card h2 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 500;
+      font-size: 1.15rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .info-card {
+      border-left: 3px solid var(--accent);
+      font-family: 'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      background: rgba(255, 255, 255, .72);
+      border-top: 1px solid rgba(255,255,255, .85);
+      border-right: 1px solid rgba(255,255,255, .85);
+      border-bottom: 1px solid rgba(255,255,255, .85);
+      border-radius: 14px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,.04);
+    }
+
+    .info-card h2 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 500;
+      font-size: 1.15rem;
+      margin-bottom: 0.35rem;
+      color: var(--text);
+    }
+
+    .info-card p {
+      color: var(--muted);
+      font-size: 0.96rem;
+      line-height: 1.7;
+    }
+
+    .typewriter {
+      display: inline;
+      position: relative;
+    }
+
+    .typewriter::after {
+      content: '';
+      display: inline-block;
+      width: 0.75rem;
+      height: 1.25em;
+      background: var(--accent);
+      margin-left: 4px;
+      vertical-align: text-bottom;
+      animation: blink 0.82s steps(2) infinite;
+      border-radius: 1px;
+    }
+
+    @keyframes blink {
+      0% { opacity: 1; }
+      41% { opacity: 0; }
+      59% { opacity: 0; }
+      82% { opacity: 1; }
+      100% { opacity: 1; }
+    }
+
+    /* FAQ */
+    .faq-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-top: 2rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .faq-section h2 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 500;
+      font-size: 1.2rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .faq-intro {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .faq-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .faq-buttons button {
+      text-align: left;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border);
+      background: #fdfaf6;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-family: inherit;
+      color: var(--text);
+    }
+
+    .faq-buttons button:hover {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .faq-answer {
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: 10px;
+      background: #fdfaf6;
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      display: none;
+    }
+
+    /* Contact */
+    .contact-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-top: 2rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .contact-section h2 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 500;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      background: #fff;
+      font-size: 0.95rem;
+      font-family: inherit;
+      color: var(--text);
+    }
+
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .contact-form button {
+      justify-self: start;
+      padding: 0.7rem 1.25rem;
+      border: none;
+      border-radius: 10px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .contact-form button:hover {
+      background: var(--accent-hover);
+    }
+
+    .contact-status {
+      margin-top: 0.75rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem 1.25rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .social-bar {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .social-bar a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      color: var(--accent);
+      text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      position: relative;
+    }
+
+    .social-bar a.social-circle span {
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      text-align: center;
+      color: #7a5c48;
+      font-family: Georgia, serif;
+      padding: 0 4px;
+    }
+
+    .social-bar a:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+
+    .social-icon {
+      width: 22px;
+      height: 22px;
+    }
+
+    .footer-meta,
+    .built-by {
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .footer-meta.spacer {
+      height: 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+
+      thead {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+      }
+
+      tbody tr {
+        margin: 0.75rem 0;
+        background: var(--surface);
+        border-radius: 14px;
+        border: 1px solid var(--border);
+        padding: 0.85rem 0.95rem;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      }
+
+      tbody td {
+        border: none;
+        padding: 0.25rem 0;
+        position: relative;
+      }
+
+      tbody td:first-child {
+        font-weight: 600;
+        color: var(--text);
+        font-size: 1rem;
+        margin-bottom: 0.15rem;
+      }
+
+      td.price { white-space: normal; }
+    }
   </style>
 </head>
 <body>
@@ -58,30 +761,9 @@
     <p id="subtitle">Local Mobile Price Plan — simple, clear, and updated weekly.</p>
   </header>
 
-  <header class="app-header">
-  <div class="header-row">
-    <div>
-      <div class="header-muted">Mobile Price Plan</div>
-      <h1 class="header-title">Find local and tourist SIM plans</h1>
-    </div>
-    <select id="country" aria-label="Country">
-      <option value="" disabled selected>Select country</option>
-      <option value="sg.html">Singapore</option>
-      <option value="my.html">Malaysia</option>
-      <option value="id.html">Indonesia</option>
-      <option value="th.html">Thailand</option>
-      <option value="vn.html">Vietnam</option>
-      <option value="ph.html">Philippines</option>
-      <option value="hk.html">Hong Kong</option>
-      <option value="cn.html">China</option>
-      <option value="jp.html">Japan</option>
-      <option value="us.html">United States</option>
-      <option value="in.html">India</option>
-    </select>
-  </div>
-</header>
+  <main>
     <div class="toast">
-      <div class="ad-slot"><a class="ad-unit" href="mailto:hello@mobilepriceplan.com?subject=Ad inquiry — MobilePricePlan.com"><span class="ad-tag">Ad</span> Sponsored placement — advertise here</a><span class="updated-label">Updated monthly</span></div>
+      <div class="ad-slot"><a class="ad-unit" href="mailto:hello@mobilepriceplan.com?subject=Ad inquiry — MobilePricePlan.com">Sponsored placement — advertise here</a></div>
     </div>
 
     <div class="country-selector">
@@ -101,8 +783,7 @@
       </select>
     </div>
 
-    <div class="table-wrap">
-      <table id="plans-table">
+    <table id="plans-table">
       <thead>
         <tr>
           <th>Plan</th>
@@ -120,7 +801,7 @@
           <td>Jio Prepaid 50GB</td>
           <td class="price">₹249 / 30 days<span class="detail">50GB 4G/5G</span></td>
           <td>Prepaid</td>
-          <td><span class="badge badge-yes">Yes, eSIM available</span></td>
+          <td><span class="badge badge-yes">Yes</span></td>
           <td>Best value · unlimited calls · Jio network</td>
           <td>Popular long-stay pack</td>
           <td><a href="https://www.jio.com" target="_blank" rel="noopener">Jio</a></td>
@@ -129,7 +810,7 @@
           <td>Jio Prepaid 24GB</td>
           <td class="price">₹179 / 30 days<span class="detail">24GB 4G/5G</span></td>
           <td>Prepaid</td>
-          <td><span class="badge badge-yes">Yes, eSIM available</span></td>
+          <td><span class="badge badge-yes">Yes</span></td>
           <td>Unlimited calls · daily renew</td>
           <td>Budget daily data</td>
           <td><a href="https://www.jio.com" target="_blank" rel="noopener">Jio</a></td>
@@ -138,7 +819,7 @@
           <td>Airtel 50GB</td>
           <td class="price">₹299 / 84 days<span class="detail">50GB 4G/5G</span></td>
           <td>Prepaid</td>
-          <td><span class="badge badge-yes">Yes, eSIM available</span></td>
+          <td><span class="badge badge-yes">Yes</span></td>
           <td>Long validity · unlimited calls · rollover</td>
           <td>Best for 2–3 months stay</td>
           <td><a href="https://www.airtel.in" target="_blank" rel="noopener">Airtel</a></td>
@@ -186,7 +867,7 @@
           <td>GOMO 5G+ Value</td>
           <td class="price">From S$ 12.33 / mo<span class="detail">300GB 5G</span></td>
           <td>Sim-only</td>
-          <td><span class="badge badge-yes">Yes, eSIM available</span></td>
+          <td><span class="badge badge-yes">Yes</span></td>
           <td>800 min · 800 SMS · roaming add-on available</td>
           <td>2-month promo</td>
           <td><a href="https://www.gomo.sg" target="_blank" rel="noopener">GOMO</a></td>
@@ -471,7 +1152,7 @@
               <td>csl 1010 Prepaid SIM 15GB</td>
               <td class="price">From HK$148 / 30 days<span class="detail">15GB 4G/5G</span></td>
               <td>Prepaid</td>
-              <td><span class="badge badge-yes">Yes, eSIM available</span></td>
+              <td><span class="badge badge-yes">Yes</span></td>
               <td>eSIM eligible · strong city coverage</td>
               <td>Short-trip / backup</td>
               <td><a href="https://www.csl.com" target="_blank" rel="noopener">csl</a></td>
@@ -570,7 +1251,7 @@
           <td>Mobal Japan SIM 5GB</td>
           <td class="price">From ¥3,980 / mo<span class="detail">5GB 4G/LTE</span></td>
           <td>SIM + eSIM</td>
-          <td><span class="badge badge-yes">Yes, eSIM available</span></td>
+          <td><span class="badge badge-yes">Yes</span></td>
           <td>English support · ship to overseas address before travel</td>
           <td>Expats / long-stay</td>
           <td><a href="https://mobal.jp" target="_blank" rel="noopener">Mobal</a></td>
@@ -636,7 +1317,7 @@
           <td>Visible+ Plan</td>
           <td class="price">$45 / mo<span class="detail">Unlimited 5G/4G</span></td>
           <td>Postpaid MVNO</td>
-          <td><span class="badge badge-yes">Yes, eSIM available</span></td>
+          <td><span class="badge badge-yes">Yes</span></td>
           <td>Verizon network · no contract · premium data on 5G Ultra Wide</td>
           <td>Cheap Verizon-based unlimited</td>
           <td><a href="https://visible.com" target="_blank" rel="noopener">Visible</a></td>
@@ -645,7 +1326,7 @@
           <td>Mint Mobile 15GB</td>
           <td class="price">From $25 / mo<span class="detail">15GB 4G/5G</span></td>
           <td>Prepaid MVNO</td>
-          <td><span class="badge badge-yes">Yes, eSIM available</span></td>
+          <td><span class="badge badge-yes">Yes</span></td>
           <td>T-Mobile network · refill bundles available</td>
           <td>Good budget long-stay plan</td>
           <td><a href="https://mintmobile.com" target="_blank" rel="noopener">Mint Mobile</a></td>
@@ -677,29 +1358,26 @@
     <div class="callout" style="text-align: center;">
       <p>Questions? Visit <a href="faq.html">FAQ</a></p>
     </div>
-    </div>
   </main>
 
-  <nav class="bottom-nav" aria-label="Primary">
-  <div class="nav-inner">
-    <a href="index.html" class="nav-item" aria-label="Home">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-      Home
-    </a>
-    <a href="index.html" class="nav-item active" aria-label="Plans">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"></rect><line x1="8" y1="9" x2="16" y2="9"></line><line x1="8" y1="13" x2="16" y2="13"></line><line x1="8" y1="17" x2="12" y2="17"></line></svg>
-      Plans
-    </a>
-    <a href="index.html" class="nav-item" aria-label="Search">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-      Search
-    </a>
-    <a href="index.html#contact" class="nav-item" aria-label="Contact">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-      Contact
-    </a>
-  </div>
-</nav>
+  <footer>
+    <div class="social-bar">
+      <a href="about.html" aria-label="About" class="social-circle">
+        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+      </a>
+      <a href="faq.html" aria-label="FAQ" class="social-circle">
+        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+      </a>
+      <a href="https://instagram.com/x.s.seow" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-circle">
+        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/seow-xi-sun-kelvin-0950379" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social-circle">
+        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+      </a>
+    </div>
+      <div class="footer-meta">© MobilePricePlan.com · Updated as of <span id="footer-month">July 2026</span></div>
+        </div>
+  </footer>
 
   <script>
     const now = new Date();
@@ -865,41 +1543,35 @@
       ],
       my: [
         'Malaysia Mobile Price Plan',
-        '马来西亚本地和国际价格计划',
-        'Plan lokal dan antarabangsa Malaysia'
+        'Plan lokal dan antarabangsa Malaysia',
+        '马来西亚本地和国际价格计划'
       ],
       id: [
         'Indonesia Mobile Price Plan',
-        '印尼本地和国际价格计划',
         'Rencana harga lokal dan internasional Indonesia'
       ],
       th: [
         'Thailand Mobile Price Plan',
-        '泰国本地和国际价格计划',
-        'แพ็กเกจข้อมูลประเทศไทย'
+        'แผนค่ารายเดือนในประเทศไทย'
       ],
       vn: [
         'Vietnam Mobile Price Plan',
-        '越南本地和国际价格计划',
-        'Gói cước việt nam trong nước và quốc tế'
+        'Gói cước Việt Nam trong nước và quốc tế'
       ],
       ph: [
         'Philippines Mobile Price Plan',
-        '菲律宾本地和国际价格计划',
-        'Mga plano ng presyo ng lokal at internasyonal ng Pilipinas'
+        'Mga plano sa telepono sa Pilipinas'
       ],
       hk: [
         'Hong Kong Mobile Price Plan',
-        '香港本地及国际电话计划',
         '香港本地及國際電話計劃'
       ],
-      cn: ['China Mobile Price Plan', '中国本地及国际电话套餐'],
-      jp: ['Japan Mobile Price Plan', '日本のローカル・国際電話プラン'],
-      us: [
-        'United States Mobile Price Plan',
-        '美国本地和国际电话计划',
-        'Plan de telefonía móvil en EE.UU.'
+      cn: [
+        'China Mobile Price Plan',
+        '中国本地及国际电话套餐'
       ],
+      jp: ['Japan Mobile Price Plan', '日本のローカル・国際電話プラン'],
+      us: ['United States Mobile Price Plan'],
       in: ['India Mobile Price Plan', 'India राष्ट्रीय और अंतर्राष्ट्रीय योजनाएँ']
     };
 

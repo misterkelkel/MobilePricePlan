@@ -74,35 +74,6 @@
       flex-wrap: wrap;
     }
 
-    .country-selector label {
-      font-weight: 500;
-      font-size: 0.95rem;
-      color: var(--text);
-    }
-
-    .country-selector select {
-      padding: 0.5rem 0.75rem;
-      border-radius: 10px;
-      border: 1.5px solid #d8cbb8;
-      background: #ffffff;
-      font-size: 0.95rem;
-      font-family: inherit;
-      color: var(--text);
-      cursor: pointer;
-      outline: none;
-    }
-
-    .country-selector select:focus {
-      border-color: var(--terra);
-      box-shadow: 0 0 0 2px rgba(199, 123, 63, 0.2);
-    }
-
-    @media (max-width: 768px) {
-      .country-selector {
-        padding: 0 1rem;
-      }
-    }
-
     /* Ad carousel */
     .toast{margin-bottom:1.5rem;text-align:center}
     .ad-carousel{position:relative;overflow:hidden;border-radius:16px;border:1px solid rgba(160,120,80,.15);box-shadow:0 8px 24px rgba(60,45,20,.08);background:#ffffff;min-height:94px}
@@ -115,7 +86,12 @@
     .ad-sub{font-size:13px;color:#6a5d51}
     .ad-slide--misterkelkel .ad-title{color:#1f3a5f}
     .ad-slide--xiaoclan .ad-title{background:linear-gradient(135deg,#c77b3f,#f4b278);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-    .ad-slide--advertise .ad-title{color:#c77b3f}</style>
+    .ad-slide--advertise .ad-title{color:#c77b3f}    .ad-slide--adam .ad-title{color:#2d5a3f}    @media (max-width: 768px) {
+      .back-btn {
+        display: none !important;
+      }
+    }
+</style>
 </head>
 <body>
   <div class="bg-ambient" aria-hidden="true"></div>
@@ -125,7 +101,7 @@
         <img src="https://mobilepriceplan.com/mascot.png" alt="MobilePricePlan mascot" class="mascot-img" />
       </a>
       <div>
-        <h1><a href="https://mobilepriceplan.com" style="color:#ffffff;text-decoration:none;">Vietnam Mobile Price Plan</a></h1>
+        <h1><a href="https://mobilepriceplan.com" style="color:#1a1410;text-decoration:none;">Vietnam Mobile Price Plan</a></h1>
         <p class="subtitle">Vietnam Mobile Price Plan<br><span class="local-lang">越南本地和国际价格计划</span><br><span class="local-lang">Gói cước việt nam trong nước và quốc tế</span></p>
       </div>
     </div>
@@ -147,6 +123,21 @@
             <span class="ad-label">Sponsored</span>
             <span class="ad-title">xiaoclan.org</span>
             <span class="ad-sub">Anti-gravity retro-futuristic experiments</span>
+          </a>
+        </div>
+        <div class="ad-slide ad-slide--adam">
+          <a href="https://www.adamskoneczny.com" target="_blank" rel="noopener" class="ad-banner">
+            <span class="ad-label">Sponsored</span>
+            <span class="ad-title">AdamS Konieczny</span>
+            <span class="ad-sub">Pro cycling & endurance coaching</span>
+          </a>
+        </div>
+
+        <div class="ad-slide ad-slide--metaphysics">
+          <a href="https://metaphysics.it.com" target="_blank" rel="noopener" class="ad-banner">
+            <span class="ad-label">Sponsored</span>
+            <span class="ad-title">metaphysics.it.com</span>
+            <span class="ad-sub">Tech, mind &未来思考</span>
           </a>
         </div>
         <div class="ad-slide ad-slide--advertise">
@@ -197,30 +188,39 @@
         </thead>
         <tbody id="plans-vn">
             <tr>
-              <td>Viettel Starter SIM</td>
-              <td class="price">From 50,000–60,000 VND<span class="detail">Starter SIM</span></td>
+              <td>Viettel 5G Tourist SIM</td>
+              <td class="price">60,000 VND<span class="detail">5GB/day · 4G/5G · 7 days</span></td>
               <td>Prepaid</td>
               <td><span class="badge badge-likely">Likely</span></td>
-              <td>Best coverage · English-speaking official stores</td>
-              <td>SIM includes starting credit</td>
+              <td>Best overall coverage · official airport outlets</td>
+              <td>Short-trip entry SIM</td>
               <td><a href="https://vietteltelecom.vn" target="_blank" rel="noopener">Viettel</a></td>
             </tr>
             <tr>
-              <td>Viettel 2GB/day</td>
-              <td class="price">120,000 VND / mo<span class="detail">2GB/day · 4G/LTE</span></td>
+              <td>Viettel Data Monthly</td>
+              <td class="price">150,000 VND / mo<span class="detail">30GB total · 4G/LTE</span></td>
               <td>Prepaid</td>
               <td><span class="badge badge-likely">Likely</span></td>
-              <td>Budget data pack</td>
-              <td>30-day validity</td>
+              <td>Best long-term value · wide coverage</td>
+              <td>Longer-stay expats</td>
               <td><a href="https://vietteltelecom.vn" target="_blank" rel="noopener">Viettel</a></td>
             </tr>
             <tr>
-              <td>MobiFone 4GB/day</td>
-              <td class="price">110,000 VND / 30 days<span class="detail">4GB/day · 4G/LTE</span></td>
+              <td>MobiFone 2GB/day</td>
+              <td class="price">120,000 VND / 30 days<span class="detail">2GB/day · 4G/LTE</span></td>
               <td>Prepaid</td>
               <td><span class="badge badge-likely">Likely</span></td>
-              <td>Good city coverage · tourist packs available</td>
-              <td>Short-trip option</td>
+              <td>Balanced daily data pack</td>
+              <td>Monthly data use</td>
+              <td><a href="https://mobifone.vn" target="_blank" rel="noopener">MobiFone</a></td>
+            </tr>
+            <tr>
+              <td>MobiFone 5G7D</td>
+              <td class="price">70,000 VND<span class="detail">6GB/day · 5G · 7 days</span></td>
+              <td>Prepaid</td>
+              <td><span class="badge badge-likely">Likely</span></td>
+              <td>Fast short-trip deal</td>
+              <td>Week visits</td>
               <td><a href="https://mobifone.vn" target="_blank" rel="noopener">MobiFone</a></td>
             </tr>
           </tbody>

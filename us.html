@@ -74,35 +74,6 @@
       flex-wrap: wrap;
     }
 
-    .country-selector label {
-      font-weight: 500;
-      font-size: 0.95rem;
-      color: var(--text);
-    }
-
-    .country-selector select {
-      padding: 0.5rem 0.75rem;
-      border-radius: 10px;
-      border: 1.5px solid #d8cbb8;
-      background: #ffffff;
-      font-size: 0.95rem;
-      font-family: inherit;
-      color: var(--text);
-      cursor: pointer;
-      outline: none;
-    }
-
-    .country-selector select:focus {
-      border-color: var(--terra);
-      box-shadow: 0 0 0 2px rgba(199, 123, 63, 0.2);
-    }
-
-    @media (max-width: 768px) {
-      .country-selector {
-        padding: 0 1rem;
-      }
-    }
-
     /* Ad carousel */
     .toast{margin-bottom:1.5rem;text-align:center}
     .ad-carousel{position:relative;overflow:hidden;border-radius:16px;border:1px solid rgba(160,120,80,.15);box-shadow:0 8px 24px rgba(60,45,20,.08);background:#ffffff;min-height:94px}
@@ -115,7 +86,12 @@
     .ad-sub{font-size:13px;color:#6a5d51}
     .ad-slide--misterkelkel .ad-title{color:#1f3a5f}
     .ad-slide--xiaoclan .ad-title{background:linear-gradient(135deg,#c77b3f,#f4b278);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-    .ad-slide--advertise .ad-title{color:#c77b3f}</style>
+    .ad-slide--advertise .ad-title{color:#c77b3f}    .ad-slide--adam .ad-title{color:#2d5a3f}    @media (max-width: 768px) {
+      .back-btn {
+        display: none !important;
+      }
+    }
+</style>
 </head>
 <body>
   <div class="bg-ambient" aria-hidden="true"></div>
@@ -125,7 +101,7 @@
         <img src="https://mobilepriceplan.com/mascot.png" alt="MobilePricePlan mascot" class="mascot-img" />
       </a>
       <div>
-        <h1><a href="https://mobilepriceplan.com" style="color:#ffffff;text-decoration:none;">United States Mobile Price Plan</a></h1>
+        <h1><a href="https://mobilepriceplan.com" style="color:#1a1410;text-decoration:none;">United States Mobile Price Plan</a></h1>
         <p class="subtitle">United States Mobile Price Plan<br><span class="local-lang">美国本地和国际电话计划</span><br><span class="local-lang">Plan de telefonía móvil en EE.UU.</span></p>
       </div>
     </div>
@@ -147,6 +123,21 @@
             <span class="ad-label">Sponsored</span>
             <span class="ad-title">xiaoclan.org</span>
             <span class="ad-sub">Anti-gravity retro-futuristic experiments</span>
+          </a>
+        </div>
+        <div class="ad-slide ad-slide--adam">
+          <a href="https://www.adamskoneczny.com" target="_blank" rel="noopener" class="ad-banner">
+            <span class="ad-label">Sponsored</span>
+            <span class="ad-title">AdamS Konieczny</span>
+            <span class="ad-sub">Pro cycling & endurance coaching</span>
+          </a>
+        </div>
+
+        <div class="ad-slide ad-slide--metaphysics">
+          <a href="https://metaphysics.it.com" target="_blank" rel="noopener" class="ad-banner">
+            <span class="ad-label">Sponsored</span>
+            <span class="ad-title">metaphysics.it.com</span>
+            <span class="ad-sub">Tech, mind &未来思考</span>
           </a>
         </div>
         <div class="ad-slide ad-slide--advertise">

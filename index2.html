@@ -25,8 +25,6 @@
       --accent-hover: #a84b27;
       --accent-soft: #f8ece4;
       --border: #e8e4dd;
-      --mpp-blue: #1f2d5a;
-      --terra: #c77b3f;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -764,7 +762,7 @@
     .ad-sub{font-size:13px;color:#6a5d51}
     .ad-slide--misterkelkel .ad-title{color:#1f3a5f}
     .ad-slide--xiaoclan .ad-title{background:linear-gradient(135deg,#c77b3f,#f4b278);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-    .ad-slide--advertise .ad-title{color:#c77b3f}    .ad-slide--adam .ad-title{color:#2d5a3f}    .ad-slide--metaphysics .ad-title{color:#6d28d9}</style>
+    .ad-slide--advertise .ad-title{color:#c77b3f}    .ad-slide--adam .ad-title{color:#2d5a3f}     .ad-slide--metaphysics .ad-title{color:#6d28d9}</style>
 </head>
 <body>
   <div class="bg-ambient" aria-hidden="true"></div>
@@ -798,13 +796,6 @@
             <span class="ad-label">Sponsored</span>
             <span class="ad-title">AdamS Konieczny</span>
             <span class="ad-sub">Pro cycling & endurance coaching</span>
-          </a>
-        </div>
-        <div class="ad-slide ad-slide--metaphysics">
-          <a href="https://metaphysics.it.com" target="_blank" rel="noopener" class="ad-banner">
-            <span class="ad-label">Sponsored</span>
-            <span class="ad-title">metaphysics.it.com</span>
-            <span class="ad-sub">Tech, mind &未来思考</span>
           </a>
         </div>
 
@@ -1643,9 +1634,8 @@
 
     countrySelect.addEventListener('change', () => {
       const code = countrySelect.value;
-      if (code) {
-        window.location.assign(`${code}.html`);
-      }
+      // redirect disabled on index2.html for testing
+              // window.location.assign(`${code}.html`);
     });
 
     const switchCountry = (value) => {
@@ -1668,27 +1658,16 @@
           if (data && data.country_code) {
             const code = String(data.country_code).toLowerCase();
             if (/^(sg|my|id|th|vn|ph|hk|cn|jp|us|in)$/.test(code)) {
-              window.location.assign(`${code}.html`);
+              // redirect disabled on index2.html for testing
+              // window.location.assign(`${code}.html`);
             } else if (tables[code]) {
               switchCountry(code);
               updateSubtitle(code);
-            } else {
-              switchCountry('sg');
-              updateSubtitle('sg');
             }
-          } else {
-            switchCountry('sg');
-            updateSubtitle('sg');
           }
         })
-        .catch(() => {
-          switchCountry('sg');
-          updateSubtitle('sg');
-        });
-    } catch (e) { 
-      switchCountry('sg');
-      updateSubtitle('sg');
-    }
+        .catch(() => {});
+    } catch (e) { /* noop */ }
   
       // Rotating ad carousel
       (function() {

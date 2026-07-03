@@ -52,7 +52,7 @@
     .seo-content h2{color:var(--mpp-blue);margin:0 0 10px;font-size:20px}
     .seo-content p{color:#4a3f36;margin:0 0 12px}
     footer{position:fixed;bottom:0;left:0;right:0;z-index:100;background:rgba(245,240,230,.95);backdrop-filter:blur(8px);border-top:1px solid rgba(160,120,80,.18);box-shadow:0 -4px 24px rgba(60,45,20,.08);padding:18px 22px 24px;text-align:center}
-    .social-bar{display:inline-flex;align-items:center;justify-content:center;gap:14px;padding-bottom:8px}
+    .social-bar{display:inline-flex;align-items:center;justify-content:center;gap:14px;padding-bottom:18px}
     .social-bar a.social-circle{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:50%;background:#ffffff;border:1px solid #e4ddd1;box-shadow:0 8px 20px rgba(0,0,0,.08);color:#4a3f36;transition:all .35s ease}
     .social-bar a.social-circle:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,0,.12);color:#c77b3f}
     .social-bar a.social-circle svg{width:22px;height:22px;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none;stroke:currentColor}
@@ -76,34 +76,10 @@
     .ad-sub{font-size:13px;color:#6a5d51}
     .ad-slide--misterkelkel .ad-title{color:#1f3a5f}
     .ad-slide--xiaoclan .ad-title{background:linear-gradient(135deg,#c77b3f,#f4b278);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-    .ad-slide--advertise .ad-title{color:#c77b3f}
-
-    .country-selector label {
-      font-weight: 500;
-      font-size: 0.95rem;
-      color: var(--text);
-    }
-
-    .country-selector select {
-      padding: 0.5rem 0.75rem;
-      border-radius: 10px;
-      border: 1.5px solid #d8cbb8;
-      background: #ffffff;
-      font-size: 0.95rem;
-      font-family: inherit;
-      color: var(--text);
-      cursor: pointer;
-      outline: none;
-    }
-
-    .country-selector select:focus {
-      border-color: var(--terra);
-      box-shadow: 0 0 0 2px rgba(199, 123, 63, 0.2);
-    }
-
+    .ad-slide--advertise .ad-title{color:#c77b3f}    .ad-slide--adam .ad-title{color:#2d5a3f}
     @media (max-width: 768px) {
-      .country-selector {
-        padding: 0 1rem;
+      .back-btn {
+        display: none !important;
       }
     }
 </style>
@@ -116,7 +92,7 @@
         <img src="https://mobilepriceplan.com/mascot.png" alt="MobilePricePlan mascot" class="mascot-img" />
       </a>
       <div>
-        <h1><a href="https://mobilepriceplan.com" style="color:#ffffff;text-decoration:none;">Thailand Mobile Price Plan</a></h1>
+        <h1><a href="https://mobilepriceplan.com" style="color:#1a1410;text-decoration:none;">Thailand Mobile Price Plan</a></h1>
         <p class="subtitle">Thailand Mobile Price Plan<br><span class="local-lang">泰国本地和国际价格计划</span><br><span class="local-lang">แพ็กเกจข้อมูลประเทศไทย</span></p>
       </div>
     </div>
@@ -140,6 +116,21 @@
             <span class="ad-sub">Anti-gravity retro-futuristic experiments</span>
           </a>
         </div>
+        <div class="ad-slide ad-slide--adam">
+          <a href="https://www.adamskoneczny.com" target="_blank" rel="noopener" class="ad-banner">
+            <span class="ad-label">Sponsored</span>
+            <span class="ad-title">AdamS Konieczny</span>
+            <span class="ad-sub">Pro cycling & endurance coaching</span>
+          </a>
+        </div>
+
+        <div class="ad-slide ad-slide--metaphysics">
+          <a href="https://metaphysics.it.com" target="_blank" rel="noopener" class="ad-banner">
+            <span class="ad-label">Sponsored</span>
+            <span class="ad-title">metaphysics.it.com</span>
+            <span class="ad-sub">Tech, mind &未来思考</span>
+          </a>
+        </div>
         <div class="ad-slide ad-slide--advertise">
           <a href="about.html" class="ad-banner">
             <span class="ad-label">Advertise</span>
@@ -157,7 +148,7 @@
         <option value="sg">Singapore</option>
         <option value="my">Malaysia</option>
         <option value="id">Indonesia</option>
-        <option value="th" selected>Thailand</option>
+        <option value="th">Thailand</option>
         <option value="vn">Vietnam</option>
         <option value="ph">Philippines</option>
         <option value="hk">Hong Kong</option>

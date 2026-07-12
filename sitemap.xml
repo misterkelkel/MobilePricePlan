@@ -61,6 +61,11 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://mobilepriceplan.com/matcher.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://mobilepriceplan.com/about.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -69,5 +74,10 @@
     <loc>https://mobilepriceplan.com/faq.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mobilepriceplan.com/changelog.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.4</priority>
   </url>
 </urlset>

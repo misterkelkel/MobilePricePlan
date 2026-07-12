@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Mobile Price Plan Smart Matcher — find your perfect plan instantly, offline. Privacy-first, no tracking.">
+<title>MobilePricePlan.com — Smart Matcher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0b10;
+    --surface: #161622;
+    --surface-2: #1c1c2e;
+    --border: rgba(255,255,255,.08);
+    --text: #e8e8f0;
+    --muted: #8b8b9e;
+    --accent: #00ebd6;
+    --accent-2: #ff6e40;
+    --accent-soft: rgba(0,235,214,.08);
+    --track: #0f0f14;
+    --radius: 16px;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  .bg-ambient {
+    position: fixed; inset:0; z-index: -1; pointer-events:none; overflow:hidden;
+  }
+  .bg-ambient::before, .bg-ambient::after {
+    content:''; position:absolute; border-radius:50%; filter:blur(160px); opacity:.14;
+  }
+  .bg-ambient::before {
+    width:55vw; height:55vw; top:-10%; right:-10%;
+    background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+  }
+  .bg-ambient::after {
+    width:48vw; height:48vw; bottom:-10%; left:-10%;
+    background: radial-gradient(circle, var(--accent-2) 0%, transparent 70%);
+  }
+  header, main, footer {
+    max-width: 1100px; margin: 0 auto; padding-left: 1.25rem; padding-right: 1.25rem;
+  }
+  header {
+    padding-top: 1.5rem; padding-bottom: 1rem;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+  }
+  .logo { display:inline-flex; align-items:center; gap:.7rem; text-decoration:none; }
+  .logo-mark {
+    width:40px; height:40px; border-radius:10px;
+    background: var(--accent); color: var(--bg);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'JetBrains Mono',monospace; font-weight:700; font-size:.9rem;
+    box-shadow: 0 0 18px rgba(0,235,214,.25);
+  }
+  .logo-text {
+    display:flex; flex-direction:column;
+    font-weight:700; letter-spacing:.3px; color: var(--text);
+  }
+  .logo-text small { font-size:.65rem; color: var(--muted); letter-spacing:.5px; }
+  .lang-toggle {
+    display:inline-flex; gap:2px; background: var(--surface);
+    border:1px solid var(--border); border-radius:999px; padding:3px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.25);
+  }
+  .lang-toggle button {
+    background:transparent; border:none; color: var(--muted);
+    font-family: 'JetBrains Mono', monospace; font-size:.75rem; font-weight:700;
+    padding:.45rem .8rem; border-radius:999px; cursor:pointer;
+    transition: all .2s ease;
+  }
+  .lang-toggle button.active {
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: var(--bg);
+    box-shadow: 0 4px 12px rgba(0,235,214,.15);
+  }
+  .greeting {
+    font-size:.8rem; color: var(--muted);
+    display:flex; align-items:center; gap:.5rem;
+  }
+  .greeting .badge {
+    background: var(--accent-soft); color: var(--accent);
+    border:1px solid rgba(0,235,214,.2); border-radius:999px;
+    padding:.2rem .5rem; font-size:.65rem; font-weight:700;
+    font-family:'JetBrains Mono',monospace;
+  }
+
+  main { padding-bottom: 3rem; }
+  .hero {
+    text-align:center; padding: 2rem 0 1.5rem;
+  }
+  .hero h1 {
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight:700; letter-spacing:-.5px;
+    background: linear-gradient(135deg, var(--text) 30%, var(--accent));
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  }
+  .hero p { color: var(--muted); margin-top:.4rem; font-size:.95rem; }
+
+  .slider-grid {
+    display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap:1rem; margin-bottom:1.5rem;
+  }
+  .slider-card {
+    background: var(--surface);
+    border:1px solid var(--border);
+    border-radius: var(--radius);
+    padding:1.25rem 1.25rem 1rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,.25);
+    backdrop-filter: blur(10px);
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .slider-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px rgba(0,0,0,.35);
+    border-color: rgba(0,235,214,.15);
+  }
+  .slider-card label {
+    display:flex; justify-content:space-between; align-items:baseline;
+    font-size:.8rem; color: var(--muted); font-weight:600;
+    text-transform:uppercase; letter-spacing:.08em; margin-bottom:.75rem;
+  }
+  .slider-readout {
+    font-family:'JetBrains Mono',monospace; font-size:1.1rem; font-weight:700;
+    color: var(--accent); min-width: 60px; text-align:right;
+  }
+  .quick-chips { display:flex; gap:.4rem; flex-wrap:wrap; margin:.6rem 0 .2rem; }
+  .chip {
+    background: var(--surface-2); border:1px solid var(--border);
+    color: var(--text); padding:.3rem .6rem; border-radius:999px;
+    font-size:.7rem; font-family:'JetBrains Mono',monospace;
+    cursor:pointer; transition: all .15s ease;
+  }
+  .chip:hover, .chip.active {
+    background: var(--accent); color: var(--bg); border-color: var(--accent);
+    box-shadow: 0 0 12px rgba(0,235,214,.3);
+  }
+
+  input[type="range"] {
+    -webkit-appearance:none; appearance:none; width:100%; height:6px;
+    background: var(--track); border-radius:3px; outline:none; cursor:pointer;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance:none; width:22px; height:22px; border-radius:50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    border:2px solid var(--bg); cursor:pointer;
+    box-shadow: 0 0 14px rgba(0,235,214,.35);
+    transition: transform .15s ease;
+  }
+  input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.1); }
+  input[type="range"]::-moz-range-thumb {
+    width:22px; height:22px; border-radius:50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    border:2px solid var(--bg); cursor:pointer;
+    box-shadow: 0 0 14px rgba(0,235,214,.35);
+  }
+
+  .results {
+    display:grid; gap:1rem;
+  }
+  .pass-card {
+    background: var(--surface);
+    border:1px solid var(--border);
+    border-radius: var(--radius);
+    padding:1.25rem 1.5rem;
+    display:flex; align-items:center; justify-content:space-between;
+    gap:1rem; flex-wrap:wrap;
+    box-shadow: 0 10px 30px rgba(0,0,0,.25);
+    backdrop-filter: blur(10px);
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    animation: fadeInUp .5s ease forwards;
+  }
+  .pass-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 40px rgba(0,0,0,.4);
+    border-color: rgba(0,235,214,.2);
+  }
+  .pass-brand { font-weight:700; font-size:1rem; color: var(--text); }
+  .pass-name {
+    font-family:'JetBrains Mono',monospace; font-size:.85rem; color: var(--accent);
+    margin-top:.15rem;
+  }
+  .pass-meta { font-size:.8rem; color: var(--muted); margin-top:.2rem; }
+  .pass-price {
+    font-family:'JetBrains Mono',monospace; font-size:1.4rem; font-weight:700;
+    color: var(--accent-2);
+  }
+  .pass-price small { font-size:.7rem; color: var(--muted); font-weight:500; display:block; margin-top:.1rem; }
+  .pass-match {
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: var(--bg); font-weight:800; font-size:.75rem;
+    padding:.35rem .6rem; border-radius:999px; white-space:nowrap;
+    font-family:'JetBrains Mono',monospace;
+  }
+  .pass-cta {
+    display:inline-block; margin-top:.5rem; padding:.45rem .9rem;
+    background: var(--surface-2); border:1px solid var(--border);
+    color: var(--accent); text-decoration:none; font-size:.8rem;
+    border-radius:8px; font-weight:600; transition: all .2s ease;
+  }
+  .pass-cta:hover {
+    background: var(--accent); color: var(--bg); border-color: var(--accent);
+  }
+  .empty-state {
+    text-align:center; padding:3rem; color: var(--muted); font-size:.95rem;
+  }
+
+  .trust-banner {
+    background: linear-gradient(90deg, rgba(194,94,53,.12), rgba(250,247,242,.06));
+    border-top:1px solid var(--border); border-bottom:1px solid var(--border);
+    padding:1.25rem; text-align:center;
+    font-family:'JetBrains Mono',monospace; font-size:.75rem; color: var(--text);
+    margin-top:2rem;
+  }
+  .trust-banner .lock { color:#4ade80; margin-right:.4rem; }
+  .trust-banner strong { color:#f8ece4; }
+
+  footer {
+    padding:1.5rem 1.25rem; text-align:center; color: var(--muted); font-size:.8rem;
+  }
+  footer .social-bar {
+    display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-bottom:.75rem;
+  }
+  footer .social-bar a {
+    display:inline-flex; align-items:center; justify-content:center;
+    width:44px; height:44px; border-radius:50%;
+    background: var(--surface); border:1px solid var(--border);
+    color: var(--accent); transition: all .2s ease;
+  }
+  footer .social-bar a:hover {
+    border-color: var(--accent); transform: translateY(-1px);
+    box-shadow: 0 0 14px rgba(0,235,214,.2);
+  }
+  .social-icon { width:18px; height:18px; }
+
+  @keyframes fadeInUp {
+    from { opacity:0; transform:translateY(14px); }
+    to { opacity:1; transform:translateY(0); }
+  }
+  @media (max-width: 768px) {
+    .pass-card { flex-direction:column; align-items:flex-start; }
+    .pass-cta { width:100%; text-align:center; }
+  }
+
+    /* ---- Progress & Changelog (dark, matcher theme) ---- */
+    .mpp-progress{
+      --mp-forest:#00ebd6; --mp-bronze:#ff6e40; --mp-muted:#8b8b9e; --mp-line:rgba(255,255,255,.1);
+      margin-top:3.5rem; padding-top:2.5rem;
+    }
+    .mpp-progress-rule{ width:64px; height:1px; background:var(--mp-bronze); opacity:.6; margin:0 auto 2rem; }
+    .mpp-progress-grid{ display:grid; grid-template-columns:1.6fr 1fr; gap:clamp(1.5rem,4vw,3rem); align-items:start; }
+    @media(max-width:760px){ .mpp-progress-grid{ grid-template-columns:1fr; } }
+    .mpp-eyebrow{ font-size:.72rem; letter-spacing:.28em; text-transform:uppercase; color:var(--mp-bronze); margin-bottom:1rem; }
+    .mpp-h2{ font-family:'Cormorant Garamond',Georgia,serif; font-weight:500; font-size:clamp(1.6rem,3.4vw,2.2rem); color:var(--text); line-height:1.05; margin-bottom:1.2rem; }
+    .mpp-log{ list-style:none; display:flex; flex-direction:column; gap:1rem; }
+    .mpp-log li{ font-size:.9rem; line-height:1.6; color:var(--text); }
+    .mpp-date{ display:block; font-family:'JetBrains Mono',monospace; font-size:.72rem; letter-spacing:.06em; color:var(--mp-forest); margin-bottom:.15rem; }
+    .mpp-visitors{ border-left:1px solid var(--mp-line); padding-left:clamp(1rem,3vw,2rem); }
+    @media(max-width:760px){ .mpp-visitors{ border-left:none; padding-left:0; border-top:1px solid var(--mp-line); padding-top:2rem; } }
+    .mpp-count{ margin:1rem 0; }
+    .mpp-badge{ height:34px; border-radius:8px; }
+    .mpp-note{ font-size:.72rem; line-height:1.5; color:var(--mp-muted); max-width:22rem; }
+  </style>
+</head>
+<body>
+  <div class="bg-ambient" aria-hidden="true"></div>
+  <header>
+    <div style="display:flex; align-items:center; gap:.75rem; flex-wrap:wrap;">
+      <a href="/" class="logo">
+        <div class="logo-mark">MPP</div>
+        <div class="logo-text">MobilePricePlan<small>.com</small></div>
+      </a>
+      <div class="greeting" id="greeting"></div>
+    </div>
+    <div class="lang-toggle">
+      <button id="btnEn" class="active" onclick="setLang('en')">ENG</button>
+      <button id="btnZh" onclick="setLang('zh')">中文</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1 data-i18n="hero_title">Smart Plan Matcher</h1>
+      <p data-i18n="hero_sub">Find your ideal SG plan in seconds. No sign-up. No tracking. Pure math.</p>
+    </section>
+
+    <section class="slider-grid" id="sliders">
+      <div class="slider-card">
+        <label>
+          <span data-i18n="lbl_data">Monthly Data Need</span>
+          <span class="slider-readout" id="dataReadout">50 <small data-i18n="unit_gb">GB</small></span>
+        </label>
+        <input type="range" id="dataSlider" min="0" max="300" value="50" step="5">
+        <div class="quick-chips">
+          <button class="chip" onclick="setData(20)" data-i18n="chip_20gb">20GB</button>
+          <button class="chip" onclick="setData(50)" data-i18n="chip_50gb">50GB</button>
+          <button class="chip" onclick="setData(100)" data-i18n="chip_100gb">100GB</button>
+          <button class="chip" onclick="setData(250)" data-i18n="chip_unlimited">∞ Unlimited</button>
+        </div>
+      </div>
+
+      <div class="slider-card">
+        <label>
+          <span data-i18n="lbl_talk">Monthly Talktime</span>
+          <span class="slider-readout" id="talkReadout">200 <small data-i18n="unit_min">mins</small></span>
+        </label>
+        <input type="range" id="talkSlider" min="0" max="1000" value="200" step="50">
+      </div>
+
+      <div class="slider-card">
+        <label>
+          <span data-i18n="lbl_budget">Max Monthly Budget</span>
+          <span class="slider-readout" id="budgetReadout">$40</span>
+        </label>
+        <input type="range" id="budgetSlider" min="10" max="100" value="40" step="5">
+      </div>
+    </section>
+
+    <section class="results" id="results" aria-live="polite">
+      <div class="empty-state" data-i18n="empty_state">Adjust sliders to see matched plans.</div>
+    </section>
+
+    <div class="trust-banner">
+      <span class="lock">🔒</span>
+      <span data-i18n="trust">Zero Telemetry. Your data utilization profile never leaves this screen. All contract calculations happen completely offline in your browser.</span>
+    </div>
+  </main>
+
+    <div id="progressSlot" data-badge="#00ebd6" data-label="#161622"></div>
+
+  <footer>
+    <div class="social-bar">
+      <a href="about.html" aria-label="About"><svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg></a>
+      <a href="https://instagram.com/x.s.seow" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+      <a href="https://www.linkedin.com/in/seow-xi-sun-kelvin-0950379" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+    </div>
+    <div>© MobilePricePlan.com · Built by Hermes AI</div>
+  </footer>
+
+<script>
+const KEY_DATA = 'mpp.telecom.data_gb';
+const KEY_TALK = 'mpp.telecom.talk_min';
+const KEY_BUDGET = 'mpp.telecom.budget';
+const KEY_PROFILE = 'mpp.profile';
+const KEY_LANG = 'appLanguage';
+
+const t = {
+  en: {
+    hero_title:'Smart Plan Matcher', hero_sub:'Find your ideal SG plan in seconds. No sign-up. No tracking. Pure math.',
+    lbl_data:'Monthly Data Need', unit_gb:'GB', lbl_talk:'Monthly Talktime', unit_min:'mins', lbl_budget:'Max Monthly Budget',
+    chip_20gb:'20GB', chip_50gb:'50GB', chip_100gb:'100GB', chip_unlimited:'∞ Unlimited',
+    empty_state:'Adjust sliders to see matched plans.',
+    card_data:'Data', card_talk:'Talk', card_unlimited:'Unlimited', card_esim:'eSIM',
+    cta:'Visit →', trust:'Zero Telemetry. Your data utilization profile never leaves this screen. All contract calculations happen completely offline in your browser.',
+    welcome_back:'Welcome back', guest:'Guest'
+  },
+  zh: {
+    hero_title:'智能套餐匹配器', hero_sub:'数秒找到你的新加坡理想套餐。无需注册，无追踪，纯本地计算。',
+    lbl_data:'每月数据需求', unit_gb:'GB', lbl_talk:'每月通话分钟', unit_min:'分钟', lbl_budget:'最高月费预算',
+    chip_20gb:'20GB', chip_50gb:'50GB', chip_100gb:'100GB', chip_unlimited:'∞ 无限',
+    empty_state:'请调整滑块以查看匹配套餐。',
+    card_data:'流量', card_talk:'通话', card_unlimited:'无限', card_esim:'eSIM',
+    cta:'访问 →', trust:'零遥测足迹。您的流量与资费比对完全在本机安全运行，数据绝不会离开当前屏幕。所有配套计算完全离线完成。',
+    welcome_back:'欢迎回来', guest:'访客'
+  }
+};
+
+const PLANS = [
+  { brand:'ZYM', name:'Flexi Duo', monthlyPrice:7.00, dataGB:77, talkMins:0, esim:true, type:'Sim-only', url:'https://zym.sg' },
+  { brand:'ZYM', name:'Roam Saver', monthlyPrice:7.77, dataGB:200, talkMins:300, esim:true, type:'Sim-only', url:'https://zym.sg' },
+  { brand:'GOMO', name:'Value 5G+', monthlyPrice:9.17, dataGB:400, talkMins:800, esim:true, type:'Sim-only', url:'https://www.gomo.sg' },
+  { brand:'Circles Life', name:'Basic 5G', monthlyPrice:10.00, dataGB:60, talkMins:0, esim:true, type:'Sim-only', url:'https://www.circles.life' },
+  { brand:'Simba', name:'Basic 5G', monthlyPrice:10.00, dataGB:50, talkMins:0, esim:false, type:'Sim-only', url:'https://www.simba.sg' },
+  { brand:'Zero1', name:'Vibe 5G', monthlyPrice:10.00, dataGB:700, talkMins:1000, esim:true, type:'Sim-only', url:'https://zero1.sg' },
+  { brand:'GOMO', name:'Core 5G+', monthlyPrice:10.50, dataGB:700, talkMins:1000, esim:true, type:'Sim-only', url:'https://www.gomo.sg' },
+  { brand:'M1', name:'Bespoke Flexi 25', monthlyPrice:24.95, dataGB:25, talkMins:100, esim:true, type:'Postpaid', url:'https://www.m1.com.sg' },
+  { brand:'Singtel', name:'Prepaid 50GB', monthlyPrice:15.00, dataGB:50, talkMins:50, esim:false, type:'Prepaid', url:'https://www.singtel.com' },
+  { brand:'StarHub', name:'Prepaid 45GB', monthlyPrice:14.00, dataGB:45, talkMins:50, esim:false, type:'Prepaid', url:'https://www.starhub.com' },
+  { brand:'Maxis', name:'Postpaid 38', monthlyPrice:38.00, dataGB:30, talkMins:200, esim:false, type:'Postpaid', url:'https://www.maxis.com.my' },
+  { brand:'U Mobile', name:'Postpaid 38', monthlyPrice:38.00, dataGB:25, talkMins:100, esim:false, type:'Postpaid', url:'https://www.u.com.my' },
+  { brand:'CelcomDigi', name:'Postpaid 45 SE', monthlyPrice:45.00, dataGB:100, talkMins:300, esim:true, type:'Postpaid', url:'https://www.celcomdigi.com' },
+  { brand:'Yes', name:'4G/5G Starter', monthlyPrice:29.00, dataGB:20, talkMins:50, esim:true, type:'Prepaid', url:'https://www.yes.my' },
+  { brand:'RedONE', name:'Postpaid 38', monthlyPrice:38.00, dataGB:50, talkMins:200, esim:true, type:'Postpaid', url:'https://www.redone.com.my' },
+  { brand:'Republic', name:'Basic 5G', monthlyPrice:15.00, dataGB:60, talkMins:100, esim:true, type:'Sim-only', url:'https://www.republic.sg' },
+  { brand:'Eight', name:'Basic 5G', monthlyPrice:18.00, dataGB:80, talkMins:0, esim:false, type:'Sim-only', url:'https://www.eight.com.sg' },
+  { brand:'Maxx', name:'Mid-tier 5G', monthlyPrice:16.00, dataGB:70, talkMins:100, esim:true, type:'Sim-only', url:'https://www.maxx.com.sg' },
+  { brand:'VIVIFI', name:'Digital 5G', monthlyPrice:12.00, dataGB:55, talkMins:0, esim:true, type:'Sim-only', url:'https://vivifi.com' },
+  { brand:'StarHub', name:'5G Unlimited+', monthlyPrice:55.00, dataGB:999, talkMins:999, esim:true, type:'Postpaid', url:'https://www.starhub.com' },
+  { brand:'Singtel', name:'5G Unlimited+', monthlyPrice:60.00, dataGB:999, talkMins:999, esim:true, type:'Postpaid', url:'https://www.singtel.com' },
+  { brand:'M1', name:'Bespoke Flexi 55', monthlyPrice:44.95, dataGB:55, talkMins:300, esim:true, type:'Postpaid', url:'https://www.m1.com.sg' }
+];
+
+let lang = localStorage.getItem(KEY_LANG) || 'en';
+let saveTimer = null;
+let dataVal = 50, talkVal = 200, budgetVal = 40;
+
+function tx(key) { return (t[lang] && t[lang][key]) || t.en[key] || key; }
+
+function applyLang() {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.getAttribute('data-i18n');
+    if (t[lang][k]) el.innerHTML = t[lang][k];
+  });
+  document.getElementById('btnEn').classList.toggle('active', lang==='en');
+  document.getElementById('btnZh').classList.toggle('active', lang==='zh');
+}
+function setLang(l) {
+  lang = l; localStorage.setItem(KEY_LANG, l); applyLang(); run();
+}
+
+function fmtData(gb) { return gb >= 999 ? tx('card_unlimited') : gb + ' ' + tx('unit_gb'); }
+function fmtTalk(m) { return m >= 999 ? tx('card_unlimited') : m + ' ' + tx('unit_min'); }
+function fmtPrice(s) { return '$' + s.toFixed(2); }
+
+function score(plan) {
+  const d = dataVal, t = talkVal, b = budgetVal;
+  const planD = plan.dataGB === 999 ? 999 : plan.dataGB;
+  const planT = plan.talkMins === 999 ? 999 : plan.talkMins;
+  const dataScore = d === 0 ? 1 : Math.max(0, 1 - Math.abs(planD - d) / Math.max(d,1));
+  const talkScore = t === 0 ? 1 : Math.max(0, 1 - Math.abs(planT - t) / Math.max(t,1));
+  const budgetScore = Math.max(0, 1 - Math.abs(plan.monthlyPrice - b) / b);
+  const bonus = plan.esim ? 0.05 : 0;
+  return (dataScore * 0.5 + talkScore * 0.3 + budgetScore * 0.2) + bonus;
+}
+
+function render() {
+  const top = [...PLANS].sort((a,b)=>score(b)-score(a)).slice(0,3);
+  const results = document.getElementById('results');
+  results.innerHTML = '';
+  if (top.length === 0) {
+    results.innerHTML = '<div class="empty-state">'+tx('empty_state')+'</div>'; return;
+  }
+  top.forEach((plan, i) => {
+    const s = score(plan);
+    const pct = Math.min(100, Math.round(s * 100));
+    const card = document.createElement('div');
+    card.className = 'pass-card';
+    card.style.animationDelay = (i * 60) + 'ms';
+    card.innerHTML = `
+      <div>
+        <div class="pass-brand">${plan.brand}</div>
+        <div class="pass-name">${plan.name}</div>
+        <div class="pass-meta">${fmtData(plan.dataGB)} · ${fmtTalk(plan.talkMins)} ${plan.esim ? '· '+tx('card_esim') : ''}</div>
+      </div>
+      <div style="text-align:right;">
+        <div class="pass-price">${fmtPrice(plan.monthlyPrice)}<small>/mo</small></div>
+        <div class="pass-match">${pct}% match</div>
+        <a class="pass-cta" href="${plan.url}" target="_blank" rel="noopener">${tx('cta')}</a>
+      </div>
+    `;
+    results.appendChild(card);
+  });
+}
+
+function saveProfile() {
+  const profile = {
+    name: (document.getElementById('profileName') && document.getElementById('profileName').value) || '',
+    country: (document.getElementById('profileCountry') && document.getElementById('profileCountry').value) || ''
+  };
+  localStorage.setItem(KEY_PROFILE, JSON.stringify(profile));
+}
+function initGreeting() {
+  let prof = {};
+  try { prof = JSON.parse(localStorage.getItem(KEY_PROFILE) || '{}'); } catch(e){ prof={}; }
+  const el = document.getElementById('greeting');
+  if (!el) return;
+  const who = (prof.name || prof.country) ? prof.name + (prof.name && prof.country ? ' · ' : '') + prof.country : tx('guest');
+  el.innerHTML = '<span>'+tx('welcome_back')+' '+(who||tx('guest'))+'</span><span class="badge">🛡️</span>';
+}
+
+function run() {
+  render();
+}
+function debouncedSave() {
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(()=>{
+    localStorage.setItem(KEY_DATA, dataVal);
+    localStorage.setItem(KEY_TALK, talkVal);
+    localStorage.setItem(KEY_BUDGET, budgetVal);
+  }, 300);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const dataSlider = document.getElementById('dataSlider');
+  const talkSlider = document.getElementById('talkSlider');
+  const budgetSlider = document.getElementById('budgetSlider');
+  const dataReadout = document.getElementById('dataReadout');
+  const talkReadout = document.getElementById('talkReadout');
+  const budgetReadout = document.getElementById('budgetReadout');
+
+  dataVal = parseInt(localStorage.getItem(KEY_DATA) || '50', 10);
+  talkVal = parseInt(localStorage.getItem(KEY_TALK) || '200', 10);
+  budgetVal = parseInt(localStorage.getItem(KEY_BUDGET) || '40', 10);
+  dataSlider.value = dataVal; talkSlider.value = talkVal; budgetSlider.value = budgetVal;
+
+  const updateUI = () => {
+    dataReadout.innerHTML = dataVal + ' <small>' + tx('unit_gb') + '</small>';
+    talkReadout.innerHTML = talkVal + ' <small>' + tx('unit_min') + '</small>';
+    budgetReadout.textContent = '$' + budgetVal;
+    document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+    const match = document.querySelector(`.chip[onclick="setData(${dataVal})"]`);
+    if (match) match.classList.add('active');
+  };
+
+  dataSlider.addEventListener('input', () => { dataVal = parseInt(dataSlider.value,10); updateUI(); run(); debouncedSave(); });
+  talkSlider.addEventListener('input', () => { talkVal = parseInt(talkSlider.value,10); updateUI(); run(); debouncedSave(); });
+  budgetSlider.addEventListener('input', () => { budgetVal = parseInt(budgetSlider.value,10); updateUI(); run(); debouncedSave(); });
+
+  window.setData = (val) => { dataVal = val; dataSlider.value = val; updateUI(); run(); debouncedSave(); };
+
+  applyLang(); updateUI(); initGreeting(); run();
+});
+</script>
+<script src="geo-redirect.js"></script>
+<script src="progress-footer.js"></script>
+<script defer data-domain="mobilepriceplan.com" src="https://plausible.io/js/script.js"></script>
+</body>
+</html>

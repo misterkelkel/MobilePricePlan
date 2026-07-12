@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Changelog — MobilePricePlan.com</title>
+  <meta name="description" content="What we've shipped on MobilePricePlan.com — plan updates, new tools, and site milestones.">
+  <link rel="canonical" href="https://mobilepriceplan.com/changelog.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#fcf8f2; --surface:#ffffff; --text:#2d2a26; --muted:#6b7a6e;
+      --forest:#1b3322; --bronze:#9c7b4d; --line:rgba(27,59,43,.14);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:'Inter',system-ui,sans-serif; background:var(--bg);
+      color:var(--text); line-height:1.7; padding:0 0 4rem;
+    }
+    .wrap{max-width:760px;margin:0 auto;padding:3.5rem 1.5rem 0}
+    .back{display:inline-block;margin-bottom:1.5rem;font-size:.9rem;color:var(--bronze);text-decoration:none}
+    .back:hover{text-decoration:underline}
+    h1{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:clamp(2rem,5vw,3rem);color:var(--forest);line-height:1.05}
+    .lede{color:var(--muted);margin:.5rem 0 2.5rem;font-size:1rem}
+    .rule{width:64px;height:1px;background:var(--bronze);opacity:.5;margin:0 0 2rem}
+    .entry{padding:1.5rem 0;border-top:1px solid var(--line)}
+    .entry:first-of-type{border-top:none}
+    .entry .date{display:block;font-family:'JetBrains Mono',monospace;font-size:.78rem;letter-spacing:.06em;color:var(--bronze);margin-bottom:.35rem}
+    .entry h2{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;font-size:1.4rem;color:var(--forest);margin-bottom:.4rem}
+    .entry p{font-size:.98rem;color:var(--text);max-width:42rem}
+    .visitors{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--line);text-align:center}
+    .visitors .mpp-badge{height:34px;border-radius:8px}
+    .visitors .mpp-note{font-size:.72rem;color:var(--muted);margin-top:.6rem}
+    .visitors a{color:var(--bronze);text-decoration:none}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="back" href="index.html">← Back to plans</a>
+    <h1>Changelog</h1>
+    <p class="lede">Every meaningful update to MobilePricePlan.com, newest first.</p>
+    <div class="rule"></div>
+
+    <div class="entry">
+      <span class="date">2026-07-12</span>
+      <h2>Progress &amp; Changelog, everywhere</h2>
+      <p>Added this changelog and a consolidated, cookieless visitor counter to every page — including the country plan pages you land on after the geo-redirect. The changelog is a single shared source, so updates appear site-wide at once.</p>
+    </div>
+
+    <div class="entry">
+      <span class="date">2026-06-30</span>
+      <h2>12-country plan comparison</h2>
+      <p>Launched the country plan comparison tables — Singapore, Malaysia, Indonesia, Thailand, Vietnam, Philippines, Hong Kong, China, Japan, US, and India — with weekly-refreshed pricing and direct carrier links.</p>
+    </div>
+
+    <div class="entry">
+      <span class="date">2026-06-28</span>
+      <h2>Offline Smart Plan Matcher</h2>
+      <p>Shipped the Smart Plan Matcher — privacy-first, no sign-up, all scoring runs locally in your browser. Your usage profile never leaves the screen.</p>
+    </div>
+
+    <div class="entry">
+      <span class="date">2026-06-14</span>
+      <h2>Foundation &amp; pipeline</h2>
+      <p>Site foundation, brand system, and the weekly-updated plan pipeline put in place.</p>
+    </div>
+
+    <div class="visitors">
+      <a href="https://hits.sh/mobilepriceplan.com/" target="_blank" rel="noopener" aria-label="Visitor count">
+        <img class="mpp-badge" alt="Total visitors" src="https://hits.sh/mobilepriceplan.com.svg?style=flat-round&amp;label=Visits&amp;color=1b3322&amp;labelColor=fcf8f2">
+      </a>
+      <p class="mpp-note">Cookieless, privacy-respecting counting. Page analytics tracked with Plausible.</p>
+    </div>
+  </div>
+
+  <script defer data-domain="mobilepriceplan.com" src="https://plausible.io/js/script.js"></script>
+</body>
+</html>
